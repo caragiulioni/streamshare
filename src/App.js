@@ -4,11 +4,13 @@ import styled from "styled-components";
 import GlobalStyles from "./Global";
 
 import Home from "./components/Home";
+import MobileNav from "./components/MobileNav";
 function App() {
   return (
     <PageWrapper>
       <GlobalStyles />
       <BrowserRouter>
+        <MobileNav />
         <Switch>
           <Route exact path="/">
             <Home />
