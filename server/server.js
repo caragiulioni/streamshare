@@ -1,6 +1,5 @@
 const express = require("express");
 const morgan = require("morgan");
-const moment = require("moment");
 
 const router = require("./routes");
 const PORT = process.env.PORT || 8000;
@@ -16,7 +15,7 @@ app.use(express.json());
 app.get("*", (req, res) => {
   res.status(404).json({
     status: 404,
-    message: "Something isn't right...",
+    message: "Nothing here.",
   });
 });
 
