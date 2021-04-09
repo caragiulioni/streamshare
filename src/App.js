@@ -5,9 +5,11 @@ import GlobalStyles from "./Global";
 
 import Home from "./components/Home";
 import MobileNav from "./components/MobileNav";
+import Header from "./components/Header";
 function App() {
   return (
     <PageWrapper>
+      <Header />
       <GlobalStyles />
       <BrowserRouter>
         <MobileNav />
