@@ -1,19 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-const Input = ({
-  name,
-  type,
-  placeholder,
-  setValue,
-  value,
-  borderColor,
-  emailBorder,
-}) => {
+const Input = ({ name, type, placeholder, setValue, value, borderColor }) => {
   return (
     <Wrapper>
       <label htmlFor={name}></label>
       <StyledInput
-        emailBorder={emailBorder}
         borderColor={borderColor}
         type={type}
         name={name}

@@ -17,6 +17,7 @@ const SignUpForm = () => {
   const [message, setMessage] = useState(isVerified);
   const [confirmed, setConfirmed] = useState("*all fields required");
   const [borderColor, setBorderColor] = useState("darkgrey");
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const passIsValid = value.password === value.confirmPassword;
@@ -29,9 +30,26 @@ const SignUpForm = () => {
       setConfirmed("email must contain valid characters");
     } else {
       setBorderColor("darkgrey");
-      //perfoem POST fetch
-      //commit to database
-      //pass data to dispatch
+
+      fetch("/signup", {
+        method: "POST",
+        body: JSON.stringify({ value }),
+        headers: {
+          Accept: "application/json",
+          "Content-type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((json) => {
+          const { status } = json;
+          if (status === 200) {
+            console.log("success");
+            //disatch data to provier
+            ///history.push("/userHome?");
+          } else {
+            console.log("err");
+          }
+        });
     }
   };
 
