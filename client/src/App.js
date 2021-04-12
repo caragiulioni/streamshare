@@ -6,6 +6,8 @@ import GlobalStyles from "./Global";
 import Home from "./components/Home";
 import MobileNav from "./components/MobileNav";
 import Header from "./components/Header";
+import LogInPage from "./components/LogInPage";
+import LogIn from "./components/Home/LogIn";
 function App() {
   return (
     <>
@@ -17,6 +19,12 @@ function App() {
           <Switch>
             <Route exact path="/">
               <Home />
+            </Route>
+            <Route exact path="/login">
+              <LogInPage />
+            </Route>
+            <Route exact path="/home">
+              <div>USERPAGE</div>
             </Route>
           </Switch>
         </BrowserRouter>

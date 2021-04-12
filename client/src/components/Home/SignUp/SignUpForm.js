@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import Input from "../Input";
 const SignUpForm = () => {
+  let history = useHistory();
   const [value, setValue] = useState({
-    userName: null,
+    username: null,
     email: null,
     password: null,
     confirmPassword: null,
@@ -40,11 +42,8 @@ const SignUpForm = () => {
         .then((res) => res.json())
         .then((data) => {
           const { status } = data;
-          console.log(data);
           if (status === 200) {
-            console.log("success");
-            //disatch data to provier
-            ///history.push("/userHome?");
+            history.push("/login");
           } else {
             console.log("err");
           }
@@ -56,7 +55,7 @@ const SignUpForm = () => {
     <>
       <Form type="submit" autocomplete="on">
         <Input
-          name="userName"
+          name="username"
           type="text"
           placeholder="User Name"
           setValue={setValue}

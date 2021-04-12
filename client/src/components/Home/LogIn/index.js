@@ -40,7 +40,6 @@ const InnerModal = styled.div`
   flex-direction: column;
 
   button {
-    width: 25px;
     align-self: flex-end;
   }
 `;
