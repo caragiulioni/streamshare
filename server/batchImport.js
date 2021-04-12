@@ -4,7 +4,6 @@ const avatars = JSON.parse(fs.readFileSync("data/avatars.json"));
 const { MongoClient } = require("mongodb");
 require("dotenv").config();
 const { MONGO_URI } = process.env;
-console.log("MONGOURI", MONGO_URI);
 const options = { useNewUrlParser: true, useUnifiedTopology: true };
 const assert = require("assert");
 

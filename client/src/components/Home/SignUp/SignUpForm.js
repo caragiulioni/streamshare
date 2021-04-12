@@ -8,40 +8,39 @@ const SignUpForm = () => {
     password: null,
     confirmPassword: null,
   });
-
-  console.log(value);
-
   let isVerified = "minimum 8 characters";
   let notVerified = "passwords do not match";
 
   const [message, setMessage] = useState(isVerified);
   const [confirmed, setConfirmed] = useState("*all fields required");
   const [borderColor, setBorderColor] = useState("darkgrey");
+  const [inputErr, setInputErr] = useState(null);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const passIsValid = value.password === value.confirmPassword;
     const verifyEmail = value.email.includes("@") && value.email.includes(".");
     if (!passIsValid) {
-      setBorderColor("#E97124");
+      setInputErr("password");
       setMessage(notVerified);
     } else if (!verifyEmail) {
-      setBorderColor("#E97124");
+      setInputErr("email");
       setConfirmed("email must contain valid characters");
     } else {
       setBorderColor("darkgrey");
 
       fetch("/signup", {
         method: "POST",
-        body: JSON.stringify({ value }),
+        body: JSON.stringify(value),
         headers: {
           Accept: "application/json",
-          "Content-type": "application/json",
+          "Content-Type": "application/json",
         },
       })
         .then((res) => res.json())
-        .then((json) => {
-          const { status } = json;
+        .then((data) => {
+          const { status } = data;
+          console.log(data);
           if (status === 200) {
             console.log("success");
             //disatch data to provier
@@ -55,7 +54,7 @@ const SignUpForm = () => {
 
   return (
     <>
-      <Form type="submit">
+      <Form type="submit" autocomplete="on">
         <Input
           name="userName"
           type="text"
@@ -65,7 +64,7 @@ const SignUpForm = () => {
         />
 
         <Input
-          borderColor={borderColor}
+          borderColor={inputErr === "email" ? "#E97124" : "darkgrey"}
           name="email"
           type="text"
           placeholder="Your email"
@@ -75,7 +74,7 @@ const SignUpForm = () => {
 
         <Password>
           <Input
-            borderColor={borderColor}
+            borderColor={inputErr === "password" ? "#E97124" : "darkgrey"}
             id="password"
             name="password"
             type="password"
@@ -85,7 +84,7 @@ const SignUpForm = () => {
             value={value}
           />
           <Input
-            borderColor={borderColor}
+            borderColor={inputErr === "password" ? "#E97124" : "darkgrey"}
             type="password"
             name="confirmPassword"
             placeholder="Confirm password"
