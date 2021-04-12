@@ -12,10 +12,11 @@ export default Header;
 
 const HeaderWrap = styled.header`
   div {
-    display: none;
     transition: 0.3s ease-in-out;
+    background-color: blue;
+    height: 30px;
     @media (min-width: 700px) {
-      display: block;
+      height: 45px;
     }
   }
 `;

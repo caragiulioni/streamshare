@@ -8,18 +8,20 @@ import MobileNav from "./components/MobileNav";
 import Header from "./components/Header";
 function App() {
   return (
-    <PageWrapper>
+    <>
       <Header />
-      <GlobalStyles />
-      <BrowserRouter>
-        <MobileNav />
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-        </Switch>
-      </BrowserRouter>
-    </PageWrapper>
+      <PageWrapper>
+        <GlobalStyles />
+        <BrowserRouter>
+          <MobileNav />
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </BrowserRouter>
+      </PageWrapper>
+    </>
   );
 }
 
@@ -27,12 +29,13 @@ export default App;
 
 const PageWrapper = styled.main`
   background-color: white;
-  margin: 10px 10px;
+  overflow: hidden;
+  margin: 0px 10px 10px 10px;
 
   @media screen and (min-width: 700px) {
-    margin: 15px 15px;
+    margin: 0px 15px 15px 15px;
   }
   @media screen and (min-width: 1080px) {
-    margin: 25px;
+    margin: 0px 25px 25px 25px;
   }
 `;

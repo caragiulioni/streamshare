@@ -10,7 +10,6 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 }
 body{
     font-family: sans-serif;
-    background-color: grey;
 
 }
 ul{

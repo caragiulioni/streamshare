@@ -1,11 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import { FiHome } from "react-icons/fi";
+import Logo from "./Logo";
+import HomeActions from "./HomeActions";
 const Home = () => {
   return (
     <Wrapper>
-      <h2>Home</h2>
-      <FiHome />
+      <Logo />
+      <HomeActions />
     </Wrapper>
   );
 };
@@ -13,5 +14,9 @@ const Home = () => {
 export default Home;
 
 const Wrapper = styled.section`
-  background-color: yellow;
+  height: calc(100vh - 50px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;

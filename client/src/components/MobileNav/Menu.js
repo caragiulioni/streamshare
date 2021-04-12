@@ -19,13 +19,13 @@ const MenuWrap = styled.nav`
   flex-direction: column;
   justify-content: center;
   background: #effffa;
-  transform: ${({ open }) => (open ? "translateY(0)" : "translateY(100%)")};
+  transform: ${({ open }) => (open ? "translateY(0)" : "translateY(-100%)")};
   height: 100vh;
-  padding: 2rem;
   position: absolute;
   bottom: 0;
+  right: 0;
   left: 0; //remove?
-  transition: 0.5s ease-in-out;
+  transition: 0.8s ease-in-out;
   width: 100%;
   a {
     font-size: 1.5rem;
@@ -46,4 +46,5 @@ const MenuWrap = styled.nav`
 const LinkWrap = styled.div`
   display: flex;
   flex-direction: column;
+  text-align: center;
 `;
