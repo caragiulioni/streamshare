@@ -44,8 +44,9 @@ const SignUpForm = () => {
           const { status } = data;
           if (status === 200) {
             history.push("/login");
-          } else {
+          } else if (status === 400) {
             console.log("err");
+            //handle Error
           }
         });
     }

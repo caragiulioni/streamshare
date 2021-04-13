@@ -1,1 +1,9 @@
-export const createUser = (user) => ({ type: "SEND_NEW_USER_DATA", user });
+export const receiveUserData = (data) => ({
+  type: "RECEIVE_USER_DATA",
+  data,
+});
+
+export const receiveUserDataErr = (data) => ({
+  type: "RECEIEVE_USER_DATA_ERR",
+  data,
+});

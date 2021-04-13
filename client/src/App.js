@@ -1,5 +1,6 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import GlobalStyles from "./Global";
 
@@ -7,24 +8,25 @@ import Home from "./components/Home";
 import MobileNav from "./components/MobileNav";
 import Header from "./components/Header";
 import LogInPage from "./components/LogInPage";
-import LogIn from "./components/Home/LogIn";
+import Dashboard from "./components/Dashboard";
 function App() {
+  const currentUser = useSelector((state) => state);
   return (
     <>
-      <Header />
+      {currentUser && <Header />}
       <PageWrapper>
         <GlobalStyles />
         <BrowserRouter>
-          <MobileNav />
+          {currentUser && <MobileNav />}
           <Switch>
             <Route exact path="/">
-              <Home />
+              {currentUser ? <Redirect to="/dashboard" /> : <Home />}
             </Route>
             <Route exact path="/login">
               <LogInPage />
             </Route>
-            <Route exact path="/home">
-              <div>USERPAGE</div>
+            <Route exact path="/dashboard">
+              <Dashboard />
             </Route>
           </Switch>
         </BrowserRouter>

@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import Modal from "react-modal";
 import Login from "../Home/LogIn";
 
 const LogInPage = () => {
