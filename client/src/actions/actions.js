@@ -4,6 +4,6 @@ export const receiveUserData = (data) => ({
 });
 
 export const receiveUserDataErr = (data) => ({
-  type: "RECEIEVE_USER_DATA_ERR",
+  type: "RECEIVE_USER_DATA_ERR",
   data,
 });

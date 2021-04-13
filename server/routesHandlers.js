@@ -1,10 +1,26 @@
-//SIGN UP
-const { MongoClient } = require("mongodb");
+const { MongoClient, ObjectID } = require("mongodb");
 require("dotenv").config();
-const { MONGO_URI } = process.env;
+const { MONGO_URI, JWT_SECRET } = process.env;
 const options = { useNewUrlParser: true, useUnifiedTopology: true };
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
+// const verifyJWT = (req, res, next) => {
+//   const token = req.headers["x-access-token"];
+//   if (!token) {
+//     res.send("user is not authenticated.");
+//   } else {
+//     jwt.verify(token, JWT_SECRET, (err, decoded) => {
+//       if (err) {
+//         res.json({ auth: false, message: "authentication failed" });
+//       } else {
+//         req.userId = decoded.id;
+//         next();
+//       }
+//     });
+//   }
+// };
+//signup
 const createUser = async (req, res) => {
   const { username, email, password } = req.body;
 
@@ -37,7 +53,7 @@ const createUser = async (req, res) => {
 
       //create userTitlesObject
       const userTitlesObj = {
-        foreignKey: newUser._id,
+        userId: newUser._id,
         titles: [],
       };
       await db.collection("userTitles").insertOne(userTitlesObj);
@@ -71,17 +87,22 @@ const handleLogin = async (req, res) => {
   try {
     const isUser = await db.collection("users").findOne({ username: username });
     const isPassword = await bcrypt.compare(password, isUser.password);
+    const userTitles = await db
+      .collection("userTitles")
+      .findOne({ userId: isUser._id });
 
     const user = {
       _id: isUser._id,
       username: isUser.username,
       avatar: isUser.avatar,
+      userTitles: userTitles,
+      //token
     };
 
     if (isUser && isPassword) {
       return res
         .status(200)
-        .json({ status: 200, data: user, message: "success" });
+        .json({ status: 200, data: { user }, message: "success" });
     }
     if (!isUser || !isPassword) {
       return res.status(400).json({
@@ -96,4 +117,30 @@ const handleLogin = async (req, res) => {
   client.close();
 };
 
-module.exports = { createUser, handleLogin };
+//re-authorize on return
+const reAuth = async (req, res) => {
+  const id = req.params.isCurrent;
+  const client = await MongoClient(MONGO_URI, options);
+  await client.connect();
+  const db = client.db("streamshare");
+
+  const verified = await db.collection("users").findOne({ _id: ObjectID(id) });
+  const userTitles = await db
+    .collection("userTitles")
+    .findOne({ userId: verified._id });
+  const user = {
+    _id: verified._id,
+    username: verified.username,
+    avatar: verified.avatar,
+    userTitles: userTitles,
+  };
+  try {
+    if (verified) {
+      return res
+        .status(200)
+        .json({ status: 200, data: { user }, message: "success" });
+    }
+  } catch (err) {}
+};
+
+module.exports = { createUser, handleLogin, reAuth };

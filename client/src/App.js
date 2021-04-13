@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 import GlobalStyles from "./Global";
+import { receiveUserData, receiveUserDataErr } from "./actions/actions";
 
 import Home from "./components/Home";
 import MobileNav from "./components/MobileNav";
@@ -10,9 +11,27 @@ import Header from "./components/Header";
 import LogInPage from "./components/LogInPage";
 import Dashboard from "./components/Dashboard";
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const isStored = localStorage.getItem("streamshareUser");
+    fetch(`/auth/${isStored}`)
+      .then((res) => res.json())
+      .then((data) => {
+        try {
+          return dispatch(receiveUserData(data.data));
+        } catch (err) {
+          return dispatch(receiveUserDataErr());
+        }
+      });
+
+    //FE
+    //dispatch to reducer
+    //AND
+    //remove local storage on loutout and redirect
+  }, []);
   let currentUser;
   currentUser = useSelector((state) => state.user.currentUser);
-  console.log("APP.JS", currentUser);
+  //console.log("APP.JS", currentUser);
   return (
     <>
       {currentUser && <Header />}
