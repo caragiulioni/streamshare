@@ -20,7 +20,8 @@ li{
     list-style-type: none;
 }
 a{
-    text-decoration: underline;
+    color: yellow;
+    text-decoration: none;
     transition: .3s ease-in-out;
 }
 

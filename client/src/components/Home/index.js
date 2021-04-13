@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 import Logo from "./Logo";
 import HomeActions from "./HomeActions";
 const Home = () => {
-  const history = useHistory();
+  const currentUser = useSelector((state) => state.user.currentUser);
   useEffect(() => {}, []);
   return (
     <Wrapper>

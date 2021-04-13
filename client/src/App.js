@@ -9,7 +9,7 @@ import Home from "./components/Home";
 import MobileNav from "./components/MobileNav";
 import Header from "./components/Header";
 import LogInPage from "./components/LogInPage";
-import Dashboard from "./components/Dashboard";
+import MyTitles from "./components/MyTitles";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -34,24 +34,30 @@ function App() {
   //console.log("APP.JS", currentUser);
   return (
     <>
-      {currentUser && <Header />}
-      <PageWrapper>
-        <GlobalStyles />
-        <BrowserRouter>
-          {currentUser && <MobileNav />}
+      <GlobalStyles />
+      <BrowserRouter>
+        {currentUser && <Header />}
+        {currentUser && <MobileNav />}
+        <PageWrapper>
           <Switch>
             <Route exact path="/">
-              {currentUser ? <Redirect to="/dashboard" /> : <Home />}
+              {currentUser ? <Redirect to="/mytitles" /> : <Home />}
             </Route>
             <Route exact path="/login">
               <LogInPage />
             </Route>
-            <Route exact path="/dashboard">
-              {!currentUser ? <Redirect to="/" /> : <Dashboard />}
+            <Route exact path="/mytitles">
+              {!currentUser ? <Redirect to="/" /> : <MyTitles />}
+            </Route>
+            <Route exact path="/search">
+              SEARCH
+            </Route>
+            <Route exact path="/settings">
+              SEARCH
             </Route>
           </Switch>
-        </BrowserRouter>
-      </PageWrapper>
+        </PageWrapper>
+      </BrowserRouter>
     </>
   );
 }

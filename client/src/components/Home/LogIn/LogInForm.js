@@ -27,7 +27,7 @@ const LogInForm = () => {
         if (data.status === 200) {
           const id = data.data.user._id;
           localStorage.setItem("streamshareUser", id);
-          history.push("/dashboard");
+          history.push("/mytitles");
           return dispatch(receiveUserData(data.data));
         }
         if (data.status === 400) {
