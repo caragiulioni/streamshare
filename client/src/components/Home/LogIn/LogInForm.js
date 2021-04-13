@@ -28,9 +28,11 @@ const LogInForm = () => {
           console.log(data.data);
           history.push("/dashboard");
           //setData to local storage
-          return dispatch(receiveUserData(data));
+          return dispatch(receiveUserData(data.data));
         }
         if (data.status === 400) {
+          //setMessage from store??
+          //setMessage(data.message);
           return dispatch(receiveUserDataErr());
           //setMessage from store??
           //setMessage(data.message);

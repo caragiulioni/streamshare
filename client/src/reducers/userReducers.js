@@ -9,7 +9,7 @@ export default function userReducer(state = initialState, action) {
     case "RECEIVE_USER_DATA": {
       return {
         ...state,
-        currentUser: action.data.user,
+        currentUser: action.data,
         status: "idle",
       };
     }

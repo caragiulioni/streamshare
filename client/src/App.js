@@ -10,7 +10,9 @@ import Header from "./components/Header";
 import LogInPage from "./components/LogInPage";
 import Dashboard from "./components/Dashboard";
 function App() {
-  const currentUser = useSelector((state) => state);
+  let currentUser;
+  currentUser = useSelector((state) => state.user.currentUser);
+  console.log("APP.JS", currentUser);
   return (
     <>
       {currentUser && <Header />}
@@ -26,7 +28,7 @@ function App() {
               <LogInPage />
             </Route>
             <Route exact path="/dashboard">
-              <Dashboard />
+              {!currentUser ? <Redirect to="/" /> : <Dashboard />}
             </Route>
           </Switch>
         </BrowserRouter>
