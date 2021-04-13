@@ -34,6 +34,14 @@ const createUser = async (req, res) => {
       };
 
       await db.collection("users").insertOne(newUser);
+
+      //create userTitlesObject
+      const userTitlesObj = {
+        foreignKey: newUser._id,
+        titles: [],
+      };
+      await db.collection("userTitles").insertOne(userTitlesObj);
+
       return res.status(200).json({
         status: 200,
         success: true,
