@@ -32,8 +32,12 @@ export default Header;
 const HeaderWrap = styled.header`
   transition: 0.3s ease-in-out;
   background-color: blue;
-  padding: 20px 0px 15px 0px;
-  @media (min-width: 700px) {
+  padding: 15px 0px 10px 0px;
+  a {
+    font-size: 1em;
+  }
+  @media (min-width: 1080px) {
+    padding: 20px 0px 15px 0px;
   }
 `;
 

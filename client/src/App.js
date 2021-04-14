@@ -14,6 +14,8 @@ import MobileNav from "./components/MobileNav";
 import Header from "./components/Header";
 import LogInPage from "./components/LogInPage";
 import MyTitles from "./components/MyTitles";
+import Search from "./components/Search";
+import Settings from "./components/Settings";
 function App() {
   const dispatch = useDispatch();
   const isStored = localStorage.getItem("streamshareUser");
@@ -56,10 +58,10 @@ function App() {
               {!currentUser ? <Redirect to="/" /> : <MyTitles />}
             </Route>
             <Route exact path="/search">
-              SEARCH
+              <Search />
             </Route>
             <Route exact path="/settings">
-              SEARCH
+              <Settings />
             </Route>
           </Switch>
         </PageWrapper>
@@ -73,12 +75,14 @@ export default App;
 const PageWrapper = styled.main`
   background-color: white;
   overflow: hidden;
+  height: calc(100vh - 25px); // vh - header index.js
   margin: 0px 10px 10px 10px;
 
   @media screen and (min-width: 700px) {
     margin: 0px 15px 15px 15px;
   }
   @media screen and (min-width: 1080px) {
+    height: calc(100vh - 35px); // vh - header index.js
     margin: 0px 25px 25px 25px;
   }
 `;

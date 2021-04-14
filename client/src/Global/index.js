@@ -25,6 +25,19 @@ a{
     transition: .3s ease-in-out;
 }
 
+body{
+    font-size: .6em;
+}
+@media screen and (min-width: 700px) {
+    body{
+    font-size: .8em;
+}
+  }
+  @media screen and (min-width: 1080px) {
+    body{
+    font-size: 1em;
+}
+  }
   
 `;
 
