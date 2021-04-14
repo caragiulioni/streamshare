@@ -3,12 +3,15 @@ import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 import Logo from "./Logo";
 import HomeActions from "./HomeActions";
+import Spinner from "../Spinner";
 const Home = () => {
   const status = useSelector((state) => state.user.status);
   console.log("HOME STATUS", status);
   useEffect(() => {}, []);
   return status === "loading" ? (
-    <div>LOADING</div>
+    <Wrapper>
+      <Spinner />
+    </Wrapper>
   ) : (
     <Wrapper>
       <Logo />
