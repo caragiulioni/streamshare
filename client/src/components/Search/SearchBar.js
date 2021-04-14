@@ -54,7 +54,6 @@ const SearchBar = () => {
 export default SearchBar;
 
 const Search = styled.div`
-  background-color: grey;
   padding: 10px 0px;
   @media (min-width: 700px) {
     padding: 15px 0px;

@@ -5,8 +5,8 @@ import "./masonry.css";
 const ResultsContainer = ({ results }) => {
   const breakpointColumnsObj = {
     1280: 3,
-    1000: 2,
-    640: 1,
+    1080: 2,
+    700: 1,
   };
   console.log("RESULTS CONTAINER", results);
   return (
