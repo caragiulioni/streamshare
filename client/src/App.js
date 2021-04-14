@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { ResultsProvider } from "./context/ResultsContext";
 import styled from "styled-components";
 import GlobalStyles from "./Global";
 import {
@@ -42,30 +43,32 @@ function App() {
   currentUser = useSelector((state) => state.user.currentUser);
   return (
     <>
-      <GlobalStyles />
-      <BrowserRouter>
-        {currentUser && <Header />}
-        {currentUser && <MobileNav />}
-        <PageWrapper>
-          <Switch>
-            <Route exact path="/">
-              {currentUser ? <Redirect to="/mytitles" /> : <Home />}
-            </Route>
-            <Route exact path="/login">
-              <LogInPage />
-            </Route>
-            <Route exact path="/mytitles">
-              {!currentUser ? <Redirect to="/" /> : <MyTitles />}
-            </Route>
-            <Route exact path="/search">
-              <Search />
-            </Route>
-            <Route exact path="/settings">
-              <Settings />
-            </Route>
-          </Switch>
-        </PageWrapper>
-      </BrowserRouter>
+      <ResultsProvider>
+        <GlobalStyles />
+        <BrowserRouter>
+          {currentUser && <Header />}
+          {currentUser && <MobileNav />}
+          <PageWrapper>
+            <Switch>
+              <Route exact path="/">
+                {currentUser ? <Redirect to="/mytitles" /> : <Home />}
+              </Route>
+              <Route exact path="/login">
+                <LogInPage />
+              </Route>
+              <Route exact path="/mytitles">
+                {!currentUser ? <Redirect to="/" /> : <MyTitles />}
+              </Route>
+              <Route exact path="/search">
+                <Search />
+              </Route>
+              <Route exact path="/settings">
+                <Settings />
+              </Route>
+            </Switch>
+          </PageWrapper>
+        </BrowserRouter>
+      </ResultsProvider>
     </>
   );
 }

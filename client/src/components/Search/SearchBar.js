@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
+import { ResultsContext } from "../../context/ResultsContext";
 const SearchBar = () => {
   const [query, setQuery] = useState({ query: "" });
-  const [response, setResponse] = useState(undefined);
-  const [results, setResults] = useState(undefined);
+  const { setResults, setResponse } = useContext(ResultsContext);
 
   const handleChange = (val, item) => {
     setQuery({ ...query, [item]: val.toLowerCase() });
@@ -11,8 +11,8 @@ const SearchBar = () => {
   const length = query.query.length;
 
   const handleSearch = (event) => {
+    setResponse("loading");
     event.preventDefault();
-    console.log(query);
     fetch("/search", {
       method: "POST",
       body: JSON.stringify(query),
@@ -23,13 +23,12 @@ const SearchBar = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+        data.data.Response === "False" && setResponse(false);
+
         setResponse(data.data.Response);
         setResults(data.data.Search);
       });
   };
-
-  console.log(response);
-  console.log(results);
   return (
     <Search>
       <Form>
