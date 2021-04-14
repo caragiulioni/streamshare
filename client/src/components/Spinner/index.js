@@ -10,9 +10,11 @@ export default Spinner;
 const Spin = styled.div`
   height: 60px;
   width: 60px;
-  position: absolute;
+  right: 0;
+  left: 0;
   top: 50%;
-  left: 50%;
+  margin: auto;
+  position: absolute;
   -webkit-animation: rotation 1s infinite linear;
   -moz-animation: rotation 1s infinite linear;
   -o-animation: rotation 1s infinite linear;

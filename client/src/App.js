@@ -77,7 +77,6 @@ export default App;
 
 const PageWrapper = styled.main`
   background-color: white;
-  overflow: hidden;
   height: calc(100vh - 25px); // vh - header index.js
   margin: 0px 10px 10px 10px;
 
