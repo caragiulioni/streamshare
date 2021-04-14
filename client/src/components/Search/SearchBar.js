@@ -8,9 +8,7 @@ const SearchBar = () => {
   const handleChange = (val, item) => {
     setQuery({ ...query, [item]: val.toLowerCase() });
   };
-
   const length = query.query.length;
-  console.log(length);
 
   const handleSearch = (event) => {
     event.preventDefault();
