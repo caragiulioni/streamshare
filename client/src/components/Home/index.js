@@ -4,9 +4,12 @@ import styled from "styled-components";
 import Logo from "./Logo";
 import HomeActions from "./HomeActions";
 const Home = () => {
-  const currentUser = useSelector((state) => state.user.currentUser);
+  const status = useSelector((state) => state.user.status);
+  console.log("HOME STATUS", status);
   useEffect(() => {}, []);
-  return (
+  return status === "loading" ? (
+    <div>LOADING</div>
+  ) : (
     <Wrapper>
       <Logo />
       <HomeActions />

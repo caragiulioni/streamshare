@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { receiveUserData, receiveUserDataErr } from "../../../actions/actions";
+import {
+  sendUserData,
+  receiveUserData,
+  receiveUserDataErr,
+} from "../../../actions/actions";
 import Input from "../../Home/Input";
 const LogInForm = () => {
   const dispatch = useDispatch();
@@ -14,6 +18,7 @@ const LogInForm = () => {
   const [message, setMessage] = useState("");
   const handleSubmit = (event) => {
     event.preventDefault();
+    dispatch(sendUserData());
     fetch("/login", {
       method: "POST",
       body: JSON.stringify(value),

@@ -6,17 +6,23 @@ const initialState = {
 
 export default function userReducer(state = initialState, action) {
   switch (action.type) {
+    case "SEND_USER_DATA": {
+      return {
+        ...state,
+        status: "loading",
+      };
+    }
     case "RECEIVE_USER_DATA": {
       return {
         ...state,
         currentUser: action.data,
-        status: "idle",
+        status: "active",
       };
     }
     case "RECEIVE_USER_DATA_ERROR": {
       return {
         ...state,
-        status: "error",
+        error: "error",
       };
     }
     default:

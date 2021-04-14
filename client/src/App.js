@@ -3,7 +3,11 @@ import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
 import GlobalStyles from "./Global";
-import { receiveUserData, receiveUserDataErr } from "./actions/actions";
+import {
+  sendUserData,
+  receiveUserData,
+  receiveUserDataErr,
+} from "./actions/actions";
 
 import Home from "./components/Home";
 import MobileNav from "./components/MobileNav";
@@ -12,17 +16,20 @@ import LogInPage from "./components/LogInPage";
 import MyTitles from "./components/MyTitles";
 function App() {
   const dispatch = useDispatch();
+  const isStored = localStorage.getItem("streamshareUser");
   useEffect(() => {
-    const isStored = localStorage.getItem("streamshareUser");
-    fetch(`/auth/${isStored}`)
-      .then((res) => res.json())
-      .then((data) => {
-        try {
-          return dispatch(receiveUserData(data.data));
-        } catch (err) {
-          return dispatch(receiveUserDataErr());
-        }
-      });
+    if (isStored) {
+      dispatch(sendUserData());
+      fetch(`/auth/${isStored}`)
+        .then((res) => res.json())
+        .then((data) => {
+          try {
+            return dispatch(receiveUserData(data.data));
+          } catch (err) {
+            return dispatch(receiveUserDataErr());
+          }
+        });
+    }
 
     //FE
     //dispatch to reducer
@@ -31,7 +38,6 @@ function App() {
   }, []);
   let currentUser;
   currentUser = useSelector((state) => state.user.currentUser);
-  //console.log("APP.JS", currentUser);
   return (
     <>
       <GlobalStyles />
