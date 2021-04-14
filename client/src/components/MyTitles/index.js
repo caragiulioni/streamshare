@@ -10,7 +10,6 @@ const MyTitles = () => {
     (state) => state.user.currentUser.user.userTitles.titles
   );
   const currentUser = useSelector((state) => state.user.currentUser.user);
-  console.log(currentUser);
   return titles.length ? (
     <div>My Titles</div>
   ) : (

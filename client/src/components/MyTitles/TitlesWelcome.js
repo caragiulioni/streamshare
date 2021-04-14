@@ -6,12 +6,13 @@ const TitlesWelcome = ({ currentUser }) => {
   return (
     <SectionWrapper>
       <h2>
-        Welcome <span>{username}</span>! Let's get started.
+        Welcome <span>{username}</span>!
       </h2>
-      <h3>This is your Titles List.</h3>
-      You can use it to keep track of shows and movies you have loved or ones
-      you want to view in the future. Try doing a search and adding titles to
-      your list now.
+      <p>Let's get started.</p>
+      <h4>This is your Titles List.</h4>
+      Use it to keep track of shows and movies you have loved or ones you want
+      to view in the future. Try doing a search and adding some titles to your
+      list now.
     </SectionWrapper>
   );
 };

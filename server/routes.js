@@ -1,16 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const { createUser, handleLogin, reAuth } = require("./routesHandlers");
+const { handleSearch } = require("./searchHandlers");
 
 router.post("/signup", createUser);
 router.post("/login", handleLogin);
+
+//auth returning user
 router.get("/auth/:isCurrent", reAuth);
 
-// //authorize
-// router.get("/auth", verifyJWT, (req, res) => {
-//   res.send("Authorized");
-// });
-//router.get("/", handlerFunction);
-//router.get("/path/:param", handleParam);
-
+//user search
+router.post("/search", handleSearch);
 module.exports = router;

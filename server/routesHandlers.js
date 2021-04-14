@@ -3,24 +3,7 @@ require("dotenv").config();
 const { MONGO_URI, JWT_SECRET } = process.env;
 const options = { useNewUrlParser: true, useUnifiedTopology: true };
 const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
 
-// const verifyJWT = (req, res, next) => {
-//   const token = req.headers["x-access-token"];
-//   if (!token) {
-//     res.send("user is not authenticated.");
-//   } else {
-//     jwt.verify(token, JWT_SECRET, (err, decoded) => {
-//       if (err) {
-//         res.json({ auth: false, message: "authentication failed" });
-//       } else {
-//         req.userId = decoded.id;
-//         next();
-//       }
-//     });
-//   }
-// };
-//signup
 const createUser = async (req, res) => {
   const { username, email, password } = req.body;
 
@@ -96,7 +79,6 @@ const handleLogin = async (req, res) => {
       username: isUser.username,
       avatar: isUser.avatar,
       userTitles: userTitles,
-      //token
     };
 
     if (isUser && isPassword) {
