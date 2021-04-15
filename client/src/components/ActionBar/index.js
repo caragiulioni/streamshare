@@ -4,6 +4,7 @@ import {
   receiveAddedTitle,
   receiveAddedTitleErr,
   sendAddedTitle,
+  receiveUserDataErr,
 } from "../../actions/actions";
 import { useDispatch } from "react-redux";
 const ActionBar = ({ title, currentUser }) => {
@@ -12,17 +13,20 @@ const ActionBar = ({ title, currentUser }) => {
   console.log("ACTIONS CURRENTUSER", currentUser);
 
   //check if title is in userTutles
-  let verify;
+  let found;
   if (currentUser) {
     const find = currentUser.user.userTitles.titles.find((title) => {
-      return title === imdbID;
+      console.log(title, imdbID);
+      return title.imdbID === imdbID;
     });
-
     console.log(find);
-
-    find === undefined ? (verify = false) : (verify = true);
+    if (find) {
+      found = true;
+    } else {
+      found = false;
+    }
   }
-
+  console.log("FOUND", found);
   const date = new Date();
   const time = date.getTime();
   const handleAdd = () => {
@@ -35,7 +39,7 @@ const ActionBar = ({ title, currentUser }) => {
       Genre: Genre,
       Year: Year,
     };
-    dispatch(sendAddedTitle());
+    // dispatch(sendAddedTitle());
     fetch("/add-title", {
       method: "POST",
       body: JSON.stringify(title),
@@ -46,8 +50,8 @@ const ActionBar = ({ title, currentUser }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.imdbID);
-        //dispatch to store
+        console.log(data);
+        // dispatch(receiveAddedTitle(data));
       });
   };
 
@@ -56,10 +60,10 @@ const ActionBar = ({ title, currentUser }) => {
   };
   return (
     <div>
-      <button onClick={handleAdd} disabled={verify}>
+      <button onClick={handleAdd} disabled={found}>
         Add
       </button>
-      <button onClick={handleRemove} disabled={!verify}>
+      <button onClick={handleRemove} disabled={!found}>
         Remove
       </button>
     </div>

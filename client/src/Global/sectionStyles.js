@@ -10,10 +10,10 @@ export const SectionContainer = styled.section`
 
 export const SectionWrapper = styled.div`
   width: 100%;
-  @media (min-width: 700px) {
-    width: 40vw;
+  @media (min-width: 500px) {
+    width: 100%;
   }
-  @media (min-width: 1080px) {
+  @media (min-width: 1024px) {
     width: 30vw;
   }
 `;

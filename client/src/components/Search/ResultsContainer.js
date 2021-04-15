@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Masonry from "react-masonry-css";
 import Title from "../Title";
-import "./masonry.css";
+import "../../Global/masonry.css";
 const ResultsContainer = ({ results }) => {
   const breakpointColumnsObj = {
     default: 4,

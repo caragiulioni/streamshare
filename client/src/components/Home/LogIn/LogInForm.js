@@ -36,11 +36,7 @@ const LogInForm = () => {
           return dispatch(receiveUserData(data.data));
         }
         if (data.status === 400) {
-          //setMessage from store??
-          //setMessage(data.message);
           return dispatch(receiveUserDataErr());
-          //setMessage from store??
-          //setMessage(data.message);
         }
         //dispatch to actions
       });

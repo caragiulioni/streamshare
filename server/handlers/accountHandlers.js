@@ -122,7 +122,9 @@ const reAuth = async (req, res) => {
         .status(200)
         .json({ status: 200, data: { user }, message: "success" });
     }
-  } catch (err) {}
+  } catch (err) {
+    res.status(400).json({ status: 400, message: err.message });
+  }
 };
 
 module.exports = { createUser, handleLogin, reAuth };

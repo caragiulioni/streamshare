@@ -4,6 +4,23 @@ require("dotenv").config();
 const { MONGO_URI, API_SECRET } = process.env;
 const options = { useNewUrlParser: true, useUnifiedTopology: true };
 
+const getUserTitles = async (req, res) => {
+  const id = req.params.userId;
+  console.log(id);
+  const client = await MongoClient(MONGO_URI, options);
+  await client.connect();
+  const db = client.db("streamshare");
+  const titles = await db
+    .collection("userTitles")
+    .findOne({ userId: ObjectID(id) });
+  console.log(titles);
+  if (titles) {
+    return res
+      .status(200)
+      .json({ status: 200, data: titles, message: "success" });
+  }
+};
+
 const getTitle = async (req, res) => {
   const titleId = req.params.titleId;
   const request = require("request");
@@ -46,7 +63,7 @@ const addTitle = async (req, res) => {
       .collection("userTitles")
       .updateOne(
         { userId: ObjectID(title.userId) },
-        { $push: { titles: title.imdbID } }
+        { $push: { titles: newTitle } }
       );
     return res.status(200).json({
       status: 200,
@@ -63,4 +80,6 @@ const addTitle = async (req, res) => {
   }
 };
 
-module.exports = { getTitle, addTitle };
+const removeTitle = async (req, res) => {};
+
+module.exports = { getUserTitles, getTitle, addTitle, removeTitle };

@@ -20,6 +20,7 @@ import Settings from "./components/Settings";
 import TitleFull from "./components/TitleFull";
 function App() {
   const dispatch = useDispatch();
+  // const updateData = useSelector((state) => state.updateData);
   const isStored = localStorage.getItem("streamshareUser");
   useEffect(() => {
     if (isStored) {
@@ -40,6 +41,23 @@ function App() {
     //AND
     //remove local storage on loutout and redirect
   }, []);
+
+  // useEffect(() => {
+  //   if (updateData) {
+  //     dispatch(sendUserData());
+  //     fetch(`/auth/${isStored}`)
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         try {
+  //           return dispatch(receiveUserData(data.data));
+  //         } catch (err) {
+  //           return dispatch(receiveUserDataErr());
+  //         }
+  //       })
+  //       dispatch()
+  //   }
+  // }, [updateData]);
+
   let currentUser;
   currentUser = useSelector((state) => state.user.currentUser);
   return (
