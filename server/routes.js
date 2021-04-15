@@ -1,7 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const { createUser, handleLogin, reAuth } = require("./routesHandlers");
-const { handleSearch } = require("./searchHandlers");
+const {
+  createUser,
+  handleLogin,
+  reAuth,
+} = require("./handlers/routesHandlers");
+const { handleSearch } = require("./handlers/searchHandlers");
 const { getTitle } = require("./handlers/titleHandlers");
 
 router.post("/signup", createUser);
