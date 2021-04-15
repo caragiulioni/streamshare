@@ -58,8 +58,6 @@ const Search = styled.div`
   @media (min-width: 700px) {
     padding: 15px 0px;
   }
-  @media (min-width: 1080px) {
-  }
 `;
 const Form = styled.form`
   display: flex;

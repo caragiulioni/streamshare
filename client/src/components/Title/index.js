@@ -6,6 +6,7 @@ import ActionBar from "../ActionBar";
 const Title = ({ result }) => {
   let history = useHistory();
   let titleId = result.imdbID;
+
   const addDefaultSrc = (ev) => {
     ev.target.src = kitten;
   };

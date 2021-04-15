@@ -3,6 +3,8 @@ import { useHistory, useParams } from "react-router-dom";
 import { ResultsContext } from "../../context/ResultsContext";
 import styled from "styled-components";
 import Spinner from "../Spinner";
+import TitleDetails from "./TitleDetails";
+import Title from "../Title";
 const TitleFull = () => {
   const { titleId } = useParams();
   const { response, setResponse, title, setTitle } = useContext(ResultsContext);
@@ -22,7 +24,10 @@ const TitleFull = () => {
   return (
     <TitleSection>
       {response === "loading" && <Spinner />}
-      {response === "False" && <div>We couldn't find anything.</div>}
+      {response === "False" && (
+        <div>Hmmm...we can't seem to find that title.</div>
+      )}
+      {title && <TitleDetails title={title} />}
     </TitleSection>
   );
 };
