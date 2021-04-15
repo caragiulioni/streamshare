@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import ActionBar from "../ActionBar";
+import { useSelector } from "react-redux";
 const TitleDetails = ({ title }) => {
-  console.log(title);
   const { Title, Poster, imdbRating, Genre, Plot, Year, Rated } = title;
-
+  const currentUser = useSelector((state) => state.user.currentUser);
+  console.log(currentUser);
   return (
     <DetailsWrapper>
       <InnerWrapper>
@@ -31,6 +32,7 @@ const TitleDetails = ({ title }) => {
             <span>Genre: </span> {Genre}
           </p>
         </Details>
+        <ActionBar currentUser={currentUser} title={title} />
       </InnerDetailsWrapper>
     </DetailsWrapper>
   );

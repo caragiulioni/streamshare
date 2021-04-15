@@ -1,5 +1,6 @@
 import React, { useEffect, useContext } from "react";
 import { useHistory, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { ResultsContext } from "../../context/ResultsContext";
 import styled from "styled-components";
 import Spinner from "../Spinner";
@@ -9,7 +10,6 @@ const TitleFull = () => {
   const { titleId } = useParams();
   const { response, setResponse, title, setTitle } = useContext(ResultsContext);
   let history = useHistory();
-
   useEffect(() => {
     setResponse("loading");
     fetch(`/title/${titleId}`)

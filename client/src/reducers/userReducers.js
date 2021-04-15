@@ -25,6 +25,28 @@ export default function userReducer(state = initialState, action) {
         error: "error",
       };
     }
+
+    case "SEND_ADDED_TITLE": {
+      return {
+        ...state,
+        status: "loading",
+      };
+    }
+    case "RECEIVE_ADDED_TITLE": {
+      return {
+        ...state,
+        currentUser: action.data.userTitles.titles,
+        status: "active",
+      };
+    }
+
+    case "RECEIVE_ADDED_TITLE_ERROR": {
+      return {
+        ...state,
+        error: "error",
+      };
+    }
+
     default:
       return state;
   }

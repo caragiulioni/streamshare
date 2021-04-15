@@ -25,7 +25,6 @@ const Title = ({ result }) => {
         </Details>
         <img onError={addDefaultSrc} src={Poster} alt={Title} />
       </ItemLink>
-      <ActionBar />
     </TitleContainer>
   );
 };
