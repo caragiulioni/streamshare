@@ -13,7 +13,7 @@ const Burger = ({ open, setOpen }) => {
 export default Burger;
 
 const Button = styled.button`
-  position: absolute;
+  position: fixed;
   bottom: 0;
   margin-bottom: 1em;
   left: 2rem; //remove?

@@ -17,6 +17,7 @@ import LogInPage from "./components/LogInPage";
 import MyTitles from "./components/MyTitles";
 import Search from "./components/Search";
 import Settings from "./components/Settings";
+import TitleFull from "./components/TitleFull";
 function App() {
   const dispatch = useDispatch();
   const isStored = localStorage.getItem("streamshareUser");
@@ -64,6 +65,9 @@ function App() {
               </Route>
               <Route exact path="/settings">
                 <Settings />
+              </Route>
+              <Route exact path="/title/:titleId">
+                <TitleFull />
               </Route>
             </Switch>
           </PageWrapper>
