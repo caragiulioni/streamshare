@@ -6,9 +6,11 @@ import TitlesWelcome from "./TitlesWelcome";
 import Masonry from "react-masonry-css";
 import Title from "../Title";
 import "../../Global/masonry.css";
+import Spinner from "../Spinner";
 
 const MyTitles = () => {
   const currentUser = useSelector((state) => state.user.currentUser.user);
+  console.log(currentUser);
   const [titles, setTitles] = useState(null);
   const [response, setResponse] = useState(null);
   const userId = currentUser._id;
@@ -19,8 +21,11 @@ const MyTitles = () => {
       fetch(`/titles/${userId}`)
         .then((res) => res.json())
         .then((data) => {
+          if (data.data.titles === []) {
+            setResponse(false);
+          }
           setTitles(data.data.titles);
-          setResponse("true");
+          setResponse(true);
         });
     }
   }, [currentUser, setTitles]);
@@ -32,23 +37,32 @@ const MyTitles = () => {
     700: 1,
   };
 
-  console.log(titles);
+  return (
+    <div>
+      {currentUser && response === true && (
+        <Masonry
+          breakpointCols={breakpointColumnsObj}
+          className="my-masonry-grid"
+          columnClassName="my-masonry-grid_column"
+        >
+          {titles.map((result) => (
+            <Title key={result.imdbID} result={result} />
+          ))}
+        </Masonry>
+      )}
 
-  return response === "true" ? (
-    <Masonry
-      breakpointCols={breakpointColumnsObj}
-      className="my-masonry-grid"
-      columnClassName="my-masonry-grid_column"
-    >
-      {titles.map((result) => (
-        <Title key={result.imdbID} result={result} />
-      ))}
-    </Masonry>
-  ) : (
-    <SectionContainer>
-      <TitlesWelcome currentUser={currentUser} />
-    </SectionContainer>
+      {currentUser && response === false && (
+        <SectionContainer>
+          <TitlesWelcome currentUser={currentUser} />
+        </SectionContainer>
+      )}
+      {currentUser && response === "loading" && <Spinner />}
+    </div>
   );
+
+  // if (currentUser && response === "loading") {
+  //   return <Spinner />;
+  // }
 };
 
 export default MyTitles;

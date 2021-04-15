@@ -11,7 +11,6 @@ function deepCopy(obj) {
 
 export default function userReducer(state = initialState, action) {
   const newState = deepCopy(state);
-  console.log(newState);
   switch (action.type) {
     case "SEND_USER_DATA": {
       return {

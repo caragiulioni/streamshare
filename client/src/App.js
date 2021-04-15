@@ -29,18 +29,13 @@ function App() {
         .then((res) => res.json())
         .then((data) => {
           try {
-            return dispatch(receiveUserData(data.data));
+            dispatch(receiveUserData(data.data));
           } catch (err) {
-            return dispatch(receiveUserDataErr());
+            dispatch(receiveUserDataErr());
           }
         });
     }
-
-    //FE
-    //dispatch to reducer
-    //AND
-    //remove local storage on loutout and redirect
-  }, []);
+  }, [isStored]);
 
   // useEffect(() => {
   //   if (updateData) {

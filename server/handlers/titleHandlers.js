@@ -6,14 +6,12 @@ const options = { useNewUrlParser: true, useUnifiedTopology: true };
 
 const getUserTitles = async (req, res) => {
   const id = req.params.userId;
-  console.log(id);
   const client = await MongoClient(MONGO_URI, options);
   await client.connect();
   const db = client.db("streamshare");
   const titles = await db
     .collection("userTitles")
     .findOne({ userId: ObjectID(id) });
-  console.log(titles);
   if (titles) {
     return res
       .status(200)

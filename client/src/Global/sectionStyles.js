@@ -14,7 +14,6 @@ export const SectionWrapper = styled.div`
     width: 100%;
   }
   @media (min-width: 1024px) {
-    width: 30vw;
   }
 `;
 
