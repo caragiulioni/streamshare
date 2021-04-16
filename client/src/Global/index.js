@@ -7,7 +7,6 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 :root{
     margin: 0;
     padding: 0;
-    background-color: transparent;
 }
 body{
     font-family: sans-serif;
@@ -33,6 +32,10 @@ body{
 .dark{
     background-color: black;
     color: white;
+}
+
+.light{
+    color: black;
 }
 @media screen and (min-width: 700px) {
     body{

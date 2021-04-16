@@ -24,19 +24,15 @@ function App() {
   const dispatch = useDispatch();
   // const updateData = useSelector((state) => state.updateData);
   const isStored = localStorage.getItem("streamshareUser");
-  const theme = localStorage.getItem("theme");
-  console.log(theme);
+  const theme = localStorage.getItem("streamshareTheme");
+  const body = document.body;
   useEffect(() => {
     if (theme === "dark") {
-      const body = document.body;
       body.classList.toggle("dark");
-      window.localStorage.setItem("theme", "dark");
     }
 
-    if (theme === undefined) {
-      const body = document.body;
-      body.classList.toggle("dark");
-      window.localStorage.setItem("theme", "dark");
+    if (theme === "light") {
+      body.classList.toggle("light");
     }
 
     if (isStored) {

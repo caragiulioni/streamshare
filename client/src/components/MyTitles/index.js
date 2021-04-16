@@ -19,11 +19,13 @@ const MyTitles = () => {
       fetch(`/titles/${userId}`)
         .then((res) => res.json())
         .then((data) => {
-          if (data.data.titles === []) {
+          console.log(data.data.titles);
+          if (!data.data.titles.length) {
             setResponse(false);
+          } else {
+            setTitles(data.data.titles);
+            setResponse(true);
           }
-          setTitles(data.data.titles);
-          setResponse(true);
         });
     }
   }, [currentUser, setResponse]);
@@ -35,6 +37,7 @@ const MyTitles = () => {
     700: 2,
   };
 
+  console.log(response);
   return (
     <div>
       {response === "loading" && <Spinner />}

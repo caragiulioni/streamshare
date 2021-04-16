@@ -10,23 +10,21 @@ import { useDispatch } from "react-redux";
 const ActionBar = ({ title, currentUser, found }) => {
   const dispatch = useDispatch();
   const { Title, Poster, Genre, Year, imdbID } = title;
-  // console.log("ACTIONS CURRENTUSER", currentUser);
-  // useEffect(() => {
-  //   //check if title is in userTitles to set button state
-  //   // if (currentUser) {
-  //   //   const find = currentUser.user.userTitles.titles.find((title) => {
-  //   //     return title.imdbID === imdbID;
-  //   //   });
-  //   //   if (find) {
-  //   //     setFound(true);
-  //   //   } else {
-  //   //     setFound(false);
-  //   //   }
-  //   // }
-  // }, [currentUser]);
-
-  const date = new Date();
-  const time = date.getTime();
+  const [addButton, setAddButton] = useState();
+  const [removeButton, setRemoveButton] = useState();
+  useEffect(() => {
+    console.log(found);
+    if (found) {
+      setAddButton(true);
+      setRemoveButton(false);
+    }
+    if (!found) {
+      setAddButton(false);
+      setRemoveButton(true);
+    }
+  });
+  console.log("FOUND", found);
+  console.log(currentUser);
   const handleAdd = () => {
     const title = {
       userId: currentUser.user._id,
@@ -46,8 +44,13 @@ const ActionBar = ({ title, currentUser, found }) => {
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
+        if (data.status === 200) {
+          setAddButton(true);
+        } else {
+          return data.msg;
+        }
         //returned msg for toaster
-        return data.msg;
       });
   };
 
@@ -72,12 +75,10 @@ const ActionBar = ({ title, currentUser, found }) => {
   };
   return (
     <div>
-      <button onClick={handleAdd} disabled={found}>
+      <button onClick={handleAdd} disabled={addButton}>
         Add
       </button>
-      <button onClick={handleRemove} disabled={!found}>
-        Remove
-      </button>
+      <button onClick={handleRemove}>Remove</button>
     </div>
   );
 };
