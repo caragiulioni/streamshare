@@ -25,11 +25,20 @@ function App() {
   // const updateData = useSelector((state) => state.updateData);
   const isStored = localStorage.getItem("streamshareUser");
   const theme = localStorage.getItem("theme");
+  console.log(theme);
   useEffect(() => {
-    if (theme) {
+    if (theme === "dark") {
       const body = document.body;
       body.classList.toggle("dark");
+      window.localStorage.setItem("theme", "dark");
     }
+
+    if (theme === undefined) {
+      const body = document.body;
+      body.classList.toggle("dark");
+      window.localStorage.setItem("theme", "dark");
+    }
+
     if (isStored) {
       dispatch(sendUserData());
       fetch(`/auth/${isStored}`)

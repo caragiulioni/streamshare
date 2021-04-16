@@ -91,23 +91,26 @@ const removeTitle = async (req, res) => {
     //     { $pull: { titles: { imdbID: imdbID } } }
     //   );
 
-    await db.collections("userTitles").update(
-      { userId: ObjectID(userId) },
-      { $pull: { titles: { imdbID: imdbID } } },
-      false, // Upsert
-      true // Multi
-    );
+    await db
+      .collection("userTitles")
+      .updateOne(
+        { userId: ObjectID(userId) },
+        { $pull: { titles: { imdbID: imdbID } } }
+      );
+
     return res.status(200).json({
       status: 200,
       success: true,
-      data: title,
+      data: imdbID,
       msg: "title removed!",
     });
   } catch (err) {
+    console.log(err);
     res.status(400).json({
       status: 400,
       data: req.body,
       msg: "could not remove title.",
+      err: err,
     });
   }
 };
