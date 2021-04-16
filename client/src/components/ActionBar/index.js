@@ -7,13 +7,13 @@ import {
   receiveUserDataErr,
 } from "../../actions/actions";
 import { useDispatch } from "react-redux";
-const ActionBar = ({ title, currentUser, found }) => {
+const ActionBar = ({ title, currentUser, found, setFound }) => {
+  const [isFound, setIsFound] = useState();
   const dispatch = useDispatch();
   const { Title, Poster, Genre, Year, imdbID } = title;
   const [addButton, setAddButton] = useState();
   const [removeButton, setRemoveButton] = useState();
   useEffect(() => {
-    console.log(found);
     if (found) {
       setAddButton(true);
       setRemoveButton(false);
@@ -22,9 +22,11 @@ const ActionBar = ({ title, currentUser, found }) => {
       setAddButton(false);
       setRemoveButton(true);
     }
-  }, []);
-  console.log("FOUND", found);
-  console.log(currentUser);
+  }, [found]);
+
+  console.log("ACTION BAR FOUND", found);
+  console.log("ACTION BAR", currentUser);
+
   const handleAdd = () => {
     const title = {
       userId: currentUser.user._id,
@@ -47,6 +49,7 @@ const ActionBar = ({ title, currentUser, found }) => {
         console.log(data);
         if (data.status === 200) {
           setAddButton(true);
+          setRemoveButton(false);
         } else {
           return data.msg;
         }
@@ -69,7 +72,8 @@ const ActionBar = ({ title, currentUser, found }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        //returned msg for toaster
+        setAddButton(false);
+        setRemoveButton(true);
         console.log("ACTIONS RETURNED DATA", data.msg);
       });
   };
@@ -78,7 +82,9 @@ const ActionBar = ({ title, currentUser, found }) => {
       <button onClick={handleAdd} disabled={addButton}>
         Add
       </button>
-      <button onClick={handleRemove}>Remove</button>
+      <button onClick={handleRemove} disabled={removeButton}>
+        Remove
+      </button>
     </div>
   );
 };

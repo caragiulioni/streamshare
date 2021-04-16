@@ -11,16 +11,17 @@ const Settings = () => {
 
   const [dark, setDark] = useState();
   const currentTheme = localStorage.getItem("streamshareTheme");
-  const setTheme = () => {
+
+  const setTheme = async () => {
     const body = document.body;
     if (currentTheme === "dark") {
-      body.classList.toggle("dark");
       body.classList.toggle("light");
+      await localStorage.removeItem("streamshareTheme");
       localStorage.setItem("streamshareTheme", "light");
     }
     if (currentTheme === "light") {
-      body.classList.toggle("light");
       body.classList.toggle("dark");
+      await localStorage.removeItem("streamshareTheme");
       localStorage.setItem("streamshareTheme", "dark");
     }
   };

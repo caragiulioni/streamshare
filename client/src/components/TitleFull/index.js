@@ -30,14 +30,16 @@ const TitleFull = () => {
         setResponse(data.data.Response);
         setTitle(data.data);
       });
-  }, [titleId, setResponse, setFound]);
+  }, [currentUser, titleId, setResponse]);
 
   return (
     <TitleSection>
       {response === "False" && (
         <div>Hmmm...we can't seem to find that title.</div>
       )}
-      {title && <TitleDetails found={found} title={title} />}
+      {title && (
+        <TitleDetails setFound={setFound} found={found} title={title} />
+      )}
       {response === "loading" && <Spinner />}
     </TitleSection>
   );

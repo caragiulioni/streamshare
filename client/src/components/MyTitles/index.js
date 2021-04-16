@@ -19,7 +19,6 @@ const MyTitles = () => {
       fetch(`/titles/${userId}`)
         .then((res) => res.json())
         .then((data) => {
-          console.log(data.data.titles);
           if (!data.data.titles.length) {
             setResponse(false);
           } else {
@@ -37,7 +36,6 @@ const MyTitles = () => {
     700: 2,
   };
 
-  console.log(response);
   return (
     <div>
       {response === "loading" && <Spinner />}
