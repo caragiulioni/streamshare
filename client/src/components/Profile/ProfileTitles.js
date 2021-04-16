@@ -5,10 +5,10 @@ import "../../Global/masonry.css";
 const ProfileTitles = ({ memberData }) => {
   const titles = memberData.userTitles.titles;
   const breakpointColumnsObj = {
-    default: 4,
-    1280: 4,
-    1080: 2,
-    700: 1,
+    default: 5,
+    1280: 5,
+    1080: 3,
+    700: 2,
   };
 
   return (

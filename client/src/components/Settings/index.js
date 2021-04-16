@@ -4,13 +4,18 @@ import styled from "styled-components";
 import { SectionContainer } from "../../Global/sectionStyles";
 
 const Settings = () => {
-  //FETCH TITLES BASED OM USER ID BOOO
-  const titles = useSelector(
-    (state) => state.user.currentUser.user.userTitles.titles
+  // const currentUser = useSelector((state) => state.user.currentUser.user);
+  // console.log(currentUser);
+  const setTheme = () => {
+    const body = document.body;
+    body.classList.toggle("dark");
+    window.localStorage.setItem("theme", "dark");
+  };
+  return (
+    <SectionContainer>
+      <button onClick={setTheme}>Set Theme</button>
+    </SectionContainer>
   );
-  const currentUser = useSelector((state) => state.user.currentUser.user);
-  console.log(currentUser);
-  return <SectionContainer>SETTINGS</SectionContainer>;
 };
 
 export default Settings;

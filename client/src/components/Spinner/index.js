@@ -15,11 +15,12 @@ const Spin = styled.div`
   top: 50%;
   margin: auto;
   position: absolute;
+  z-index: 1000;
   -webkit-animation: rotation 1s infinite linear;
   -moz-animation: rotation 1s infinite linear;
   -o-animation: rotation 1s infinite linear;
   animation: rotation 1s infinite linear;
-  border: 6px solid rgba(0, 0, 0, 0.2);
+  border: 6px solid lightgrey;
   border-radius: 100%;
   ::before {
     content: "";
@@ -29,7 +30,7 @@ const Spin = styled.div`
     top: -6px;
     height: 100%;
     width: 100%;
-    border-top: 6px solid rgba(0, 0, 0, 0.8);
+    border-top: 6px solid cyan;
     border-left: 6px solid transparent;
     border-bottom: 6px solid transparent;
     border-right: 6px solid transparent;

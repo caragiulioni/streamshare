@@ -24,7 +24,12 @@ function App() {
   const dispatch = useDispatch();
   // const updateData = useSelector((state) => state.updateData);
   const isStored = localStorage.getItem("streamshareUser");
+  const theme = localStorage.getItem("theme");
   useEffect(() => {
+    if (theme) {
+      const body = document.body;
+      body.classList.toggle("dark");
+    }
     if (isStored) {
       dispatch(sendUserData());
       fetch(`/auth/${isStored}`)
@@ -83,7 +88,6 @@ function App() {
 export default App;
 
 const PageWrapper = styled.main`
-  background-color: white;
   height: calc(100vh - 25px); // vh - header index.js
   margin: 0px 10px 10px 10px;
 
