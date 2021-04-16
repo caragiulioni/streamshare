@@ -32,25 +32,14 @@ export default function userReducer(state = initialState, action) {
       };
     }
 
-    // case "SEND_ADDED_TITLE": {
-    //   return {
-    //     ...state,
-    //     status: "loading",
-    //   };
-    // }
-    // case "RECEIVE_ADDED_TITLE": {
-    //   newState.currentUser.user.userTitles.titles.push(action.data);
-    //   return {
-    //     ...newState,
-    //     status: "active",
-    //   };
-    // }
+    case "REMOVE_CURRENT_USER": {
+      return {
+        ...state,
+        currentUser: action.data,
+        error: "error",
+      };
+    }
 
-    // case "RECEIVE_ADDED_TITLE_ERROR": {
-    //   return {
-    //     ...state,
-    //     error: "error",
-    //   };
     // }
 
     default:

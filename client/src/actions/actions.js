@@ -27,3 +27,8 @@ export const receiveAddedTitleErr = (data) => ({
   type: "RECEIVE_ADDED_TITLE_ERR",
   data,
 });
+
+export const removeCurrentUser = (data) => ({
+  type: "REMOVE_CURRENT_USER",
+  data,
+});

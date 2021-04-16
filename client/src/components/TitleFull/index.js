@@ -30,7 +30,7 @@ const TitleFull = () => {
         setResponse(data.data.Response);
         setTitle(data.data);
       });
-  }, [titleId, setResponse]);
+  }, [titleId, setResponse, setFound]);
 
   return (
     <TitleSection>

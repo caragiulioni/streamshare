@@ -37,6 +37,7 @@ body{
 .light{
     color: black;
 }
+
 @media screen and (min-width: 700px) {
     body{
     font-size: .8em;

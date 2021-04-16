@@ -22,7 +22,7 @@ const ActionBar = ({ title, currentUser, found }) => {
       setAddButton(false);
       setRemoveButton(true);
     }
-  });
+  }, []);
   console.log("FOUND", found);
   console.log(currentUser);
   const handleAdd = () => {

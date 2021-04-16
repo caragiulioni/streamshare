@@ -16,7 +16,4 @@ const LogoWrap = styled.div`
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  h1 {
-    font-size: 3em;
-  }
 `;
