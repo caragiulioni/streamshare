@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   sendUserTitle,
   receiveAddedTitle,
@@ -7,31 +7,28 @@ import {
   receiveUserDataErr,
 } from "../../actions/actions";
 import { useDispatch } from "react-redux";
-const ActionBar = ({ title, currentUser }) => {
+const ActionBar = ({ title, currentUser, found }) => {
   const dispatch = useDispatch();
   const { Title, Poster, Genre, Year, imdbID } = title;
-  console.log("ACTIONS CURRENTUSER", currentUser);
+  // console.log("ACTIONS CURRENTUSER", currentUser);
+  // useEffect(() => {
+  //   //check if title is in userTitles to set button state
+  //   // if (currentUser) {
+  //   //   const find = currentUser.user.userTitles.titles.find((title) => {
+  //   //     return title.imdbID === imdbID;
+  //   //   });
+  //   //   if (find) {
+  //   //     setFound(true);
+  //   //   } else {
+  //   //     setFound(false);
+  //   //   }
+  //   // }
+  // }, [currentUser]);
 
-  //check if title is in userTutles
-  let found;
-  if (currentUser) {
-    const find = currentUser.user.userTitles.titles.find((title) => {
-      console.log(title, imdbID);
-      return title.imdbID === imdbID;
-    });
-    console.log(find);
-    if (find) {
-      found = true;
-    } else {
-      found = false;
-    }
-  }
-  console.log("FOUND", found);
   const date = new Date();
   const time = date.getTime();
   const handleAdd = () => {
     const title = {
-      added: time,
       userId: currentUser.user._id,
       imdbID: imdbID,
       Title: Title,
@@ -39,7 +36,6 @@ const ActionBar = ({ title, currentUser }) => {
       Genre: Genre,
       Year: Year,
     };
-    // dispatch(sendAddedTitle());
     fetch("/add-title", {
       method: "POST",
       body: JSON.stringify(title),
@@ -50,13 +46,29 @@ const ActionBar = ({ title, currentUser }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        // dispatch(receiveAddedTitle(data));
+        //returned msg for toaster
+        return data.msg;
       });
   };
 
   const handleRemove = () => {
-    console.log("remove");
+    const toDelete = {
+      userId: currentUser.user._id,
+      imdbID: imdbID,
+    };
+    fetch("/remove-title", {
+      method: "DELETE",
+      body: JSON.stringify(toDelete),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        //returned msg for toaster
+        console.log("ACTIONS RETURNED DATA", data.msg);
+      });
   };
   return (
     <div>

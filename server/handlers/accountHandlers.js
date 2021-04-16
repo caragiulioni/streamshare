@@ -96,7 +96,6 @@ const handleLogin = async (req, res) => {
   } catch (err) {
     res.status(400).json({ status: 400, message: err.message });
   }
-  client.close();
 };
 
 //re-authorize on return
@@ -123,7 +122,7 @@ const reAuth = async (req, res) => {
         .json({ status: 200, data: { user }, message: "success" });
     }
   } catch (err) {
-    res.status(400).json({ status: 400, message: err.message });
+    return res.status(400).json({ status: 400, message: err.message });
   }
 };
 

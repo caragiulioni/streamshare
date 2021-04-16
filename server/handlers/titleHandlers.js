@@ -44,7 +44,6 @@ const getTitle = async (req, res) => {
 
 const addTitle = async (req, res) => {
   const title = req.body;
-  console.log(title);
   const client = await MongoClient(MONGO_URI, options);
   await client.connect();
   const db = client.db("streamshare");
@@ -70,7 +69,7 @@ const addTitle = async (req, res) => {
       msg: "title added!",
     });
   } catch (err) {
-    return res.status(400).json({
+    res.status(400).json({
       status: 400,
       data: req.body,
       msg: "could not add title.",
@@ -78,6 +77,39 @@ const addTitle = async (req, res) => {
   }
 };
 
-const removeTitle = async (req, res) => {};
+const removeTitle = async (req, res) => {
+  const { userId, imdbID } = req.body;
+  console.log(userId, imdbID);
+  const client = await MongoClient(MONGO_URI, options);
+  await client.connect();
+  const db = client.db("streamshare");
+  try {
+    // await db
+    //   .collections("userTitles")
+    //   .deleteOne(
+    //     { userId: ObjectID(userId) },
+    //     { $pull: { titles: { imdbID: imdbID } } }
+    //   );
+
+    await db.collections("userTitles").update(
+      { userId: ObjectID(userId) },
+      { $pull: { titles: { imdbID: imdbID } } },
+      false, // Upsert
+      true // Multi
+    );
+    return res.status(200).json({
+      status: 200,
+      success: true,
+      data: title,
+      msg: "title removed!",
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: 400,
+      data: req.body,
+      msg: "could not remove title.",
+    });
+  }
+};
 
 module.exports = { getUserTitles, getTitle, addTitle, removeTitle };

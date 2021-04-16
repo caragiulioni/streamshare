@@ -2,10 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import ActionBar from "../ActionBar";
 import { useSelector } from "react-redux";
-const TitleDetails = ({ title }) => {
+const TitleDetails = ({ title, found }) => {
   const { Title, Poster, imdbRating, Genre, Plot, Year, Rated } = title;
   const currentUser = useSelector((state) => state.user.currentUser);
-  console.log(currentUser);
   return (
     <DetailsWrapper>
       <InnerWrapper>
@@ -15,13 +14,13 @@ const TitleDetails = ({ title }) => {
       <InnerDetailsWrapper>
         <Details>
           <p>
-            <span>Rating: </span>
+            <span>****</span>
             {imdbRating}
           </p>
           <p>
             <span>Year: </span> {Year}
           </p>
-          <p>{Rated}</p>
+          <p>Rated: {Rated}</p>
         </Details>
         <PlotWrapper>
           <span>Plot:</span>
@@ -32,7 +31,7 @@ const TitleDetails = ({ title }) => {
             <span>Genre: </span> {Genre}
           </p>
         </Details>
-        <ActionBar currentUser={currentUser} title={title} />
+        <ActionBar currentUser={currentUser} title={title} found={found} />
       </InnerDetailsWrapper>
     </DetailsWrapper>
   );
@@ -42,9 +41,7 @@ export default TitleDetails;
 
 const DetailsWrapper = styled.div`
   padding-bottom: 60px;
-  span {
-    color: blue;
-  }
+
   p {
     display: flex;
   }
@@ -74,9 +71,11 @@ const Details = styled.div`
   padding: 0px 5px;
   display: flex;
   justify-content: space-between;
-  p:nth-child(3) {
+
+  /* p:nth-child(3) {
     color: orange;
-  }
+  } */
+
   @media (min-width: 700px) {
     padding: 0px 10px;
   }

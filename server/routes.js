@@ -5,7 +5,7 @@ const {
   handleLogin,
   reAuth,
 } = require("./handlers/accountHandlers");
-const { handleSearch } = require("./handlers/searchHandlers");
+const { handleSearch, handleProfile } = require("./handlers/searchHandlers");
 const {
   getUserTitles,
   getTitle,
@@ -27,5 +27,6 @@ router.delete("/remove-title", removeTitle);
 
 //search handlers
 router.post("/search", handleSearch);
+router.get("/profile/:username", handleProfile);
 
 module.exports = router;

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { ResultsProvider } from "./context/ResultsContext";
+import { MemberProvider } from "./context/MemberContext";
 import styled from "styled-components";
 import GlobalStyles from "./Global";
 import {
@@ -18,6 +19,7 @@ import MyTitles from "./components/MyTitles";
 import Search from "./components/Search";
 import Settings from "./components/Settings";
 import TitleFull from "./components/TitleFull";
+import Profile from "./components/Profile";
 function App() {
   const dispatch = useDispatch();
   // const updateData = useSelector((state) => state.updateData);
@@ -36,56 +38,44 @@ function App() {
         });
     }
   }, [isStored]);
-
-  // useEffect(() => {
-  //   if (updateData) {
-  //     dispatch(sendUserData());
-  //     fetch(`/auth/${isStored}`)
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         try {
-  //           return dispatch(receiveUserData(data.data));
-  //         } catch (err) {
-  //           return dispatch(receiveUserDataErr());
-  //         }
-  //       })
-  //       dispatch()
-  //   }
-  // }, [updateData]);
-
   let currentUser;
   currentUser = useSelector((state) => state.user.currentUser);
   return (
     <>
-      <ResultsProvider>
-        <GlobalStyles />
-        <BrowserRouter>
-          {currentUser && <Header />}
-          {currentUser && <MobileNav />}
-          <PageWrapper>
-            <Switch>
-              <Route exact path="/">
-                {currentUser ? <Redirect to="/mytitles" /> : <Home />}
-              </Route>
-              <Route exact path="/login">
-                <LogInPage />
-              </Route>
-              <Route exact path="/mytitles">
-                {!currentUser ? <Redirect to="/" /> : <MyTitles />}
-              </Route>
-              <Route exact path="/search">
-                <Search />
-              </Route>
-              <Route exact path="/settings">
-                <Settings />
-              </Route>
-              <Route exact path="/title/:titleId">
-                <TitleFull />
-              </Route>
-            </Switch>
-          </PageWrapper>
-        </BrowserRouter>
-      </ResultsProvider>
+      <MemberProvider>
+        <ResultsProvider>
+          <GlobalStyles />
+          <BrowserRouter>
+            {currentUser && <Header />}
+            {currentUser && <MobileNav />}
+            <PageWrapper>
+              <Switch>
+                <Route exact path="/">
+                  {currentUser ? <Redirect to="/mytitles" /> : <Home />}
+                </Route>
+                <Route exact path="/login">
+                  <LogInPage />
+                </Route>
+                <Route exact path="/mytitles">
+                  {!currentUser ? <Redirect to="/" /> : <MyTitles />}
+                </Route>
+                <Route exact path="/search">
+                  <Search />
+                </Route>
+                <Route exact path="/settings">
+                  <Settings />
+                </Route>
+                <Route exact path="/title/:titleId">
+                  <TitleFull />
+                </Route>
+                <Route exact path="/sh/:username">
+                  <Profile />
+                </Route>
+              </Switch>
+            </PageWrapper>
+          </BrowserRouter>
+        </ResultsProvider>
+      </MemberProvider>
     </>
   );
 }

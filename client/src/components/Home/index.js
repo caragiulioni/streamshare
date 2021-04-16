@@ -6,8 +6,7 @@ import HomeActions from "./HomeActions";
 import Spinner from "../Spinner";
 const Home = () => {
   const status = useSelector((state) => state.user.status);
-  console.log("HOME STATUS", status);
-  useEffect(() => {}, []);
+  // useEffect(() => {}, []);
   return status === "loading" ? (
     <Wrapper>
       <Spinner />

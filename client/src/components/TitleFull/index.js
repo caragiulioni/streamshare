@@ -1,5 +1,5 @@
-import React, { useEffect, useContext } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import React, { useEffect, useContext, useState } from "react";
+import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { ResultsContext } from "../../context/ResultsContext";
 import styled from "styled-components";
@@ -8,10 +8,21 @@ import TitleDetails from "./TitleDetails";
 import Title from "../Title";
 const TitleFull = () => {
   const { titleId } = useParams();
+  const [found, setFound] = useState(null);
+  const currentUser = useSelector((state) => state.user.currentUser);
   const { response, setResponse, title, setTitle } = useContext(ResultsContext);
-  let history = useHistory();
   useEffect(() => {
     setResponse("loading");
+    if (currentUser) {
+      const find = currentUser.user.userTitles.titles.find((title) => {
+        return title.imdbID === titleId;
+      });
+      if (find) {
+        setFound(true);
+      } else {
+        setFound(false);
+      }
+    }
     fetch(`/title/${titleId}`)
       .then((res) => res.json())
       .then((data) => {
@@ -19,15 +30,15 @@ const TitleFull = () => {
         setResponse(data.data.Response);
         setTitle(data.data);
       });
-  }, [titleId]);
+  }, [titleId, setResponse]);
 
   return (
     <TitleSection>
-      {response === "loading" && <Spinner />}
       {response === "False" && (
         <div>Hmmm...we can't seem to find that title.</div>
       )}
-      {title && <TitleDetails title={title} />}
+      {title && <TitleDetails found={found} title={title} />}
+      {response === "loading" && <Spinner />}
     </TitleSection>
   );
 };

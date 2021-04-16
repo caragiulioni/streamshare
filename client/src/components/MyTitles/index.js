@@ -10,11 +10,9 @@ import Spinner from "../Spinner";
 
 const MyTitles = () => {
   const currentUser = useSelector((state) => state.user.currentUser.user);
-  console.log(currentUser);
   const [titles, setTitles] = useState(null);
   const [response, setResponse] = useState(null);
   const userId = currentUser._id;
-  console.log(userId);
   useEffect(() => {
     setResponse("loading");
     if (currentUser) {
@@ -28,7 +26,7 @@ const MyTitles = () => {
           setResponse(true);
         });
     }
-  }, [currentUser, setTitles]);
+  }, [currentUser, setResponse]);
 
   const breakpointColumnsObj = {
     default: 4,
@@ -39,6 +37,7 @@ const MyTitles = () => {
 
   return (
     <div>
+      {response === "loading" && <Spinner />}
       {currentUser && response === true && (
         <Masonry
           breakpointCols={breakpointColumnsObj}
@@ -56,13 +55,8 @@ const MyTitles = () => {
           <TitlesWelcome currentUser={currentUser} />
         </SectionContainer>
       )}
-      {currentUser && response === "loading" && <Spinner />}
     </div>
   );
-
-  // if (currentUser && response === "loading") {
-  //   return <Spinner />;
-  // }
 };
 
 export default MyTitles;
