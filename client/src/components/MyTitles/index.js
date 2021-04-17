@@ -48,6 +48,11 @@ const MyTitles = () => {
     return setTitles(arr);
   };
 
+  const lastToFirst = () => {
+    const arr = [...titles].reverse();
+    return setTitles(arr);
+  };
+
   const revert = () => {
     setTitles(original);
   };
@@ -58,7 +63,8 @@ const MyTitles = () => {
         <div>
           <button onClick={descend}>Z-A</button>
           <button onClick={ascend}>A-Z</button>
-          <button onClick={revert}>A-Z</button>
+          <button onClick={lastToFirst}>last added - first added</button>
+          <button onClick={revert}>first added - last added</button>
           <Masonry
             breakpointCols={breakpointColumnsObj}
             className="my-masonry-grid"
