@@ -34,13 +34,18 @@ const TitleFull = () => {
 
   return (
     <TitleSection>
-      {response === "False" && (
-        <div>Hmmm...we can't seem to find that title.</div>
+      {response === "loading" ? (
+        <Spinner />
+      ) : (
+        <>
+          {response === "False" && (
+            <div>Hmmm...we can't seem to find that title.</div>
+          )}
+          {title && (
+            <TitleDetails setFound={setFound} found={found} title={title} />
+          )}
+        </>
       )}
-      {title && (
-        <TitleDetails setFound={setFound} found={found} title={title} />
-      )}
-      {response === "loading" && <Spinner />}
     </TitleSection>
   );
 };

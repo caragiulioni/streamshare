@@ -11,6 +11,7 @@ import Spinner from "../Spinner";
 const MyTitles = () => {
   const currentUser = useSelector((state) => state.user.currentUser.user);
   const [titles, setTitles] = useState(null);
+  const [original, setOriginal] = useState(null);
   const [response, setResponse] = useState(null);
   const userId = currentUser._id;
   useEffect(() => {
@@ -23,11 +24,12 @@ const MyTitles = () => {
             setResponse(false);
           } else {
             setTitles(data.data.titles);
+            setOriginal(data.data.titles);
             setResponse(true);
           }
         });
     }
-  }, [currentUser, setResponse]);
+  }, [currentUser, setResponse, setTitles]);
 
   const breakpointColumnsObj = {
     default: 5,
@@ -36,19 +38,37 @@ const MyTitles = () => {
     700: 2,
   };
 
+  const descend = () => {
+    const arr = [...titles].sort((a, b) => a.Title.localeCompare(b.Title));
+    return setTitles(arr);
+  };
+
+  const ascend = () => {
+    const arr = [...titles].sort((a, b) => b.Title.localeCompare(a.Title));
+    return setTitles(arr);
+  };
+
+  const revert = () => {
+    setTitles(original);
+  };
   return (
     <div>
       {response === "loading" && <Spinner />}
       {currentUser && response === true && (
-        <Masonry
-          breakpointCols={breakpointColumnsObj}
-          className="my-masonry-grid"
-          columnClassName="my-masonry-grid_column"
-        >
-          {titles.map((result) => (
-            <Title key={result.imdbID} result={result} />
-          ))}
-        </Masonry>
+        <div>
+          <button onClick={descend}>Z-A</button>
+          <button onClick={ascend}>A-Z</button>
+          <button onClick={revert}>A-Z</button>
+          <Masonry
+            breakpointCols={breakpointColumnsObj}
+            className="my-masonry-grid"
+            columnClassName="my-masonry-grid_column"
+          >
+            {titles.map((result) => (
+              <Title key={result.imdbID} result={result} />
+            ))}
+          </Masonry>
+        </div>
       )}
 
       {currentUser && response === false && (

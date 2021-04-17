@@ -1,11 +1,4 @@
 import React, { useEffect, useState } from "react";
-import {
-  sendUserTitle,
-  receiveAddedTitle,
-  receiveAddedTitleErr,
-  sendAddedTitle,
-  receiveUserDataErr,
-} from "../../actions/actions";
 import { useDispatch } from "react-redux";
 const ActionBar = ({ title, currentUser, found, setFound }) => {
   const [isFound, setIsFound] = useState();
@@ -26,7 +19,6 @@ const ActionBar = ({ title, currentUser, found, setFound }) => {
 
   console.log("ACTION BAR FOUND", found);
   console.log("ACTION BAR", currentUser);
-
   const handleAdd = () => {
     const title = {
       userId: currentUser.user._id,
@@ -77,6 +69,7 @@ const ActionBar = ({ title, currentUser, found, setFound }) => {
         console.log("ACTIONS RETURNED DATA", data.msg);
       });
   };
+
   return (
     <div>
       <button onClick={handleAdd} disabled={addButton}>

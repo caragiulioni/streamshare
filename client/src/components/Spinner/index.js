@@ -15,7 +15,6 @@ const Spin = styled.div`
   top: 50%;
   margin: auto;
   position: absolute;
-  z-index: 1000;
   -webkit-animation: rotation 1s infinite linear;
   -moz-animation: rotation 1s infinite linear;
   -o-animation: rotation 1s infinite linear;

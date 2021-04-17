@@ -38,6 +38,39 @@ body{
     color: black;
 }
 
+.Toastify__toast-container {
+    width: 115px;
+
+}
+
+.Toastify__toast{
+    min-height: 40px;
+    text-align: center;
+}
+
+.Toastify__toast-body {
+    margin: auto 0;
+    padding: 0px 5px;;
+}
+.Toastify__toast {
+    position: relative;
+    text-align: center;
+    border-radius: 4px;
+    box-shadow: 0 1px 10px 0 rgb(0 0 0 / 10%), 0 2px 15px 0 rgb(0 0 0 / 5%);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    font-family: sans-serif;
+    cursor: pointer;
+    direction: ltr;
+}
+.Toastify__toast--default  {
+    background-color: grey;
+    height: 25px
+}
+.Toastify__close-button{
+    display: none;
+}
 @media screen and (min-width: 700px) {
     body{
     font-size: .8em;
