@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Masonry from "react-masonry-css";
 import Title from "../Title";
 import "../../Global/masonry.css";
+import SortComponent from "../Buttons/SortComponent";
 const ProfileTitles = ({ memberData }) => {
   const memberTitles = memberData.userTitles.titles;
   const [titles, setTitles] = useState(memberTitles);
@@ -13,30 +14,13 @@ const ProfileTitles = ({ memberData }) => {
     1080: 3,
     700: 2,
   };
-
-  const descend = () => {
-    const arr = [...titles].sort((a, b) => a.Title.localeCompare(b.Title));
-    return setTitles(arr);
-  };
-
-  const ascend = () => {
-    const arr = [...titles].sort((a, b) => b.Title.localeCompare(a.Title));
-    return setTitles(arr);
-  };
-
-  const lastToFirst = () => {
-    const arr = [...titles].reverse();
-    return setTitles(arr);
-  };
-  const revert = () => {
-    setTitles(original);
-  };
   return (
     <div>
-      <button onClick={descend}>Z-A</button>
-      <button onClick={ascend}>A-Z</button>
-      <button onClick={lastToFirst}>last added - first added</button>
-      <button onClick={revert}>first added - last added</button>
+      <SortComponent
+        titles={titles}
+        setTitles={setTitles}
+        original={original}
+      />
       <Masonry
         breakpointCols={breakpointColumnsObj}
         className="my-masonry-grid"

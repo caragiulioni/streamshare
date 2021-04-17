@@ -2,14 +2,18 @@ import React from "react";
 import styled from "styled-components";
 import ActionBar from "../ActionBar";
 import { useSelector } from "react-redux";
+import kitten from "../../assets/kitten.jpg";
 const TitleDetails = ({ title, found }) => {
   const { Title, Poster, imdbRating, Genre, Plot, Year, Rated } = title;
   const currentUser = useSelector((state) => state.user.currentUser);
+  const addDefaultSrc = (ev) => {
+    ev.target.src = kitten;
+  };
   return (
     <DetailsWrapper>
       <InnerWrapper>
         <h2>{Title}</h2>
-        <img src={Poster} alt={Title} />
+        <img onError={addDefaultSrc} src={Poster} alt={Title} />
       </InnerWrapper>
       <InnerDetailsWrapper>
         <Details>

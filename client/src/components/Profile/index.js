@@ -9,7 +9,6 @@ import Spinner from "../Spinner";
 const Profile = () => {
   let currentUser;
   currentUser = useSelector((state) => state.user.currentUser);
-  console.log(currentUser);
   const { username } = useParams();
   const [response, setResponse] = useState();
   const { memberData, setMemberData } = useContext(MemberContext);
@@ -23,7 +22,6 @@ const Profile = () => {
       });
   }, []);
 
-  console.log(memberData);
   return (
     <div>
       {response !== "loading" && memberData ? (

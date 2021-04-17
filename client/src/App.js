@@ -34,6 +34,10 @@ function App() {
     if (theme === "light") {
       body.classList.toggle("light");
     }
+    if (!theme) {
+      body.classList.toggle("light");
+      localStorage.setItem("streamshareTheme", "light");
+    }
 
     if (isStored) {
       dispatch(sendUserData());

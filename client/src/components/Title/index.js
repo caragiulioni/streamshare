@@ -2,11 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import kitten from "../../assets/kitten.jpg";
-import ActionBar from "../ActionBar";
+
 const Title = ({ result }) => {
   // let history = useHistory();
   let titleId = result.imdbID;
-
   const addDefaultSrc = (ev) => {
     ev.target.src = kitten;
   };
@@ -14,14 +13,13 @@ const Title = ({ result }) => {
   const handleTitleClick = () => {
     // history.push(`title/${titleId}`);
   };
-  const { Title, Poster, Year, Type } = result;
+  const { Title, Poster, Year, Genre } = result;
   return (
     <TitleContainer>
-      <Link exact to={`title/${titleId}`}>
+      <Link to={`title/${titleId}`}>
         <h4>{Title}</h4>
         <Details>
-          <p>{Year}</p>
-          <p>{Type}</p>
+          <p>{Genre}</p>
         </Details>
         <img onError={addDefaultSrc} src={Poster} alt={Title} />
       </Link>

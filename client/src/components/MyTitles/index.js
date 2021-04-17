@@ -7,6 +7,7 @@ import Masonry from "react-masonry-css";
 import Title from "../Title";
 import "../../Global/masonry.css";
 import Spinner from "../Spinner";
+import SortComponent from "../Buttons/SortComponent";
 
 const MyTitles = () => {
   const currentUser = useSelector((state) => state.user.currentUser.user);
@@ -23,6 +24,7 @@ const MyTitles = () => {
           if (!data.data.titles.length) {
             setResponse(false);
           } else {
+            //dispatch to store
             setTitles(data.data.titles);
             setOriginal(data.data.titles);
             setResponse(true);
@@ -37,34 +39,16 @@ const MyTitles = () => {
     1080: 3,
     700: 2,
   };
-
-  const descend = () => {
-    const arr = [...titles].sort((a, b) => a.Title.localeCompare(b.Title));
-    return setTitles(arr);
-  };
-
-  const ascend = () => {
-    const arr = [...titles].sort((a, b) => b.Title.localeCompare(a.Title));
-    return setTitles(arr);
-  };
-
-  const lastToFirst = () => {
-    const arr = [...titles].reverse();
-    return setTitles(arr);
-  };
-
-  const revert = () => {
-    setTitles(original);
-  };
   return (
     <div>
       {response === "loading" && <Spinner />}
       {currentUser && response === true && (
         <div>
-          <button onClick={descend}>Z-A</button>
-          <button onClick={ascend}>A-Z</button>
-          <button onClick={lastToFirst}>last added - first added</button>
-          <button onClick={revert}>first added - last added</button>
+          <SortComponent
+            titles={titles}
+            setTitles={setTitles}
+            original={original}
+          />
           <Masonry
             breakpointCols={breakpointColumnsObj}
             className="my-masonry-grid"
