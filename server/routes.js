@@ -16,22 +16,22 @@ const {
 } = require("./handlers/titleHandlers");
 
 //account handlers
-router.post("/signup", createUser);
-router.post("/login", handleLogin);
-router.get("/auth/:isCurrent", reAuth);
-router.put("/avatar", updateAvatar);
+router.post("/api/signup", createUser);
+router.post("/api/login", handleLogin);
+router.get("/api/auth/:isCurrent", reAuth);
+router.put("/api/avatar", updateAvatar);
 
 //title handlers
-router.get("/titles/:userId", getUserTitles);
-router.get("/title/:titleId", getTitle);
-router.post("/add-title", addTitle);
-router.delete("/remove-title", removeTitle);
+router.get("/api/titles/:userId", getUserTitles);
+router.get("/api/title/:titleId", getTitle);
+router.post("/api/add-title", addTitle);
+router.delete("/api/remove-title", removeTitle);
 
 //search handlers
-router.post("/search", handleSearch);
-router.get("/profile/:username", handleProfile);
+router.post("/api/search", handleSearch);
+router.get("/api/profile/:username", handleProfile);
 
 //folow handlers
-router.post("/follow", follow);
-router.delete("/unfollow", unfollow);
+router.post("/api/follow", follow);
+router.delete("/api/unfollow", unfollow);
 module.exports = router;

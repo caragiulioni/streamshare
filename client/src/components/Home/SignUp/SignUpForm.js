@@ -31,7 +31,7 @@ const SignUpForm = () => {
     } else {
       setBorderColor("darkgrey");
 
-      fetch("/signup", {
+      fetch("/api/signup", {
         method: "POST",
         body: JSON.stringify(value),
         headers: {

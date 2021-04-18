@@ -23,7 +23,7 @@ const TitleFull = () => {
         setFound(false);
       }
     }
-    fetch(`/title/${titleId}`)
+    fetch(`api/title/${titleId}`)
       .then((res) => res.json())
       .then((data) => {
         data.data.Response === "False" && setResponse(false);

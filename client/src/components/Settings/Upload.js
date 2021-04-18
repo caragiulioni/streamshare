@@ -41,7 +41,7 @@ const Upload = ({ currentUser }) => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data.url);
-        fetch("/avatar", {
+        fetch("/api/avatar", {
           method: "PUT",
           body: JSON.stringify(data.url),
         })
