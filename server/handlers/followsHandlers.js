@@ -25,7 +25,7 @@ const follow = async (req, res) => {
     res.status(400).json({
       status: 400,
       data: req.body,
-      msg: "unfollowed!",
+      msg: "could not follow.",
     });
   }
 };
@@ -49,11 +49,10 @@ const unfollow = async (req, res) => {
       msg: "unfollowed",
     });
   } catch (err) {
-    console.log(err);
     return res.status(400).json({
       status: 400,
       data: req.body,
-      msg: "could not remove title.",
+      msg: "could not unfollow.",
       err: err,
     });
   }

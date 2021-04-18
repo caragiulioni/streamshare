@@ -4,6 +4,7 @@ const {
   createUser,
   handleLogin,
   reAuth,
+  updateAvatar,
 } = require("./handlers/accountHandlers");
 const { handleSearch, handleProfile } = require("./handlers/searchHandlers");
 const { follow, unfollow } = require("./handlers/followsHandlers");
@@ -17,8 +18,8 @@ const {
 //account handlers
 router.post("/signup", createUser);
 router.post("/login", handleLogin);
-//auth returning user
 router.get("/auth/:isCurrent", reAuth);
+router.put("/avatar", updateAvatar);
 
 //title handlers
 router.get("/titles/:userId", getUserTitles);

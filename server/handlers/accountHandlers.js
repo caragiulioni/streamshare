@@ -144,4 +144,12 @@ const reAuth = async (req, res) => {
   }
 };
 
-module.exports = { createUser, handleLogin, reAuth };
+const updateAvatar = async (req, res) => {
+  try {
+    console.log(req.params);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+module.exports = { createUser, handleLogin, reAuth, updateAvatar };
