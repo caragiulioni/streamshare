@@ -39,20 +39,6 @@ const Settings = () => {
     }
   }, []);
 
-  const setTheme = async () => {
-    const body = document.body;
-    if (currentTheme === "dark") {
-      body.classList.toggle("light");
-      await localStorage.removeItem("streamshareTheme");
-      localStorage.setItem("streamshareTheme", "light");
-    }
-    if (currentTheme === "light") {
-      body.classList.toggle("dark");
-      await localStorage.removeItem("streamshareTheme");
-      localStorage.setItem("streamshareTheme", "dark");
-    }
-  };
-
   const handleLogout = () => {
     localStorage.removeItem("streamshareUser");
     dispatch(removeCurrentUser(null));

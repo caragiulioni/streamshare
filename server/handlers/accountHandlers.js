@@ -145,8 +145,9 @@ const reAuth = async (req, res) => {
 };
 
 const updateAvatar = async (req, res) => {
+  console.log("working");
   try {
-    console.log(req.params);
+    console.log(req.body);
   } catch (err) {
     console.log(err);
   }

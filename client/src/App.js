@@ -22,7 +22,6 @@ import TitleFull from "./components/TitleFull";
 import Profile from "./components/Profile";
 function App() {
   const dispatch = useDispatch();
-  // const updateData = useSelector((state) => state.updateData);
   const isStored = localStorage.getItem("streamshareUser");
   const theme = localStorage.getItem("streamshareTheme");
   const body = document.body;
