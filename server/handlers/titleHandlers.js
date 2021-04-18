@@ -84,13 +84,6 @@ const removeTitle = async (req, res) => {
   await client.connect();
   const db = client.db("streamshare");
   try {
-    // await db
-    //   .collections("userTitles")
-    //   .deleteOne(
-    //     { userId: ObjectID(userId) },
-    //     { $pull: { titles: { imdbID: imdbID } } }
-    //   );
-
     await db
       .collection("userTitles")
       .updateOne(

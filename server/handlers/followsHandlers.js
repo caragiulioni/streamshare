@@ -29,5 +29,35 @@ const follow = async (req, res) => {
     });
   }
 };
-const unfollow = async (req, res) => {};
+const unfollow = async (req, res) => {
+  const { userId, memberId } = req.body;
+  const client = await MongoClient(MONGO_URI, options);
+  await client.connect();
+  const db = client.db("streamshare");
+
+  try {
+    await db
+      .collection("follows")
+      .updateOne(
+        { userID: ObjectId(userId) },
+        { $pull: { follows: memberId } }
+      );
+
+    return res.status(200).json({
+      status: 200,
+      success: true,
+      msg: "unfollowed",
+    });
+  } catch (err) {
+    console.log(err);
+    return res.status(400).json({
+      status: 400,
+      data: req.body,
+      msg: "could not remove title.",
+      err: err,
+    });
+  }
+
+  client.close();
+};
 module.exports = { follow, unfollow };

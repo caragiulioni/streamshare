@@ -8,10 +8,10 @@ const ProfileHeader = ({ memberData, currentUser }) => {
   const [following, setFollowing] = useState();
   let userId;
   useEffect(() => {
-    if (currentUser) {
+    if (currentUser && memberData) {
       const userId = currentUser.user._id;
-      const find = currentUser.user.follows.follows.find((follows) => {
-        return follows === userId;
+      const find = currentUser.user.follows.follows.find((member) => {
+        return memberId === member;
       });
       if (find) {
         setFollowing(true);
@@ -45,13 +45,24 @@ const ProfileHeader = ({ memberData, currentUser }) => {
           } else {
             return data.msg;
           }
-          //returned msg for toaster
         });
-      // setFollowing(true);
-      console.log("follow!");
     } else {
-      // setFollowing(false);
-      console.log("unfollowed");
+      fetch("/unfollow", {
+        method: "DELETE",
+        body: JSON.stringify(followData),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.status === 200) {
+            setFollowing(false);
+          } else {
+            return data.msg;
+          }
+        });
     }
   };
   return (
