@@ -41,6 +41,13 @@ const createUser = async (req, res) => {
       };
       await db.collection("userTitles").insertOne(userTitlesObj);
 
+      //create followsObj
+      const followsObj = {
+        userID: newUser._id,
+        follows: [],
+      };
+      await db.collection("follows").insertOne(followsObj);
+
       return res.status(200).json({
         status: 200,
         success: true,
@@ -74,11 +81,16 @@ const handleLogin = async (req, res) => {
       .collection("userTitles")
       .findOne({ userId: isUser._id });
 
+    const follows = await db
+      .collection("follows")
+      .findOne({ userId: isUser.follows });
+
     const user = {
       _id: isUser._id,
       username: isUser.username,
       avatar: isUser.avatar,
       userTitles: userTitles,
+      follows: follows,
     };
 
     if (isUser && isPassword) {
@@ -109,11 +121,17 @@ const reAuth = async (req, res) => {
   const userTitles = await db
     .collection("userTitles")
     .findOne({ userId: verified._id });
+
+  const follows = await db
+    .collection("follows")
+    .findOne({ userId: verified.follows });
+
   const user = {
     _id: verified._id,
     username: verified.username,
     avatar: verified.avatar,
     userTitles: userTitles,
+    follows: follows,
   };
   try {
     if (verified) {

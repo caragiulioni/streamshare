@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
 const ActionBar = ({ title, currentUser, found, setFound }) => {
   const [isFound, setIsFound] = useState();
-  const dispatch = useDispatch();
   const { Title, Poster, Genre, Year, imdbID } = title;
   const [addButton, setAddButton] = useState();
   const [removeButton, setRemoveButton] = useState();

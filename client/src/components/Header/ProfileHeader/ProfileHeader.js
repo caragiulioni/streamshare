@@ -1,9 +1,59 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import SignUp from "../../Home/SignUp";
 import LogIn from "../../Home/LogIn";
 const ProfileHeader = ({ memberData, currentUser }) => {
   const { username, avatar } = memberData;
+  const memberId = memberData._id;
+  const [following, setFollowing] = useState();
+  let userId;
+  useEffect(() => {
+    if (currentUser) {
+      const userId = currentUser.user._id;
+      const find = currentUser.user.follows.follows.find((follows) => {
+        return follows === userId;
+      });
+      if (find) {
+        setFollowing(true);
+      } else {
+        setFollowing(false);
+      }
+    }
+  }, [currentUser, memberData, setFollowing]);
+
+  console.log(following);
+
+  const handleFollow = () => {
+    const followData = {
+      userId: currentUser.user._id,
+      memberId: memberId,
+    };
+
+    if (!following) {
+      fetch("/follow", {
+        method: "POST",
+        body: JSON.stringify(followData),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.status === 200) {
+            setFollowing(true);
+          } else {
+            return data.msg;
+          }
+          //returned msg for toaster
+        });
+      // setFollowing(true);
+      console.log("follow!");
+    } else {
+      // setFollowing(false);
+      console.log("unfollowed");
+    }
+  };
   return (
     <HeaderWrap>
       <ContentWrapper>
@@ -13,7 +63,11 @@ const ProfileHeader = ({ memberData, currentUser }) => {
           </Img>
           <Inner>
             <h2>{username}'s current titles</h2>{" "}
-            {currentUser && <button>Follow</button>}
+            {currentUser && (
+              <button onClick={handleFollow}>
+                {following ? "Unfollow" : "Follow"}
+              </button>
+            )}
           </Inner>
         </Left>
         <Right>

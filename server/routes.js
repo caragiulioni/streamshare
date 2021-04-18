@@ -6,6 +6,7 @@ const {
   reAuth,
 } = require("./handlers/accountHandlers");
 const { handleSearch, handleProfile } = require("./handlers/searchHandlers");
+const { follow, unfollow } = require("./handlers/followsHandlers");
 const {
   getUserTitles,
   getTitle,
@@ -29,4 +30,7 @@ router.delete("/remove-title", removeTitle);
 router.post("/search", handleSearch);
 router.get("/profile/:username", handleProfile);
 
+//folow handlers
+router.post("/follow", follow);
+router.delete("/unfollow", unfollow);
 module.exports = router;
