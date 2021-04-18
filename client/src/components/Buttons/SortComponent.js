@@ -67,9 +67,14 @@ const Wrapper = styled.div`
     background-color: transparent;
     border: none;
     color: white;
+    transition: 0.3s ease-in-out;
+  }
+
+  button:hover {
+    color: orange;
   }
 
   .active {
-    color: yellow;
+    color: cyan;
   }
 `;
