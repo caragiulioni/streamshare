@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import Nav from "./Nav";
@@ -9,24 +9,9 @@ import {
 } from "../../actions/actions";
 import { useSelector, useDispatch } from "react-redux";
 const Header = () => {
-  const dispatch = useDispatch();
-  const isStored = localStorage.getItem("streamshareUser");
-  useEffect(() => {
-    if (isStored) {
-      dispatch(sendUserData());
-      fetch(`/api/auth/${isStored}`)
-        .then((res) => res.json())
-        .then((data) => {
-          try {
-            dispatch(receiveUserData(data.data));
-          } catch (err) {
-            dispatch(receiveUserDataErr());
-          }
-        });
-    }
-  }, [isStored]);
-
-  const currentUser = useSelector((state) => state.user.currentUser);
+  const currentUser = useSelector((state) => state.user.currentUser.user);
+  console.log("HEADER INDEX.js", currentUser);
+  useEffect(() => {}, []);
 
   return (
     <HeaderWrap>
@@ -46,7 +31,9 @@ const Header = () => {
           >
             SETTINGS
           </Link>
-          <img src={currentUser.user.avatar} alt={currentUser.user.username} />
+          <>
+            <img src={currentUser.avatar} alt={currentUser.username} />
+          </>
         </Right>
       </ContentWrapper>
     </HeaderWrap>
@@ -92,6 +79,7 @@ const Right = styled.div`
   display: flex;
   align-items: center;
   img {
+    border-radius: 50%;
     width: 30px;
   }
 `;

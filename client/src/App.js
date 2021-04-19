@@ -40,13 +40,13 @@ function App() {
 
     if (isStored) {
       dispatch(sendUserData());
-      fetch(`/api/auth/${isStored}`)
+      fetch(`/auth/${isStored}`)
         .then((res) => res.json())
         .then((data) => {
           try {
-            dispatch(receiveUserData(data.data));
+            return dispatch(receiveUserData(data.data));
           } catch (err) {
-            dispatch(receiveUserDataErr());
+            return dispatch(receiveUserDataErr());
           }
         });
     }

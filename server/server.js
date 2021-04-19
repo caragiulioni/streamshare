@@ -23,7 +23,6 @@ app.use(express.static("public"));
 app.use(express.json());
 
 app.use("/", router);
-
 app.get("*", (req, res) => {
   res.status(404).json({
     status: 404,

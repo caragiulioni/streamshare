@@ -1,13 +1,27 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Avatar from "react-avatar-edit";
-const Upload = ({ currentUser }) => {
-  const [preview, setPreview] = useState(currentUser.user.avatar);
+import { useSelector, useDispatch } from "react-redux";
+import {
+  sendUserData,
+  receiveUserData,
+  receiveUserDataErr,
+} from "../../actions/actions";
+import fill from "../../assets/fill.png";
+
+const Upload = () => {
+  let currentUser = useSelector((state) => state.user.currentUser);
+  useEffect(() => {
+    setUserID(currentUser.user._id);
+  }, []);
+
+  const dispatch = useDispatch();
+  const [userID, setUserID] = useState();
+  const [preview, setPreview] = useState(fill);
   const [src, setSrc] = useState();
   const [fileObj, setFileObj] = useState();
   const [url, setUrl] = useState();
 
-  useEffect(() => {}, [setSrc]);
   const onClose = () => {
     setPreview(currentUser.user.avatar);
   };
@@ -16,14 +30,14 @@ const Upload = ({ currentUser }) => {
     setPreview(preview);
   };
 
-  let canvas;
+  console.log(userID);
   const onBeforeFileLoad = (elem) => {
+    console.log(elem.target.files[0]);
     if (elem.target.files[0].size > 71680) {
-      alert("File is too big!");
+      alert("whoa! let's try a smaller file!");
       elem.target.value = "";
     } else {
       setFileObj(elem.target.files[0]);
-      let canvas = elem.target.value;
     }
   };
 
@@ -41,19 +55,33 @@ const Upload = ({ currentUser }) => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data.url);
-        fetch("/api/avatar", {
-          method: "PUT",
-          body: JSON.stringify(data.url),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-          });
+        const Obj = {
+          userID: userID,
+          avatar: data.url,
+        };
+        if (data) {
+          fetch("/avatar", {
+            method: "PUT",
+            body: JSON.stringify(Obj),
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(data);
+              // try {
+              //   dispatch(receiveUserData(data.data));
+              // } catch (err) {
+              //   dispatch(receiveUserDataErr());
+              // }
+            });
+        }
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => {});
   };
+  console.log(currentUser);
   return (
     <div>
       <AvatarContainer>
@@ -62,17 +90,19 @@ const Upload = ({ currentUser }) => {
           onClose={onClose}
           onCrop={onCrop}
           onBeforeFileLoad={onBeforeFileLoad}
-          width={75}
-          height={75}
+          width={150}
+          height={150}
           src={src}
           style="font-weight: 200"
         />
       </AvatarContainer>
+      <p>pro-tip: we'll take anything but we like square images best</p>
       <Img>
-        Current Avatar:
         <img src={preview} alt="Preview" />
       </Img>
-      <button onClick={handleUpload}>Upload</button>
+      <button onClick={handleUpload} disabled={!fileObj ? true : false}>
+        Upload
+      </button>
     </div>
   );
 };

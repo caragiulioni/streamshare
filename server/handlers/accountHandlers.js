@@ -145,11 +145,45 @@ const reAuth = async (req, res) => {
 };
 
 const updateAvatar = async (req, res) => {
-  console.log("working");
+  const { userID, avatar } = req.body;
+  console.log(userID, avatar);
+  const client = await MongoClient(MONGO_URI, options);
+  await client.connect();
+  const db = client.db("streamshare");
   try {
-    console.log(req.body);
+    await db
+      .collection("users")
+      .update({ _id: ObjectID(userID) }, { $set: { avatar: avatar } });
+
+    const verified = await db
+      .collection("users")
+      .findOne({ _id: ObjectID(userID) });
+    const userTitles = await db
+      .collection("userTitles")
+      .findOne({ userId: verified._id });
+
+    const follows = await db
+      .collection("follows")
+      .findOne({ userId: verified.follows });
+
+    const user = {
+      _id: verified._id,
+      username: verified.username,
+      avatar: verified.avatar,
+      userTitles: userTitles,
+      follows: follows,
+    };
+    return res.status(200).json({
+      status: 200,
+      data: user,
+      msg: "avatar updated!",
+    });
   } catch (err) {
-    console.log(err);
+    res.status(400).json({
+      status: 400,
+      data: req.body,
+      msg: "could not add avatar",
+    });
   }
 };
 

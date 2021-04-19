@@ -22,7 +22,7 @@ const Profile = () => {
     setResponse("loading");
     if (isStored) {
       dispatch(sendUserData());
-      fetch(`/api/auth/${isStored}`)
+      fetch(`/auth/${isStored}`)
         .then((res) => res.json())
         .then((data) => {
           try {
@@ -32,7 +32,7 @@ const Profile = () => {
           }
         });
     }
-    fetch(`/api/profile/${username}`)
+    fetch(`/profile/${username}`)
       .then((res) => res.json())
       .then((data) => {
         setMemberData(data.data.userObj);

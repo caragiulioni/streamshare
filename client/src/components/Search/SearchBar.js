@@ -13,7 +13,7 @@ const SearchBar = () => {
   const handleSearch = (event) => {
     setResponse("loading");
     event.preventDefault();
-    fetch("/api/search", {
+    fetch("/search", {
       method: "POST",
       body: JSON.stringify(query),
       headers: {

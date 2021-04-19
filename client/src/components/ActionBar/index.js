@@ -26,7 +26,7 @@ const ActionBar = ({ title, currentUser, found, setFound }) => {
       Genre: Genre,
       Year: Year,
     };
-    fetch("/api/add-title", {
+    fetch("/add-title", {
       method: "POST",
       body: JSON.stringify(title),
       headers: {
@@ -52,7 +52,7 @@ const ActionBar = ({ title, currentUser, found, setFound }) => {
       userId: currentUser.user._id,
       imdbID: imdbID,
     };
-    fetch("/api/remove-title", {
+    fetch("/remove-title", {
       method: "DELETE",
       body: JSON.stringify(toDelete),
       headers: {

@@ -26,7 +26,7 @@ const Settings = () => {
     setStatus("loading");
     if (isStored) {
       dispatch(sendUserData());
-      fetch(`api/auth/${isStored}`)
+      fetch(`auth/${isStored}`)
         .then((res) => res.json())
         .then((data) => {
           try {

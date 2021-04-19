@@ -30,7 +30,7 @@ const ProfileHeader = ({ memberData, currentUser }) => {
     };
 
     if (!following) {
-      fetch("/api/follow", {
+      fetch("/follow", {
         method: "POST",
         body: JSON.stringify(followData),
         headers: {
@@ -47,7 +47,7 @@ const ProfileHeader = ({ memberData, currentUser }) => {
           }
         });
     } else {
-      fetch("/api/unfollow", {
+      fetch("/unfollow", {
         method: "DELETE",
         body: JSON.stringify(followData),
         headers: {
