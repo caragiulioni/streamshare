@@ -15,20 +15,26 @@ const getFollowing = async (req, res) => {
       .then((following) => {
         const arr = following.follows;
         console.log(arr);
+
+        const results = db
+          .collection("users")
+          .find({ _id: { $in: ObjectId(arr) } });
+        console.log(results);
+
         // db.collection("users")
         //   .find({
-        //     userId: { $in: [arr] },
+        //     _id: { $in: [arr] },
         //   })
         //   .then((res) => {
         //     console.log(res);
         //   });
       });
 
-    // res.status(200).json({
-    //   status: 200,
-    //   success: true,
-    //   data: following,
-    // });
+    res.status(200).json({
+      status: 200,
+      success: true,
+      data: following,
+    });
   } catch (err) {
     res.status(400).json({
       status: 400,

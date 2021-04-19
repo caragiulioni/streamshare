@@ -10,8 +10,7 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 const Header = () => {
   const currentUser = useSelector((state) => state.user.currentUser.user);
-  useEffect(() => {}, []);
-
+  console.log(currentUser.avatar);
   return (
     <HeaderWrap>
       <ContentWrapper>
@@ -42,7 +41,15 @@ const Header = () => {
               {currentUser && (
                 <>
                   <h2>{currentUser.username}</h2>
-                  <img src={currentUser.avatar} alt={currentUser.username} />
+                  <Img
+                    aria-hidden="true"
+                    style={{
+                      backgroundImage: `url(${currentUser.avatar})`,
+                      backgroundPosition: "center",
+                      backgroundSize: "cover",
+                      backgroundRepeat: "no-repeat",
+                    }}
+                  ></Img>
                 </>
               )}
             </User>
@@ -102,4 +109,10 @@ const Link = styled(NavLink)``;
 const User = styled.div`
   display: flex;
   align-items: center;
+`;
+
+const Img = styled.div`
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
 `;

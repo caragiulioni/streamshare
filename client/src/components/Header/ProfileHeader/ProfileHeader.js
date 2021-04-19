@@ -5,11 +5,10 @@ import LogIn from "../../Home/LogIn";
 const ProfileHeader = ({ memberData, currentUser }) => {
   const { username, avatar } = memberData;
   const memberId = memberData._id;
+  const userId = currentUser.user._id;
   const [following, setFollowing] = useState();
-  let userId;
   useEffect(() => {
     if (currentUser && memberData) {
-      const userId = currentUser.user._id;
       const find = currentUser.user.follows.follows.find((member) => {
         return memberId === member;
       });
@@ -67,12 +66,18 @@ const ProfileHeader = ({ memberData, currentUser }) => {
     <HeaderWrap>
       <ContentWrapper>
         <Left>
-          <Img>
-            <img src={avatar} alt={username} />
-          </Img>
+          <Img
+            aria-hidden="true"
+            style={{
+              backgroundImage: `url(${avatar})`,
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+            }}
+          ></Img>
           <Inner>
             <h2>{username}'s current titles</h2>{" "}
-            {currentUser && (
+            {userId !== memberId && (
               <button onClick={handleFollow}>
                 {following ? "Unfollow" : "Follow"}
               </button>
@@ -138,7 +143,7 @@ const Right = styled.div`
 `;
 
 const Img = styled.div`
-  img {
-    width: 30px;
-  }
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
 `;
