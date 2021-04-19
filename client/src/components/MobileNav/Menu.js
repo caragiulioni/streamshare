@@ -20,7 +20,7 @@ const MenuWrap = styled.nav`
   justify-content: center;
   background: #effffa;
   transform: ${({ open }) => (open ? "translateY(0)" : "translateY(-100%)")};
-  height: 100vh;
+  height: 110vh;
   position: fixed;
   bottom: 0;
   right: 0;
