@@ -10,7 +10,6 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 const Header = () => {
   const currentUser = useSelector((state) => state.user.currentUser.user);
-  console.log(currentUser.avatar);
   return (
     <HeaderWrap>
       <ContentWrapper>

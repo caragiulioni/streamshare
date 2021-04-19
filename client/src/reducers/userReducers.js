@@ -28,6 +28,7 @@ export default function userReducer(state = initialState, action) {
     case "RECEIVE_USER_DATA_ERROR": {
       return {
         ...state,
+        currentUser: action.data,
         error: "error",
       };
     }

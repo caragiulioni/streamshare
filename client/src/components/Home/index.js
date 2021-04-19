@@ -7,11 +7,7 @@ import Spinner from "../Spinner";
 const Home = () => {
   const status = useSelector((state) => state.user.status);
   // useEffect(() => {}, []);
-  return status === "loading" ? (
-    <Wrapper>
-      <Spinner />
-    </Wrapper>
-  ) : (
+  return (
     <Wrapper>
       <Logo />
       <HomeActions />

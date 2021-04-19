@@ -28,6 +28,10 @@ const SignUpForm = () => {
     } else if (!verifyEmail) {
       setInputErr("email");
       setConfirmed("email must contain valid characters");
+    } else if (!passIsValid && !verifyEmail) {
+      setInputErr("all");
+      setMessage(notVerified);
+      setConfirmed("email must contain valid characters");
     } else {
       setBorderColor("darkgrey");
 
@@ -41,10 +45,9 @@ const SignUpForm = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          const { status } = data;
-          if (status === 200) {
+          if (data.status === 200) {
             history.push("/login");
-          } else if (status === 400) {
+          } else if (data.status === 400) {
             console.log("err");
             //handle Error
           }
@@ -64,7 +67,11 @@ const SignUpForm = () => {
         />
 
         <Input
-          borderColor={inputErr === "email" ? "#E97124" : "darkgrey"}
+          borderColor={
+            inputErr === "password" || inputErr === "all"
+              ? "#E97124"
+              : "darkgrey"
+          }
           name="email"
           type="text"
           placeholder="Your email"
@@ -74,7 +81,11 @@ const SignUpForm = () => {
 
         <Password>
           <Input
-            borderColor={inputErr === "password" ? "#E97124" : "darkgrey"}
+            borderColor={
+              inputErr === "password" || inputErr === "all"
+                ? "#E97124"
+                : "darkgrey"
+            }
             id="password"
             name="password"
             type="password"

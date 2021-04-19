@@ -29,6 +29,7 @@ const LogInForm = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         if (data.status === 200) {
           const id = data.data.user._id;
           localStorage.setItem("streamshareUser", id);
@@ -36,6 +37,7 @@ const LogInForm = () => {
           return dispatch(receiveUserData(data.data));
         }
         if (data.status === 400) {
+          setMessage("please provide valid login data");
           return dispatch(receiveUserDataErr());
         }
         //dispatch to actions
@@ -71,4 +73,6 @@ export default LogInForm;
 
 const Form = styled.form``;
 
-const Message = styled.p``;
+const Message = styled.p`
+  margin: 10px 0px;
+`;

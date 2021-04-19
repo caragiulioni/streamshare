@@ -100,7 +100,6 @@ const Upload = () => {
           style="font-weight: 200"
         />
       </AvatarContainer>
-      <p>pro-tip: we'll take anything but we like square images best</p>
       <Img>
         <img src={preview} alt="Preview" />
       </Img>
@@ -117,9 +116,4 @@ const Uploader = styled.div``;
 
 const AvatarContainer = styled.div``;
 
-const Img = styled.div`
-  width: 75px;
-  img {
-    width: 100%;
-  }
-`;
+const Img = styled.div``;

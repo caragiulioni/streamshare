@@ -46,6 +46,7 @@ function App() {
       fetch(`/auth/${isStored}`)
         .then((res) => res.json())
         .then((data) => {
+          console.log(data.data);
           try {
             return dispatch(receiveUserData(data.data));
           } catch (err) {
@@ -61,33 +62,33 @@ function App() {
         <ResultsProvider>
           <GlobalStyles />
           <BrowserRouter>
-            {currentUser ? <Header /> : <Home />}
-            {currentUser ? <MobileNav /> : <Home />}
+            {currentUser && <Header />}
+            {currentUser && <MobileNav />}
             <PageWrapper>
               <Switch>
                 <Route exact path="/">
-                  {currentUser ? <Redirect to="/mytitles" /> : <Home />}
+                  <Home />
                 </Route>
                 <Route exact path="/login">
-                  <LogInPage />
+                  {currentUser && <LogInPage />}
                 </Route>
                 <Route exact path="/mytitles">
-                  {currentUser ? <MyTitles /> : <Home />}
+                  {currentUser && <MyTitles />}
                 </Route>
                 <Route exact path="/search">
-                  {currentUser ? <Search /> : <Home />}
+                  {currentUser && <Search />}
                 </Route>
                 <Route exact path="/following">
-                  {currentUser ? <Following /> : <Home />}
+                  {currentUser && <Following />}
                 </Route>
                 <Route exact path="/settings">
-                  {currentUser ? <Settings /> : <Home />}
+                  {currentUser && <Settings />}
                 </Route>
                 <Route exact path="/title/:titleId">
-                  <TitleFull />
+                  {currentUser && <TitleFull />}
                 </Route>
                 <Route exact path="/sh/:username">
-                  {currentUser ? <Profile /> : <Home />}
+                  <Profile />
                 </Route>
               </Switch>
             </PageWrapper>
