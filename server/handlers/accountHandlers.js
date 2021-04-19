@@ -166,16 +166,18 @@ const updateAvatar = async (req, res) => {
       .collection("follows")
       .findOne({ userId: verified.follows });
 
-    const user = {
-      _id: verified._id,
-      username: verified.username,
-      avatar: verified.avatar,
-      userTitles: userTitles,
-      follows: follows,
+    const data = {
+      user: {
+        _id: verified._id,
+        username: verified.username,
+        avatar: verified.avatar,
+        userTitles: userTitles,
+        follows: follows,
+      },
     };
     return res.status(200).json({
       status: 200,
-      data: user,
+      data: data,
       msg: "avatar updated!",
     });
   } catch (err) {

@@ -10,7 +10,6 @@ const ResultsContainer = ({ results }) => {
     1080: 3,
     700: 2,
   };
-  console.log("RESULTS CONTAINER", results);
   return (
     <Masonry
       breakpointCols={breakpointColumnsObj}

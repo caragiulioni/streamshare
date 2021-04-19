@@ -11,6 +11,7 @@ import fill from "../../assets/fill.png";
 
 const Upload = () => {
   let currentUser = useSelector((state) => state.user.currentUser);
+
   useEffect(() => {
     setUserID(currentUser.user._id);
   }, []);
@@ -30,9 +31,7 @@ const Upload = () => {
     setPreview(preview);
   };
 
-  console.log(userID);
   const onBeforeFileLoad = (elem) => {
-    console.log(elem.target.files[0]);
     if (elem.target.files[0].size > 71680) {
       alert("whoa! let's try a smaller file!");
       elem.target.value = "";
@@ -54,7 +53,6 @@ const Upload = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.url);
         const Obj = {
           userID: userID,
           avatar: data.url,
@@ -70,12 +68,12 @@ const Upload = () => {
           })
             .then((res) => res.json())
             .then((data) => {
-              console.log(data);
-              // try {
-              //   dispatch(receiveUserData(data.data));
-              // } catch (err) {
-              //   dispatch(receiveUserDataErr());
-              // }
+              console.log("UPLOAD", data);
+              try {
+                dispatch(receiveUserData(data.data));
+              } catch (err) {
+                dispatch(receiveUserDataErr());
+              }
             });
         }
       })

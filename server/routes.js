@@ -7,7 +7,11 @@ const {
   updateAvatar,
 } = require("./handlers/accountHandlers");
 const { handleSearch, handleProfile } = require("./handlers/searchHandlers");
-const { follow, unfollow } = require("./handlers/followsHandlers");
+const {
+  follow,
+  unfollow,
+  getFollowing,
+} = require("./handlers/followsHandlers");
 const {
   getUserTitles,
   getTitle,
@@ -32,6 +36,7 @@ router.post("/search", handleSearch);
 router.get("/profile/:username", handleProfile);
 
 //folow handlers
+router.get("/following/:userId", getFollowing);
 router.post("/follow", follow);
 router.delete("/unfollow", unfollow);
 module.exports = router;

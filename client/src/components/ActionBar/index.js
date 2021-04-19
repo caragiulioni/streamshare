@@ -15,8 +15,6 @@ const ActionBar = ({ title, currentUser, found, setFound }) => {
     }
   }, [found]);
 
-  console.log("ACTION BAR FOUND", found);
-  console.log("ACTION BAR", currentUser);
   const handleAdd = () => {
     const title = {
       userId: currentUser.user._id,
@@ -64,7 +62,6 @@ const ActionBar = ({ title, currentUser, found, setFound }) => {
       .then((data) => {
         setAddButton(false);
         setRemoveButton(true);
-        console.log("ACTIONS RETURNED DATA", data.msg);
       });
   };
 

@@ -24,6 +24,17 @@ const Nav = () => {
       >
         SEARCH
       </Link>
+
+      <Link
+        exact
+        to="/following"
+        activeStyle={{
+          fontWeight: "bold",
+          color: "red",
+        }}
+      >
+        FOLLOWING
+      </Link>
     </NavContainer>
   );
 };

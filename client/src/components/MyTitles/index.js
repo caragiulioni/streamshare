@@ -11,14 +11,12 @@ import SortComponent from "../Buttons/SortComponent";
 
 const MyTitles = () => {
   const currentUser = useSelector((state) => state.user.currentUser.user);
-  console.log(currentUser);
   const [titles, setTitles] = useState(null);
   const [original, setOriginal] = useState(null);
   const [response, setResponse] = useState(null);
 
   useEffect(() => {
     setResponse("loading");
-    console.log(currentUser._id);
     if (currentUser._id) {
       fetch(`/titles/${currentUser._id}`)
         .then((res) => res.json())
@@ -26,7 +24,6 @@ const MyTitles = () => {
           if (!data.data.titles.length) {
             setResponse(false);
           } else {
-            //dispatch to store
             setTitles(data.data.titles);
             setOriginal(data.data.titles);
             setResponse(true);

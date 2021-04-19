@@ -21,8 +21,6 @@ const ProfileHeader = ({ memberData, currentUser }) => {
     }
   }, [currentUser, memberData, setFollowing]);
 
-  console.log(following);
-
   const handleFollow = () => {
     const followData = {
       userId: currentUser.user._id,

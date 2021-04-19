@@ -26,8 +26,7 @@ const TitleFull = () => {
     fetch(`/title/${titleId}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        // data.data.Response === "False" && setResponse(false);
+        data.data.Response === "False" && setResponse(false);
         setResponse(data.data.Response);
         setTitle(data.data);
       });

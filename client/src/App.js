@@ -20,10 +20,13 @@ import Search from "./components/Search";
 import Settings from "./components/Settings";
 import TitleFull from "./components/TitleFull";
 import Profile from "./components/Profile";
+import Following from "./components/Following";
+import Spinner from "./components/Spinner";
 function App() {
   const dispatch = useDispatch();
   const isStored = localStorage.getItem("streamshareUser");
   const theme = localStorage.getItem("streamshareTheme");
+  const currentUser = useSelector((state) => state.user.currentUser);
   const body = document.body;
   useEffect(() => {
     if (theme === "dark") {
@@ -43,6 +46,7 @@ function App() {
       fetch(`/auth/${isStored}`)
         .then((res) => res.json())
         .then((data) => {
+          console.log(data.data);
           try {
             return dispatch(receiveUserData(data.data));
           } catch (err) {
@@ -51,16 +55,15 @@ function App() {
         });
     }
   }, [isStored]);
-  let currentUser;
-  currentUser = useSelector((state) => state.user.currentUser);
+
   return (
     <>
       <MemberProvider>
         <ResultsProvider>
           <GlobalStyles />
           <BrowserRouter>
-            {currentUser && <Header />}
-            {currentUser && <MobileNav />}
+            {currentUser ? <Header /> : <Home />}
+            {currentUser ? <MobileNav /> : <Home />}
             <PageWrapper>
               <Switch>
                 <Route exact path="/">
@@ -70,19 +73,22 @@ function App() {
                   <LogInPage />
                 </Route>
                 <Route exact path="/mytitles">
-                  {!currentUser ? <Redirect to="/" /> : <MyTitles />}
+                  {currentUser ? <MyTitles /> : <Home />}
                 </Route>
                 <Route exact path="/search">
-                  <Search />
+                  {currentUser ? <Search /> : <Home />}
+                </Route>
+                <Route exact path="/following">
+                  {currentUser ? <Following /> : <Home />}
                 </Route>
                 <Route exact path="/settings">
-                  <Settings />
+                  {currentUser ? <Settings /> : <Home />}
                 </Route>
                 <Route exact path="/title/:titleId">
                   <TitleFull />
                 </Route>
                 <Route exact path="/sh/:username">
-                  <Profile />
+                  {currentUser ? <Profile /> : <Home />}
                 </Route>
               </Switch>
             </PageWrapper>

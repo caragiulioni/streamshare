@@ -10,7 +10,6 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 const Header = () => {
   const currentUser = useSelector((state) => state.user.currentUser.user);
-  console.log("HEADER INDEX.js", currentUser);
   useEffect(() => {}, []);
 
   return (
@@ -31,9 +30,23 @@ const Header = () => {
           >
             SETTINGS
           </Link>
-          <>
-            <img src={currentUser.avatar} alt={currentUser.username} />
-          </>
+          <Link
+            exact
+            to={`/sh/${currentUser.username}`}
+            activeStyle={{
+              fontWeight: "bold",
+              color: "red",
+            }}
+          >
+            <User>
+              {currentUser && (
+                <>
+                  <h2>{currentUser.username}</h2>
+                  <img src={currentUser.avatar} alt={currentUser.username} />
+                </>
+              )}
+            </User>
+          </Link>
         </Right>
       </ContentWrapper>
     </HeaderWrap>
@@ -85,3 +98,8 @@ const Right = styled.div`
 `;
 
 const Link = styled(NavLink)``;
+
+const User = styled.div`
+  display: flex;
+  align-items: center;
+`;
