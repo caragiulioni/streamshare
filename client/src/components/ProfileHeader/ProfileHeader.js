@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import SignUp from "../../Home/SignUp";
-import LogIn from "../../Home/LogIn";
+import SignUp from "../SignUp";
+import LogIn from "../LogIn";
 const ProfileHeader = ({ memberData, currentUser }) => {
   const { username, avatar } = memberData;
   const memberId = memberData._id;
-  const userId = currentUser.user._id;
+  let userId;
+  if (currentUser) {
+    userId = currentUser.user._id;
+  }
   const [following, setFollowing] = useState();
   useEffect(() => {
     if (currentUser && memberData) {
@@ -77,7 +80,7 @@ const ProfileHeader = ({ memberData, currentUser }) => {
           ></Img>
           <Inner>
             <h2>{username}'s current titles</h2>{" "}
-            {userId !== memberId && (
+            {currentUser && userId && userId !== memberId && (
               <button onClick={handleFollow}>
                 {following ? "Unfollow" : "Follow"}
               </button>

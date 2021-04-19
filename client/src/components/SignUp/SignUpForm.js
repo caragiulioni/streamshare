@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
-import Input from "../Input";
+import Input from "../Home/Input";
 const SignUpForm = () => {
   let history = useHistory();
   const [value, setValue] = useState({
@@ -48,8 +48,6 @@ const SignUpForm = () => {
           if (data.status === 200) {
             history.push("/login");
           } else if (data.status === 400) {
-            console.log("err");
-            //handle Error
           }
         });
     }

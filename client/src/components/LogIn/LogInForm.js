@@ -6,8 +6,8 @@ import {
   sendUserData,
   receiveUserData,
   receiveUserDataErr,
-} from "../../../actions/actions";
-import Input from "../../Home/Input";
+} from "../../actions/actions";
+import Input from "../Home/Input";
 const LogInForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -29,7 +29,6 @@ const LogInForm = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.status === 200) {
           const id = data.data.user._id;
           localStorage.setItem("streamshareUser", id);

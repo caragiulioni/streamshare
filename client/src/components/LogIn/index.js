@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Modal from "react-modal";
 import LogInForm from "./LogInForm";
 
-import "../modalStyles.css";
+import "../../Global/modalStyles.css";
 Modal.setAppElement("#root");
 const LogIn = () => {
   const [isOpen, setIsOpen] = useState(false);

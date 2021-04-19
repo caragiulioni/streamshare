@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { MemberContext } from "../../context/MemberContext";
-import ProfileHeader from "../Header/ProfileHeader/ProfileHeader";
+import ProfileHeader from "../ProfileHeader/ProfileHeader";
 import ProfileTitles from "./ProfileTitles";
 import Spinner from "../Spinner";
 import {
@@ -43,7 +43,7 @@ const Profile = () => {
   const currentUser = useSelector((state) => state.user.currentUser);
   return (
     <div>
-      {response !== "loading" && memberData ? (
+      {memberData ? (
         <>
           <ProfileHeader memberData={memberData} currentUser={currentUser} />
           <ProfileTitles memberData={memberData} />

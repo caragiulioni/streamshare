@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Modal from "react-modal";
 import SignUpForm from "./SignUpForm";
 
-import "../modalStyles.css";
+import "../../Global/modalStyles.css";
 Modal.setAppElement("#root");
 const SignUp = () => {
   const [isOpen, setIsOpen] = useState(false);

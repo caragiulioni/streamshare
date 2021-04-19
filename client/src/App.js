@@ -46,7 +46,6 @@ function App() {
       fetch(`/auth/${isStored}`)
         .then((res) => res.json())
         .then((data) => {
-          console.log(data.data);
           try {
             return dispatch(receiveUserData(data.data));
           } catch (err) {
@@ -67,7 +66,7 @@ function App() {
             <PageWrapper>
               <Switch>
                 <Route exact path="/">
-                  <Home />
+                  {currentUser ? <Redirect to="/mytitles" /> : <Home />}
                 </Route>
                 <Route exact path="/login">
                   {currentUser && <LogInPage />}
