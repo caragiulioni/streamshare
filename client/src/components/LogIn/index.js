@@ -56,8 +56,11 @@ const Close = styled.button`
   color: white;
   padding: 2px 0px;
   width: 40px;
-  margin-left: 110px;
+  margin-left: 150px;
   font-size: 0.8em;
   font-weight: 300;
   border: none;
+  @media (min-width: 700px) {
+    margin-left: 120px;
+  }
 `;

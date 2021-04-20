@@ -13,13 +13,13 @@ export default Logo;
 
 const LogoWrap = styled.div`
   h1 {
-    font-size: 6em;
+    font-size: 3.5em;
     color: var(--blue);
   }
   h2 {
     color: var(--smoke);
     font-weight: bold;
-    font-size: 2.5em;
+    font-size: 1.5em;
     margin: 5px 0px 10px 0px;
   }
   display: flex;

@@ -69,7 +69,7 @@ const SignUpForm = () => {
 
         <Input
           borderColor={
-            inputErr === "email" || inputErr === "all" ? "#E97124" : "darkgrey"
+            inputErr === "email" || inputErr === "all" ? "#E9613F" : "darkgrey"
           }
           name="email"
           type="text"
@@ -82,7 +82,7 @@ const SignUpForm = () => {
           <Input
             borderColor={
               inputErr === "password" || inputErr === "all"
-                ? "#E97124"
+                ? "#E9613F"
                 : "darkgrey"
             }
             id="password"
@@ -96,7 +96,7 @@ const SignUpForm = () => {
           <Input
             borderColor={
               inputErr === "password" || inputErr === "all"
-                ? "#E97124"
+                ? "#E9613F"
                 : "darkgrey"
             }
             type="password"
@@ -105,7 +105,7 @@ const SignUpForm = () => {
             setValue={setValue}
             value={value}
           />
-          <p color={inputErr === "password" && "#E97124"}>{message}</p>
+          <p color={inputErr === "password" && "#E9613F"}>{message}</p>
         </Password>
         <LoginBtn action={handleSubmit} text={submit} />
       </Form>
@@ -117,7 +117,6 @@ const SignUpForm = () => {
 export default SignUpForm;
 
 const Form = styled.form`
-  font-size: 0.4em;
   p {
     text-align: center;
     margin-top: -5px;

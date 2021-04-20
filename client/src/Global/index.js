@@ -43,7 +43,7 @@ button{
 body{
 
     color: #34363E;
-    font-size: .6em;
+    font-size: 1em;
     transition: background 1000ms ease-in-out, color 250ms ease-in-out;
 }
 
@@ -58,7 +58,10 @@ button{
 input{
     border: 1px solid lightgrey;
     border-radius: 2px;
+    height: 25px;
+    padding-left: 10px;
 }
+
 h1{
     font-family: 'Play', sans-serif;
     font-weight: 700;
@@ -90,6 +93,10 @@ label{
 }
 h1{
     font-size: 8em;
+}
+
+input{
+    height: 20px;
 }
 
   }
