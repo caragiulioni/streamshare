@@ -45,7 +45,7 @@ const TitleContainer = styled.div`
     width: 100%;
   }
   &:hover {
-    opacity: 0.7;
+    opacity: 0.6;
     cursor: pointer;
   }
 `;

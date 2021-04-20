@@ -7,7 +7,6 @@ import {
   receiveUserData,
   receiveUserDataErr,
 } from "../../actions/actions";
-import fill from "../../assets/fill.png";
 
 const Upload = () => {
   let currentUser = useSelector((state) => state.user.currentUser);
@@ -48,6 +47,10 @@ const Upload = () => {
   };
 
   let sendURL;
+
+  const labelStyle = {
+    color: "blue",
+  };
   const handleUpload = () => {
     //send to clouddinary
     const data = new FormData();
@@ -92,13 +95,13 @@ const Upload = () => {
       <AvatarContainer>
         <h3>Upload new Avatar:</h3>
         <Avatar
+          style={labelStyle}
           onClose={onClose}
           onCrop={onCrop}
           onBeforeFileLoad={onBeforeFileLoad}
           width={150}
           height={150}
           src={src}
-          style="font-weight: 200"
         />
       </AvatarContainer>
       <Img>{preview && <img src={preview} alt="Preview" />}</Img>
@@ -120,6 +123,10 @@ const Wrapper = styled.div`
   h2 {
     text-align: center;
     color: var(--blue);
+  }
+
+  label {
+    color: var(--blue) !important;
   }
 `;
 

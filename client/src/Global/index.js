@@ -39,8 +39,13 @@ button{
   &:active {
     transform: scale(1.05);
   }
+
+
+label{
+    color: var(--blue);
 }
 
+}
 body{
     font-family: 'Source Sans Pro', sans-serif;
     color: #34363E;
