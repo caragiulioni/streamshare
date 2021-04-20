@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import SignUp from "../SignUp";
 import LogIn from "../LogIn";
+import LoginBtn from "../Buttons/LoginBtn";
 const ProfileHeader = ({ memberData, currentUser }) => {
   const { username, avatar } = memberData;
   const memberId = memberData._id;
@@ -67,6 +68,12 @@ const ProfileHeader = ({ memberData, currentUser }) => {
   };
   return (
     <HeaderWrap>
+      <Headings>
+        {" "}
+        <h1>Streamshare</h1>
+        <h2>What are you watching?</h2>
+      </Headings>
+
       <ContentWrapper>
         <Left>
           <Img
@@ -80,18 +87,20 @@ const ProfileHeader = ({ memberData, currentUser }) => {
           ></Img>
           <Inner>
             {currentUser ? (
-              <h2>
+              <h3>
                 <span>{username}'s</span> current titles
-              </h2>
+              </h3>
             ) : (
-              <h2>
+              <h3>
                 <span>{username}</span>
-              </h2>
+              </h3>
             )}
+
             {currentUser && userId && userId !== memberId && (
-              <button onClick={handleFollow}>
-                {following ? "Unfollow" : "Follow"}
-              </button>
+              <LoginBtn
+                action={handleFollow}
+                text={following ? "Unfollow" : "Follow"}
+              />
             )}
           </Inner>
         </Left>
@@ -117,7 +126,18 @@ const HeaderWrap = styled.header`
   a {
     font-size: 1em;
   }
+  h1 {
+    font-size: 1.5em;
+    color: var(--blue);
+    text-align: center;
+  }
 
+  h2 {
+    text-align: center;
+    font-size: 1em;
+    margin-top: 2px;
+    margin-left: 5px;
+  }
   button {
     font-size: 0.8em;
     width: 70px;
@@ -138,9 +158,6 @@ const ContentWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   margin: 0px 10px;
-  h1 {
-    padding-right: 20px;
-  }
 
   @media screen and (min-width: 700px) {
     margin: 0px 15px;
@@ -153,7 +170,7 @@ const ContentWrapper = styled.div`
 const Inner = styled.div`
   display: flex;
   flex-direction: column;
-  h2 {
+  h3 {
     margin-left: 10px;
     font-size: 1.5em;
     font-weight: bold;
@@ -161,6 +178,10 @@ const Inner = styled.div`
 
   span {
     color: var(--orange);
+  }
+
+  button {
+    margin-left: 10px;
   }
 `;
 
@@ -178,4 +199,11 @@ const Img = styled.div`
   width: 45px;
   height: 45px;
   border-radius: 50%;
+`;
+
+const Headings = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  padding-left: 10px;
 `;

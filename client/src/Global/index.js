@@ -25,6 +25,7 @@ li{
     list-style-type: none;
 }
 a{
+    color: var(--smoke);
     text-decoration: none;
     transition: .3s ease-in-out;
 }
