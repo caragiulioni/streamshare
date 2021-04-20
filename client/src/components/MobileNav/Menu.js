@@ -5,8 +5,18 @@ const Menu = ({ open, setOpen }) => {
   return (
     <MenuWrap open={open}>
       <LinkWrap>
-        <Link to="/">Home</Link>
-        <Link to="/">Settings</Link>
+        <Link onClick={() => setOpen(!open)} to="/mytitles">
+          My Titles
+        </Link>
+        <Link onClick={() => setOpen(!open)} to="/search">
+          Search
+        </Link>
+        <Link onClick={() => setOpen(!open)} to="/following">
+          Following
+        </Link>
+        <Link onClick={() => setOpen(!open)} to="/settings">
+          Settings
+        </Link>
       </LinkWrap>
     </MenuWrap>
   );
@@ -18,7 +28,7 @@ const MenuWrap = styled.nav`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: #effffa;
+  background-color: rgb(52, 54, 74, 0.9);
   transform: ${({ open }) => (open ? "translateY(0)" : "translateY(-100%)")};
   height: 110vh;
   position: fixed;
@@ -33,7 +43,7 @@ const MenuWrap = styled.nav`
     padding: 2rem 0;
     font-weight: bold;
     letter-spacing: 0.5rem;
-    color: #0d0c1d;
+    color: var(--offwhite);
     text-decoration: none;
     transition: color 0.3s linear;
   }

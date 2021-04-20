@@ -63,6 +63,7 @@ export default Settings;
 
 const Wrapper = styled.div`
   margin: 25px 0px;
+  padding-bottom: 25px;
   display: flex;
   flex-direction: column;
   align-items: center;
