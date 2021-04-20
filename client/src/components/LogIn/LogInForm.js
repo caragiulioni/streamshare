@@ -8,6 +8,7 @@ import {
   receiveUserDataErr,
 } from "../../actions/actions";
 import Input from "../Home/Input";
+import LoginBtn from "../Buttons/LoginBtn";
 const LogInForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -16,6 +17,7 @@ const LogInForm = () => {
     password: null,
   });
   const [message, setMessage] = useState("");
+  const submit = "Submit";
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(sendUserData());
@@ -29,15 +31,15 @@ const LogInForm = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         if (data.status === 200) {
           const id = data.data.user._id;
           localStorage.setItem("streamshareUser", id);
           history.push("/mytitles");
-          return dispatch(receiveUserData(data.data));
-        }
-        if (data.status === 400) {
+          dispatch(receiveUserData(data.data));
+        } else {
           setMessage("please provide valid login data");
-          return dispatch(receiveUserDataErr());
+          dispatch(receiveUserDataErr());
         }
         //dispatch to actions
       });
@@ -61,7 +63,7 @@ const LogInForm = () => {
           setValue={setValue}
           value={value}
         />
-        <button onClick={handleSubmit}>Submit</button>
+        <LoginBtn action={handleSubmit} text={submit} />
       </Form>
       <Message>{message}</Message>
     </>
@@ -70,8 +72,13 @@ const LogInForm = () => {
 
 export default LogInForm;
 
-const Form = styled.form``;
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+`;
 
 const Message = styled.p`
   margin: 10px 0px;
+  color: #e97124;
+  font-size: 0.8em;
 `;

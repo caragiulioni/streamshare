@@ -12,6 +12,16 @@ const Logo = () => {
 export default Logo;
 
 const LogoWrap = styled.div`
+  h1 {
+    font-size: 6em;
+    color: var(--orange);
+  }
+  h2 {
+    color: var(--smoke);
+    font-weight: bold;
+    font-size: 2.5em;
+    margin: 5px 0px 10px 0px;
+  }
   display: flex;
   flex-direction: column;
   justify-content: center;

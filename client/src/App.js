@@ -5,6 +5,7 @@ import { ResultsProvider } from "./context/ResultsContext";
 import { MemberProvider } from "./context/MemberContext";
 import styled from "styled-components";
 import GlobalStyles from "./Global";
+import Variables from "./Global/Variables";
 import {
   sendUserData,
   receiveUserData,
@@ -22,6 +23,7 @@ import TitleFull from "./components/TitleFull";
 import Profile from "./components/Profile";
 import Following from "./components/Following";
 import Spinner from "./components/Spinner";
+import Title from "./components/Title";
 function App() {
   const dispatch = useDispatch();
   const isStored = localStorage.getItem("streamshareUser");
@@ -60,6 +62,7 @@ function App() {
       <MemberProvider>
         <ResultsProvider>
           <GlobalStyles />
+          <Variables />
           <BrowserRouter>
             {currentUser && <Header />}
             {currentUser && <MobileNav />}
@@ -69,7 +72,7 @@ function App() {
                   {currentUser ? <Redirect to="/mytitles" /> : <Home />}
                 </Route>
                 <Route exact path="/login">
-                  {currentUser && <LogInPage />}
+                  <LogInPage />
                 </Route>
                 <Route exact path="/mytitles">
                   {currentUser && <MyTitles />}
@@ -84,7 +87,8 @@ function App() {
                   {currentUser && <Settings />}
                 </Route>
                 <Route exact path="/title/:titleId">
-                  {currentUser && <TitleFull />}
+                  <TitleFull />
+                  {/* //please log in to view titles */}
                 </Route>
                 <Route exact path="/sh/:username">
                   <Profile />

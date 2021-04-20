@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import Input from "../Home/Input";
+import LoginBtn from "../Buttons/LoginBtn";
 const SignUpForm = () => {
   let history = useHistory();
   const [value, setValue] = useState({
@@ -10,8 +11,9 @@ const SignUpForm = () => {
     password: null,
     confirmPassword: null,
   });
-  let isVerified = "minimum 8 characters";
-  let notVerified = "passwords do not match";
+  const isVerified = "minimum 8 characters";
+  const notVerified = "passwords do not match";
+  const submit = "Submit";
 
   const [message, setMessage] = useState(isVerified);
   const [confirmed, setConfirmed] = useState("*all fields required");
@@ -25,16 +27,17 @@ const SignUpForm = () => {
     if (!passIsValid) {
       setInputErr("password");
       setMessage(notVerified);
-    } else if (!verifyEmail) {
+    }
+    if (!verifyEmail) {
       setInputErr("email");
       setConfirmed("email must contain valid characters");
-    } else if (!passIsValid && !verifyEmail) {
+    }
+    if (!passIsValid && !verifyEmail) {
       setInputErr("all");
       setMessage(notVerified);
       setConfirmed("email must contain valid characters");
-    } else {
-      setBorderColor("darkgrey");
-
+    }
+    if (passIsValid && verifyEmail) {
       fetch("/signup", {
         method: "POST",
         body: JSON.stringify(value),
@@ -66,9 +69,7 @@ const SignUpForm = () => {
 
         <Input
           borderColor={
-            inputErr === "password" || inputErr === "all"
-              ? "#E97124"
-              : "darkgrey"
+            inputErr === "email" || inputErr === "all" ? "#E97124" : "darkgrey"
           }
           name="email"
           type="text"
@@ -93,16 +94,20 @@ const SignUpForm = () => {
             value={value}
           />
           <Input
-            borderColor={inputErr === "password" ? "#E97124" : "darkgrey"}
+            borderColor={
+              inputErr === "password" || inputErr === "all"
+                ? "#E97124"
+                : "darkgrey"
+            }
             type="password"
             name="confirmPassword"
             placeholder="Confirm password"
             setValue={setValue}
             value={value}
           />
-          <p>{message}</p>
+          <p color={inputErr === "password" && "#E97124"}>{message}</p>
         </Password>
-        <button onClick={handleSubmit}>Submit</button>
+        <LoginBtn action={handleSubmit} text={submit} />
       </Form>
       <Confirmation>{confirmed}</Confirmation>
     </>
@@ -114,9 +119,11 @@ export default SignUpForm;
 const Form = styled.form`
   font-size: 0.4em;
   p {
+    text-align: center;
     margin-top: -5px;
     margin-bottom: 5px;
     font-size: 0.6em;
+    font-weight: 100;
   }
 `;
 
@@ -126,6 +133,8 @@ const Password = styled.div`
 `;
 
 const Confirmation = styled.p`
+  text-align: center;
+  font-weight: 100;
   font-size: 0.6em;
   margin: 10px 0px;
 `;

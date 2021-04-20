@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Modal from "react-modal";
 import SignUpForm from "./SignUpForm";
-
+import LoginBtn from "../Buttons/LoginBtn";
 import "../../Global/modalStyles.css";
 Modal.setAppElement("#root");
 const SignUp = () => {
@@ -10,9 +10,10 @@ const SignUp = () => {
   const toggleModal = () => {
     setIsOpen(!isOpen);
   };
+  const signup = "Sign Up";
   return (
     <LoginWrap>
-      <button onClick={toggleModal}>Sign Up</button>
+      <LoginBtn action={toggleModal} text={signup} />
       <Modal
         isOpen={isOpen}
         onRequestClose={toggleModal}
@@ -22,7 +23,7 @@ const SignUp = () => {
         contentLabel="Member sign up"
       >
         <InnerModal>
-          <button onClick={toggleModal}>X</button>
+          <Close onClick={toggleModal}>Close</Close>
           <h3>Sign Up</h3>
           <SignUpForm />
         </InnerModal>
@@ -38,7 +39,22 @@ const LoginWrap = styled.div``;
 const InnerModal = styled.div`
   display: flex;
   flex-direction: column;
-
-  button {
+  text-align: center;
+  h3 {
+    margin: 10px 0px;
+    color: var(--orange);
+    font-weight: bold;
   }
+`;
+
+const Close = styled.button`
+  background-color: var(--orange);
+  opacity: 0.8;
+  color: white;
+  padding: 2px 0px;
+  width: 40px;
+  margin-left: 110px;
+  font-size: 0.8em;
+  font-weight: 300;
+  border: none;
 `;

@@ -2,17 +2,21 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Modal from "react-modal";
 import LogInForm from "./LogInForm";
-
+import LoginBtn from "../Buttons/LoginBtn";
 import "../../Global/modalStyles.css";
+import { FiX } from "react-icons/fi";
+
 Modal.setAppElement("#root");
 const LogIn = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleModal = () => {
     setIsOpen(!isOpen);
   };
+
+  const login = "Log In";
   return (
     <LoginWrap>
-      <button onClick={toggleModal}>Log In</button>
+      <LoginBtn action={toggleModal} text={login} />
       <Modal
         isOpen={isOpen}
         onRequestClose={toggleModal}
@@ -22,7 +26,7 @@ const LogIn = () => {
         contentLabel="Member log in"
       >
         <InnerModal>
-          <button onClick={toggleModal}>X</button>
+          <Close onClick={toggleModal}>Close</Close>
           <h3>Log In</h3>
           <LogInForm />
         </InnerModal>
@@ -38,8 +42,22 @@ const LoginWrap = styled.div``;
 const InnerModal = styled.div`
   display: flex;
   flex-direction: column;
-
-  button {
-    align-self: flex-end;
+  h3 {
+    text-align: center;
+    margin: 10px 0px;
+    color: var(--orange);
+    font-weight: bold;
   }
+`;
+
+const Close = styled.button`
+  background-color: var(--orange);
+  opacity: 0.8;
+  color: white;
+  padding: 2px 0px;
+  width: 40px;
+  margin-left: 110px;
+  font-size: 0.8em;
+  font-weight: 300;
+  border: none;
 `;
