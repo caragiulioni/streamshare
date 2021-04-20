@@ -87,9 +87,10 @@ const Upload = () => {
       });
   };
   return (
-    <div>
+    <Wrapper>
+      <h2>SETTINGS</h2>
       <AvatarContainer>
-        Custom Avatar:
+        <h3>Upload new Avatar:</h3>
         <Avatar
           onClose={onClose}
           onCrop={onCrop}
@@ -106,14 +107,35 @@ const Upload = () => {
       <button onClick={handleUpload} disabled={!fileObj ? true : false}>
         Upload
       </button>
-    </div>
+    </Wrapper>
   );
 };
 
 export default Upload;
 
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  button {
+    margin: 0 auto;
+  }
+
+  h2 {
+    text-align: center;
+    color: var(--blue);
+  }
+`;
+
 const Uploader = styled.div``;
 
-const AvatarContainer = styled.div``;
+const AvatarContainer = styled.div`
+  h3 {
+    text-align: center;
+    margin: 10px 0px;
+    color: var(--orange);
+    font-weight: bold;
+  }
+`;
 
 const Img = styled.div``;

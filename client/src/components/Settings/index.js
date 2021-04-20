@@ -47,11 +47,11 @@ const Settings = () => {
   return (
     <>
       {status !== "loading" && currentUser ? (
-        <>
+        <Wrapper>
           <Upload currentUser={currentUser} />
           <ThemeButton />
           <button onClick={handleLogout}>Log Out</button>
-        </>
+        </Wrapper>
       ) : (
         <Spinner />
       )}
@@ -60,3 +60,18 @@ const Settings = () => {
 };
 
 export default Settings;
+
+const Wrapper = styled.div`
+  margin: 25px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  button {
+    background-color: transparent;
+    border: 2px solid var(--blue);
+    width: 100px;
+    color: var(--blue);
+    font-weight: bold;
+    margin: 5px 0px;
+  }
+`;

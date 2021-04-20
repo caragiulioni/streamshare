@@ -79,7 +79,9 @@ const ProfileHeader = ({ memberData, currentUser }) => {
             }}
           ></Img>
           <Inner>
-            <h2>{username}'s current titles</h2>{" "}
+            <h2>
+              <span>{username}'s</span> current titles
+            </h2>{" "}
             {currentUser && userId && userId !== memberId && (
               <button onClick={handleFollow}>
                 {following ? "Unfollow" : "Follow"}
@@ -101,10 +103,10 @@ const ProfileHeader = ({ memberData, currentUser }) => {
 };
 
 export default ProfileHeader;
-
 const HeaderWrap = styled.header`
+  margin: 10px 0px;
   transition: 0.3s ease-in-out;
-  background-color: blue;
+  background-color: rgb(52, 54, 74, 0.05);
   padding: 15px 0px 10px 0px;
   a {
     font-size: 1em;
@@ -134,6 +136,15 @@ const ContentWrapper = styled.div`
 const Inner = styled.div`
   display: flex;
   flex-direction: column;
+  h2 {
+    margin-left: 10px;
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+
+  span {
+    color: var(--orange);
+  }
 `;
 
 const Left = styled.div`
@@ -146,6 +157,7 @@ const Right = styled.div`
 `;
 
 const Img = styled.div`
+  border: 2px solid var(--blue);
   width: 45px;
   height: 45px;
   border-radius: 50%;
