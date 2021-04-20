@@ -75,20 +75,19 @@ function App() {
                   <LogInPage />
                 </Route>
                 <Route exact path="/mytitles">
-                  {currentUser && <MyTitles />}
+                  {currentUser ? <MyTitles /> : <Redirect to="/" />}
                 </Route>
                 <Route exact path="/search">
-                  {currentUser && <Search />}
+                  {currentUser ? <Search /> : <Redirect to="/" />}
                 </Route>
                 <Route exact path="/following">
-                  {currentUser && <Following />}
+                  {currentUser ? <Following /> : <Redirect to="/" />}
                 </Route>
                 <Route exact path="/settings">
-                  {currentUser && <Settings />}
+                  {currentUser ? <Settings /> : <Redirect to="/" />}
                 </Route>
                 <Route exact path="/title/:titleId">
-                  <TitleFull />
-                  {/* //please log in to view titles */}
+                  {currentUser ? <TitleFull /> : <Redirect to="/" />}
                 </Route>
                 <Route exact path="/sh/:username">
                   <Profile />
