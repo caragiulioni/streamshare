@@ -41,14 +41,14 @@ button{
 }
 
 body{
-
+    font-family: 'Source Sans Pro', sans-serif;
     color: #34363E;
     font-size: 1em;
     transition: background 1000ms ease-in-out, color 250ms ease-in-out;
 }
 
 button, h2, h3, h4, h5, input, a{
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 button{

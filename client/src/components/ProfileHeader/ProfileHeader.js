@@ -79,9 +79,15 @@ const ProfileHeader = ({ memberData, currentUser }) => {
             }}
           ></Img>
           <Inner>
-            <h2>
-              <span>{username}'s</span> current titles
-            </h2>{" "}
+            {currentUser ? (
+              <h2>
+                <span>{username}'s</span> current titles
+              </h2>
+            ) : (
+              <h2>
+                <span>{username}</span>
+              </h2>
+            )}
             {currentUser && userId && userId !== memberId && (
               <button onClick={handleFollow}>
                 {following ? "Unfollow" : "Follow"}
@@ -110,6 +116,12 @@ const HeaderWrap = styled.header`
   padding: 15px 0px 10px 0px;
   a {
     font-size: 1em;
+  }
+
+  button {
+    font-size: 0.8em;
+    width: 70px;
+    margin-left: 5px;
   }
   @media (min-width: 1080px) {
     padding: 20px 0px 15px 0px;

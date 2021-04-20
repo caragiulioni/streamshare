@@ -44,7 +44,7 @@ export default Nav;
 const NavContainer = styled.nav`
   display: flex;
   display: none;
-  @media (min-width: 500px) {
+  @media (min-width: 700px) {
     display: block;
   }
 `;

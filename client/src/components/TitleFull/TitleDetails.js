@@ -18,13 +18,12 @@ const TitleDetails = ({ title, found }) => {
       <InnerDetailsWrapper>
         <Details>
           <p>
-            <span>****</span>
-            {imdbRating}
+            Score: <span>{imdbRating}</span>
           </p>
+          <p>Year: {Year}</p>
           <p>
-            <span>Year: </span> {Year}
+            Rated: <span>{Rated}</span>
           </p>
-          <p>Rated: {Rated}</p>
         </Details>
         <PlotWrapper>
           <span>Plot:</span>
@@ -32,7 +31,7 @@ const TitleDetails = ({ title, found }) => {
         </PlotWrapper>
         <Details>
           <p>
-            <span>Genre: </span> {Genre}
+            <span>{Genre}</span>
           </p>
         </Details>
         <ActionBar currentUser={currentUser} title={title} found={found} />
@@ -44,13 +43,23 @@ const TitleDetails = ({ title, found }) => {
 export default TitleDetails;
 
 const DetailsWrapper = styled.div`
-  padding-bottom: 60px;
+  padding-bottom: 80px;
 
   p {
     display: flex;
   }
   img {
     width: 100%;
+  }
+  span {
+    padding-left: 5px;
+    color: var(--orange);
+  }
+
+  h2 {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 15px 0px 10px 0px;
   }
 
   @media (min-width: 700px) {
@@ -76,9 +85,13 @@ const Details = styled.div`
   display: flex;
   justify-content: space-between;
 
-  /* p:nth-child(3) {
-    color: orange;
-  } */
+  p {
+    margin: 5px 0px;
+  }
+
+  span {
+    padding: 0;
+  }
 
   @media (min-width: 700px) {
     padding: 0px 10px;
@@ -89,9 +102,15 @@ const Details = styled.div`
 `;
 
 const PlotWrapper = styled.div`
+  margin: 10px 0px;
   padding: 0px 5px;
+  span {
+    padding: 0;
+    color: var(orange);
+  }
+
   p {
-    display: flex;
+    margin-top: 5px;
   }
 
   @media (min-width: 700px) {

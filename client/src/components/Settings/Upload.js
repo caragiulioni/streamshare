@@ -18,13 +18,12 @@ const Upload = () => {
 
   const dispatch = useDispatch();
   const [userID, setUserID] = useState();
-  const [preview, setPreview] = useState(fill);
+  const [preview, setPreview] = useState();
   const [src, setSrc] = useState();
   const [fileObj, setFileObj] = useState();
   const [url, setUrl] = useState();
-
   const onClose = () => {
-    setPreview(currentUser.user.avatar);
+    setPreview();
   };
 
   const onCrop = (preview) => {
@@ -79,6 +78,7 @@ const Upload = () => {
             .then((data) => {
               try {
                 dispatch(receiveUserData(data.data));
+                setPreview();
               } catch (err) {
                 dispatch(receiveUserDataErr());
               }
@@ -101,9 +101,7 @@ const Upload = () => {
           style="font-weight: 200"
         />
       </AvatarContainer>
-      <Img>
-        <img src={preview} alt="Preview" />
-      </Img>
+      <Img>{preview && <img src={preview} alt="Preview" />}</Img>
       <button onClick={handleUpload} disabled={!fileObj ? true : false}>
         Upload
       </button>
@@ -117,9 +115,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  button {
-    margin: 0 auto;
-  }
+  align-items: center;
 
   h2 {
     text-align: center;
@@ -130,6 +126,7 @@ const Wrapper = styled.div`
 const Uploader = styled.div``;
 
 const AvatarContainer = styled.div`
+  margin: 15px 0px;
   h3 {
     text-align: center;
     margin: 10px 0px;
@@ -138,4 +135,9 @@ const AvatarContainer = styled.div`
   }
 `;
 
-const Img = styled.div``;
+const Img = styled.div`
+  img {
+    width: 150px;
+    margin: 0 auto;
+  }
+`;

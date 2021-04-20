@@ -29,6 +29,10 @@ const Wrapper = styled.button`
   &:active {
     transform: scale(1.05);
   }
+
+  &:disabled {
+    opacity: 0.4;
+  }
   @media (min-width: 700px) {
     padding: 4px;
     width: 70px;

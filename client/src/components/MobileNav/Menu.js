@@ -32,6 +32,7 @@ const MenuWrap = styled.nav`
   transform: ${({ open }) => (open ? "translateY(0)" : "translateY(-100%)")};
   height: 110vh;
   position: fixed;
+  z-index: 5;
   bottom: 0;
   right: 0;
   left: 0; //remove?

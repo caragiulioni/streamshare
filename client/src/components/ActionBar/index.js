@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import LoginBtn from "../Buttons/LoginBtn";
 const ActionBar = ({ title, currentUser, found, setFound }) => {
   const [isFound, setIsFound] = useState();
   const { Title, Poster, Genre, Year, imdbID } = title;
@@ -67,12 +68,8 @@ const ActionBar = ({ title, currentUser, found, setFound }) => {
 
   return (
     <div>
-      <button onClick={handleAdd} disabled={addButton}>
-        Add
-      </button>
-      <button onClick={handleRemove} disabled={removeButton}>
-        Remove
-      </button>
+      <LoginBtn action={handleAdd} text={"Add"} disabled={addButton} />
+      <LoginBtn action={handleRemove} text={"Remove"} disabled={removeButton} />
     </div>
   );
 };
