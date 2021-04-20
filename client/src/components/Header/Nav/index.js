@@ -1,40 +1,14 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import StyledLink from "../StyledLink";
+
 const Nav = () => {
   return (
     <NavContainer>
-      <Link
-        exact
-        to="/mytitles"
-        activeStyle={{
-          fontWeight: "bold",
-          color: "#E9613F",
-        }}
-      >
-        MYTITLES
-      </Link>
-      <Link
-        exact
-        to="/search"
-        activeStyle={{
-          fontWeight: "bold",
-          color: "#E9613F",
-        }}
-      >
-        SEARCH
-      </Link>
-
-      <Link
-        exact
-        to="/following"
-        activeStyle={{
-          fontWeight: "bold",
-          color: "#E9613F",
-        }}
-      >
-        FOLLOWING
-      </Link>
+      <StyledLink link={"mytitles"} text={"MY TITLES"} />
+      <StyledLink link={"search"} text={"SEARCH"} />
+      <StyledLink link={"following"} text={"FOLLOWING"} />
     </NavContainer>
   );
 };

@@ -1,13 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import Nav from "./Nav";
-import {
-  sendUserData,
-  receiveUserData,
-  receiveUserDataErr,
-} from "../../actions/actions";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import StyledLink from "./StyledLink";
 import { IoIosSettings } from "react-icons/io";
 
 const Header = () => {
@@ -20,14 +16,7 @@ const Header = () => {
           <Nav />
         </Left>
         <Right>
-          <Link
-            exact
-            to={`/sh/${currentUser.username}`}
-            activeStyle={{
-              fontWeight: "bold",
-              color: "#E9613F",
-            }}
-          >
+          <StyledLink link={currentUser.username} text={currentUser.username}>
             <User>
               {currentUser && (
                 <>
@@ -44,7 +33,7 @@ const Header = () => {
                 </>
               )}
             </User>
-          </Link>
+          </StyledLink>
           <Settings>
             <Link
               exact
