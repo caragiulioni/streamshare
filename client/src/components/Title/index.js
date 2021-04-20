@@ -4,15 +4,11 @@ import styled from "styled-components";
 import kitten from "../../assets/kitten.jpg";
 
 const Title = ({ result }) => {
-  // let history = useHistory();
   let titleId = result.imdbID;
   const addDefaultSrc = (ev) => {
     ev.target.src = kitten;
   };
 
-  const handleTitleClick = () => {
-    // history.push(`title/${titleId}`);
-  };
   const { Title, Poster, Year, Genre } = result;
   return (
     <TitleContainer>
@@ -32,6 +28,19 @@ export default Title;
 const TitleContainer = styled.div`
   transition: 0.3s ease-in-out;
   opacity: 1;
+  a {
+    font-weight: bold;
+  }
+
+  h4 {
+    font-size: 1.2em;
+  }
+
+  p {
+    color: var(--orange);
+    font-size: 0.8em;
+    margin: 5px 0px;
+  }
   img {
     width: 100%;
   }

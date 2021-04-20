@@ -62,19 +62,21 @@ const SortComponent = ({ titles, setTitles, original }) => {
 export default SortComponent;
 
 const Wrapper = styled.div`
+  margin: 10px 0px;
+  margin-left: 5px;
   button {
     cursor: pointer;
     background-color: transparent;
     border: none;
-    color: white;
+    color: var(--blue);
     transition: 0.3s ease-in-out;
   }
 
   button:hover {
-    color: orange;
+    color: var(--darkgrey);
   }
 
   .active {
-    color: cyan;
+    color: var(--orange);
   }
 `;

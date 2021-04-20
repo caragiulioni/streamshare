@@ -9,7 +9,7 @@ const Nav = () => {
         to="/mytitles"
         activeStyle={{
           fontWeight: "bold",
-          color: "red",
+          color: "#E9613F",
         }}
       >
         MYTITLES
@@ -19,7 +19,7 @@ const Nav = () => {
         to="/search"
         activeStyle={{
           fontWeight: "bold",
-          color: "red",
+          color: "#E9613F",
         }}
       >
         SEARCH
@@ -30,7 +30,7 @@ const Nav = () => {
         to="/following"
         activeStyle={{
           fontWeight: "bold",
-          color: "red",
+          color: "#E9613F",
         }}
       >
         FOLLOWING

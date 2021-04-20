@@ -70,12 +70,16 @@ h1{
 .dark{
     background-color: black;
     color: var(--offwhite);
-
+ a{
+     color: var(---offwhite);
+ }
 }
 
 .light{
     color: #34363E;
-
+ a{
+     color: var(--smoke);
+ }
 }
 
 label{

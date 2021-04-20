@@ -25,7 +25,7 @@ const Header = () => {
             to={`/sh/${currentUser.username}`}
             activeStyle={{
               fontWeight: "bold",
-              color: "red",
+              color: "#E9613F",
             }}
           >
             <User>
@@ -51,7 +51,7 @@ const Header = () => {
               to="/settings"
               activeStyle={{
                 fontWeight: "bold",
-                color: "red",
+                color: "#E9613F",
               }}
             >
               <IoIosSettings size={30} />
