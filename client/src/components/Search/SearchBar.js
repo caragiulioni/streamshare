@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import styled from "styled-components";
+import LoginBtn from "../Buttons/LoginBtn";
 import { ResultsContext } from "../../context/ResultsContext";
 const SearchBar = () => {
   const [query, setQuery] = useState({ query: "" });
@@ -9,7 +10,8 @@ const SearchBar = () => {
     setQuery({ ...query, [item]: val.toLowerCase() });
   };
   const length = query.query.length;
-
+  const search = "Search";
+  const clear = "Clear";
   const handleSearch = (event) => {
     setResponse("loading");
     event.preventDefault();
@@ -29,6 +31,10 @@ const SearchBar = () => {
         setResults(data.data.Search);
       });
   };
+
+  const handleClear = () => {
+    setResults();
+  };
   return (
     <Search>
       <Form>
@@ -41,10 +47,8 @@ const SearchBar = () => {
           onChange={(ev) => handleChange(ev.target.value, "query")}
         />
         <Buttons>
-          <button onClick={handleSearch} disabled={length > 0 ? false : true}>
-            Search
-          </button>
-          <button>Clear</button>
+          <LoginBtn action={handleSearch} text={search} />
+          <LoginBtn action={handleClear} text={clear} />
         </Buttons>
       </Form>
     </Search>
@@ -72,4 +76,8 @@ const Form = styled.form`
   }
 `;
 
-const Buttons = styled.div``;
+const Buttons = styled.div`
+  button {
+    margin: 10px 5px;
+  }
+`;

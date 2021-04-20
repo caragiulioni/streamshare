@@ -1,7 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-const LoginBtn = ({ action, text }) => {
-  return <Wrapper onClick={action}>{text}</Wrapper>;
+const LoginBtn = ({ action, text, disabled }) => {
+  return (
+    <Wrapper onClick={action} disabled={disabled}>
+      {text}
+    </Wrapper>
+  );
 };
 
 export default LoginBtn;
