@@ -8,6 +8,8 @@ import {
   receiveUserDataErr,
 } from "../../actions/actions";
 import { useSelector, useDispatch } from "react-redux";
+import { IoIosSettings } from "react-icons/io";
+
 const Header = () => {
   const currentUser = useSelector((state) => state.user.currentUser.user);
   return (
@@ -18,16 +20,6 @@ const Header = () => {
           <Nav />
         </Left>
         <Right>
-          <Link
-            exact
-            to="/settings"
-            activeStyle={{
-              fontWeight: "bold",
-              color: "red",
-            }}
-          >
-            SETTINGS
-          </Link>
           <Link
             exact
             to={`/sh/${currentUser.username}`}
@@ -53,6 +45,18 @@ const Header = () => {
               )}
             </User>
           </Link>
+          <Settings>
+            <Link
+              exact
+              to="/settings"
+              activeStyle={{
+                fontWeight: "bold",
+                color: "red",
+              }}
+            >
+              <IoIosSettings size={30} />
+            </Link>
+          </Settings>
         </Right>
       </ContentWrapper>
     </HeaderWrap>
@@ -63,10 +67,13 @@ export default Header;
 
 const HeaderWrap = styled.header`
   transition: 0.3s ease-in-out;
-  background-color: blue;
+  background-color: rgb(52, 54, 74, 0.05);
   padding: 15px 0px 10px 0px;
   a {
     font-size: 1em;
+    color: var(--darkgrey);
+    font-weight: bold;
+    padding: 0px 5px;
   }
   @media (min-width: 1080px) {
     padding: 20px 0px 15px 0px;
@@ -92,6 +99,12 @@ const ContentWrapper = styled.div`
 
 const Left = styled.div`
   display: flex;
+  align-items: center;
+  h1 {
+    font-size: 1.5em;
+    color: var(--blue);
+    margin-bottom: 3px;
+  }
 `;
 
 const Right = styled.div`
@@ -105,12 +118,23 @@ const Right = styled.div`
 
 const Link = styled(NavLink)``;
 
+const Settings = styled.div`
+  display: none;
+  @media (min-width: 500px) {
+    display: block;
+  }
+`;
+
 const User = styled.div`
   display: flex;
   align-items: center;
+  h2 {
+    padding: 0px 5px;
+  }
 `;
 
 const Img = styled.div`
+  border: 2px solid var(--blue);
   border-radius: 50%;
   height: 30px;
   width: 30px;

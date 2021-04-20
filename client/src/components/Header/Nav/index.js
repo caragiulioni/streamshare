@@ -43,6 +43,10 @@ export default Nav;
 
 const NavContainer = styled.nav`
   display: flex;
+  display: none;
+  @media (min-width: 500px) {
+    display: block;
+  }
 `;
 
 const Link = styled(NavLink)``;

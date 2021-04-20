@@ -10,7 +10,7 @@ const Wrapper = styled.button`
   margin: 3px auto;
   width: 75px;
   height: 20px;
-  background-color: var(--blue);
+  background-color: var(--orange);
   border-radius: 5px;
   color: var(--offwhite);
   font-weight: bold;

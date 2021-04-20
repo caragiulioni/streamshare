@@ -7,7 +7,7 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 
 
 :root{
-    --orange:  #E97124;
+    --orange:  #E9613F;
     --blue: #6697CB;
     --offwhite: #F0F0FF;
     --darkgrey: #67687B;
@@ -41,7 +41,7 @@ button{
 }
 
 body{
- 
+
     color: #34363E;
     font-size: .6em;
     transition: background 1000ms ease-in-out, color 250ms ease-in-out;
@@ -66,13 +66,13 @@ h1{
 }
 .dark{
     background-color: black;
-    color: white;
-    
+    color: var(--offwhite);
+
 }
 
 .light{
     color: #34363E;
-    background-color: #F0F0FF;
+
 }
 
 label{

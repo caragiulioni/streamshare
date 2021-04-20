@@ -45,13 +45,13 @@ const InnerModal = styled.div`
   h3 {
     text-align: center;
     margin: 10px 0px;
-    color: var(--orange);
+    color: var(--blue);
     font-weight: bold;
   }
 `;
 
 const Close = styled.button`
-  background-color: var(--orange);
+  background-color: var(--blue);
   opacity: 0.8;
   color: white;
   padding: 2px 0px;

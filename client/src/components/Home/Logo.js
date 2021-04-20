@@ -14,7 +14,7 @@ export default Logo;
 const LogoWrap = styled.div`
   h1 {
     font-size: 6em;
-    color: var(--orange);
+    color: var(--blue);
   }
   h2 {
     color: var(--smoke);
