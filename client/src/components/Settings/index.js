@@ -47,6 +47,7 @@ const Settings = () => {
     <>
       {status !== "loading" && currentUser ? (
         <Wrapper>
+          <h3>SETTINGS</h3>
           <Upload currentUser={currentUser} />
           <ThemeButton />
           <button onClick={handleLogout}>Log Out</button>
@@ -66,6 +67,14 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  h3 {
+    text-align: center;
+    margin: 15px 0px;
+    font-size: 1.5em;
+    color: var(--blue);
+    font-weight: bold;
+  }
   button {
     background-color: transparent;
     border: 2px solid var(--blue);

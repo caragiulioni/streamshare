@@ -32,9 +32,6 @@ const SearchBar = () => {
       });
   };
 
-  const handleClear = () => {
-    setResults();
-  };
   return (
     <Search>
       <Form>
@@ -48,7 +45,6 @@ const SearchBar = () => {
         />
         <Buttons>
           <LoginBtn action={handleSearch} text={search} />
-          <LoginBtn action={handleClear} text={clear} />
         </Buttons>
       </Form>
     </Search>

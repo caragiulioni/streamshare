@@ -27,9 +27,15 @@ const Wrapper = styled.div`
   }
 `;
 const GridWrapper = styled.div`
+  padding: 10px 0px;
+  background-color: rgb(52, 54, 74, 0.05);
   width: 100%;
   margin: 0 auto;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  @media (min-width: 500px) {
+    padding: 20px;
+    width: 60%;
+  }
 `;

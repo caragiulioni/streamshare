@@ -52,7 +52,7 @@ const DetailsWrapper = styled.div`
     width: 100%;
   }
   span {
-    padding-left: 5px;
+    margin-left: 5px;
     color: var(--orange);
   }
 
@@ -78,7 +78,7 @@ const InnerWrapper = styled.div`
 const InnerDetailsWrapper = styled.div`
   @media (min-width: 700px) {
     width: 50%;
-    margin-top: 35px;
+    margin-top: 45px;
   }
 `;
 const Details = styled.div`
@@ -106,7 +106,7 @@ const PlotWrapper = styled.div`
   margin: 10px 0px;
   padding: 0px 5px;
   span {
-    padding: 0;
+    margin: 0;
     color: var(orange);
   }
 

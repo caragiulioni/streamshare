@@ -84,9 +84,8 @@ const Upload = () => {
   };
   return (
     <Wrapper>
-      <h2>SETTINGS</h2>
       <AvatarContainer>
-        <h3>Upload new Avatar:</h3>
+        <h4>Upload new Avatar:</h4>
         <Avatar
           style={labelStyle}
           onClose={onClose}
@@ -113,9 +112,10 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
 
-  h2 {
+  h4 {
     text-align: center;
-    color: var(--blue);
+    color: var(--orange);
+    margin: 5px 0px;
   }
 
   label {
