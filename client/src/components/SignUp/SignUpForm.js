@@ -60,6 +60,7 @@ const SignUpForm = () => {
     <>
       <Form type="submit" autocomplete="on">
         <Input
+          maxlength="10"
           name="username"
           type="text"
           placeholder="User Name"

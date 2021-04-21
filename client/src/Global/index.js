@@ -57,6 +57,7 @@ button, h2, h3, h4, h5, input, a{
     font-family: 'Source Sans Pro', sans-serif;
 }
 
+
 button{
     cursor: pointer;
     border-radius: 2px;
@@ -81,12 +82,7 @@ h1{
  }
 }
 
-.light{
-    color: #34363E;
- a{
-     color: var(--smoke);
- }
-}
+
 
 label{
     font-weight: 200 !important; 

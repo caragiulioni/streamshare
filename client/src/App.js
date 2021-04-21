@@ -34,14 +34,6 @@ function App() {
       body.classList.toggle("dark");
     }
 
-    if (theme === "light") {
-      body.classList.toggle("light");
-    }
-    if (!theme) {
-      body.classList.toggle("light");
-      localStorage.setItem("streamshareTheme", "light");
-    }
-
     if (isStored) {
       dispatch(sendUserData());
       fetch(`/auth/${isStored}`)
@@ -54,7 +46,7 @@ function App() {
           }
         });
     }
-  }, [isStored, body.classList, dispatch, theme]);
+  }, [isStored]);
 
   return (
     <>
