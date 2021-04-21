@@ -4,7 +4,6 @@ import Modal from "react-modal";
 import LogInForm from "./LogInForm";
 import LoginBtn from "../Buttons/LoginBtn";
 import "../../Global/modalStyles.css";
-import { FiX } from "react-icons/fi";
 
 Modal.setAppElement("#root");
 const LogIn = () => {

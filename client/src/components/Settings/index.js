@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
-import { SectionContainer } from "../../Global/sectionStyles";
 import ThemeButton from "./ThemeButton";
 import { useHistory } from "react-router-dom";
 import { removeCurrentUser } from "../../actions/actions";

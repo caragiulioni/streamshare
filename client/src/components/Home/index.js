@@ -1,12 +1,8 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
 import styled from "styled-components";
 import Logo from "./Logo";
 import HomeActions from "./HomeActions";
-import Spinner from "../Spinner";
 const Home = () => {
-  const status = useSelector((state) => state.user.status);
-  // useEffect(() => {}, []);
   return (
     <Wrapper>
       <Logo />

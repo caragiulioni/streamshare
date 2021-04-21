@@ -30,18 +30,10 @@ const Upload = () => {
   };
 
   const onBeforeFileLoad = (elem) => {
-    // console.log(elem.target.value);
-    const img = new Image();
-    img.src = elem.target.value;
-    const imgWidth = img.offsetWidth;
-    // const imgHeight = img.naturalHeight;
-    console.log(img);
-    console.log(imgWidth);
     if (elem.target.files[0].size > 71680) {
       alert("whoa! let's try a smaller file!");
       elem.target.value = "";
     } else {
-      console.log(elem.target.files[0]);
       setFileObj(elem.target.files[0]);
     }
   };
@@ -80,6 +72,7 @@ const Upload = () => {
             .then((res) => res.json())
             .then((data) => {
               try {
+                setSrc();
                 dispatch(receiveUserData(data.data));
                 setPreview();
               } catch (err) {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { ResultsProvider } from "./context/ResultsContext";
@@ -54,7 +54,7 @@ function App() {
           }
         });
     }
-  }, [isStored]);
+  }, [isStored, body.classList, dispatch, theme]);
 
   return (
     <>

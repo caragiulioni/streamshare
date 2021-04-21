@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Masonry from "react-masonry-css";
 import Title from "../Title";
 import "../../Global/masonry.css";

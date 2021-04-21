@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   sendUserData,
   receiveUserData,
@@ -31,7 +31,6 @@ const LogInForm = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.status === 200) {
           const id = data.data.user._id;
           localStorage.setItem("streamshareUser", id);
@@ -41,7 +40,6 @@ const LogInForm = () => {
           setMessage("please provide valid login data");
           dispatch(receiveUserDataErr());
         }
-        //dispatch to actions
       });
   };
   return (

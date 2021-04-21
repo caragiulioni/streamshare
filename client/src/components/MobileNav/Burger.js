@@ -78,5 +78,3 @@ const Button = styled.button`
     }
   }
 `;
-
-const Divs = styled.div``;

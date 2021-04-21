@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import LoginBtn from "../Buttons/LoginBtn";
 import styled from "styled-components";
 const ActionBar = ({ title, currentUser, found, setFound }) => {
-  const [isFound, setIsFound] = useState();
   const { Title, Poster, Genre, Year, imdbID } = title;
   const [addButton, setAddButton] = useState();
   const [removeButton, setRemoveButton] = useState();
@@ -36,14 +35,12 @@ const ActionBar = ({ title, currentUser, found, setFound }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.status === 200) {
           setAddButton(true);
           setRemoveButton(false);
         } else {
           return data.msg;
         }
-        //returned msg for toaster
       });
   };
 

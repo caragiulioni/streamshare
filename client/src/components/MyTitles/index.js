@@ -1,6 +1,5 @@
-import React, { useEffect, useState, useParams } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import styled from "styled-components";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { SectionContainer } from "../../Global/sectionStyles";
 import TitlesWelcome from "./TitlesWelcome";
 import Masonry from "react-masonry-css";

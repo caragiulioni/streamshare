@@ -5,7 +5,6 @@ import { ResultsContext } from "../../context/ResultsContext";
 import styled from "styled-components";
 import Spinner from "../Spinner";
 import TitleDetails from "./TitleDetails";
-import Title from "../Title";
 const TitleFull = () => {
   const { titleId } = useParams();
   const [found, setFound] = useState(null);

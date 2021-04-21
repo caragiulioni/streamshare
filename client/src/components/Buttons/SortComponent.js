@@ -1,17 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 const SortComponent = ({ titles, setTitles, original }) => {
-  const [prev, setPrev] = useState();
   const [active, setActive] = useState();
   const orange = "#E9613F";
   const blue = "#6697CB";
   //simulate navlink behavior on button click
-  const remove = (prev) => {
-    document.getElementById(prev).classList.remove("active");
-  };
-  const addActive = (id) => {
-    document.getElementById(id).classList.add("active");
-  };
 
   const descend = () => {
     setActive("descend");

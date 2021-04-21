@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import Nav from "./Nav";
 import { useSelector } from "react-redux";
-import StyledLink from "./StyledLink";
 import { IoIosSettings } from "react-icons/io";
 
 const Header = () => {

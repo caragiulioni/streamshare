@@ -1,6 +1,4 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import styled from "styled-components";
+import React from "react";
 import { SectionMain } from "../../Global/sectionStyles";
 import SearchBar from "./SearchBar";
 import Results from "./Results";

@@ -9,7 +9,7 @@ const SearchBar = () => {
   const handleChange = (val, item) => {
     setQuery({ ...query, [item]: val.toLowerCase() });
   };
-  const length = query.query.length;
+
   const search = "Search";
   const clear = "Clear";
   const handleSearch = (event) => {

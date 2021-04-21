@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import Masonry from "react-masonry-css";
 import Title from "../Title";
 import "../../Global/masonry.css";
@@ -24,7 +23,3 @@ const ResultsContainer = ({ results }) => {
 };
 
 export default ResultsContainer;
-
-const Wrapper = styled.div``;
-
-const GridItem = styled.div``;

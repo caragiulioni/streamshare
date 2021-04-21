@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import { SectionWrapper } from "../../Global/sectionStyles";
 const TitlesWelcome = ({ currentUser }) => {
   const { username } = currentUser;
@@ -20,5 +19,3 @@ const TitlesWelcome = ({ currentUser }) => {
 };
 
 export default TitlesWelcome;
-
-const WelcomeWrapper = styled.div``;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 const ThemeButton = () => {
   const [dark, setDark] = useState();
   const currentTheme = window.localStorage.getItem("streamshareTheme");
