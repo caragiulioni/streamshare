@@ -4,7 +4,6 @@ const SortComponent = ({ titles, setTitles, original }) => {
   const [active, setActive] = useState();
   const orange = "#E9613F";
   const blue = "#6697CB";
-  //simulate navlink behavior on button click
 
   const descend = () => {
     setActive("descend");
