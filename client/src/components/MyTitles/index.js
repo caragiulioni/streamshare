@@ -23,8 +23,9 @@ const MyTitles = () => {
           if (!data.data.titles.length) {
             setResponse(false);
           } else {
-            setTitles(data.data.titles);
-            setOriginal(data.data.titles);
+            const render = [...data.data.titles].reverse();
+            setTitles(render);
+            setOriginal(render);
             setResponse(true);
           }
         });

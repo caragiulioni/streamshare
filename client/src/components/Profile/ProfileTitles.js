@@ -6,8 +6,9 @@ import SortComponent from "../Buttons/SortComponent";
 import styled from "styled-components";
 const ProfileTitles = ({ memberData }) => {
   const memberTitles = memberData.userTitles.titles;
-  const [titles, setTitles] = useState(memberTitles);
-  const [original, setOriginal] = useState(titles);
+  const render = [...memberTitles].reverse();
+  const [titles, setTitles] = useState(render);
+  const [original, setOriginal] = useState(render);
   const breakpointColumnsObj = {
     default: 5,
     1280: 5,
