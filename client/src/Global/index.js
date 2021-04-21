@@ -12,6 +12,7 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
     --offwhite: #F0F0FF;
     --darkgrey: #67687B;
     --smoke: #34363E;
+    --cleargrey: rgb(52, 54, 74, 0.05);
     margin: 0;
     padding: 0;
 }
@@ -74,6 +75,7 @@ h1{
     font-weight: 700;
     color: var(---orange);
 }
+
 .dark{
     background-color: black;
     color: var(--offwhite);

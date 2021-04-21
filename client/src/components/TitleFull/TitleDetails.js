@@ -43,7 +43,10 @@ const TitleDetails = ({ title, found }) => {
 export default TitleDetails;
 
 const DetailsWrapper = styled.div`
+  margin: 10px 0px;
+  padding: 10px;
   padding-bottom: 80px;
+  background-color: var(--cleargrey);
 
   p {
     display: flex;
@@ -65,7 +68,8 @@ const DetailsWrapper = styled.div`
   @media (min-width: 700px) {
     display: flex;
     width: 60%;
-    margin: 0 auto;
+    margin: 20px auto;
+    padding: 20px;
   }
 `;
 

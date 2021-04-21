@@ -28,7 +28,7 @@ const Wrapper = styled.div`
 `;
 const GridWrapper = styled.div`
   padding: 10px 0px;
-  background-color: rgb(52, 54, 74, 0.05);
+  background-color: var(--cleargrey);
   width: 100%;
   margin: 0 auto;
   display: flex;

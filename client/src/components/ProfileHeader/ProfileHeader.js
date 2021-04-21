@@ -124,7 +124,7 @@ export default ProfileHeader;
 const HeaderWrap = styled.header`
   margin: 10px 0px;
   transition: 0.3s ease-in-out;
-  background-color: rgb(52, 54, 74, 0.05);
+  background-color: var(--cleargrey);
   padding: 15px 0px 10px 0px;
   a {
     font-size: 1em;

@@ -29,7 +29,6 @@ const Item = styled.div`
 
   h4 {
     font-size: 0.9em;
-    color: var(--orange);
     margin: 5px 0px;
   }
   @media (min-width: 500px) {
