@@ -18,8 +18,7 @@ const Following = () => {
           if (data.status === 200 && data.data.length) {
             setResponse();
             setFollows(data.data);
-          }
-          if (data.status === 400) {
+          } else {
             setResponse("loaded");
           }
         });

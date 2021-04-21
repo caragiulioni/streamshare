@@ -15,7 +15,7 @@ const GridItem = ({ item }) => {
           }}
           aria-hidden="true"
         ></Img>
-        <h3>{item.username}</h3>
+        <h4>{item.username}</h4>
       </Item>
     </Link>
   );
@@ -24,14 +24,25 @@ const GridItem = ({ item }) => {
 export default GridItem;
 
 const Item = styled.div`
+  padding: 5px;
   text-align: center;
+
+  h4 {
+    font-size: 0.9em;
+    color: var(--orange);
+    margin: 5px 0px;
+  }
+  @media (min-width: 500px) {
+    font-size: 1.3em;
+  }
 `;
 
 const Img = styled.div`
-  width: 160px;
-  height: 160px;
+  border-radius: 3px;
+  width: 75px;
+  height: 75px;
   @media (min-width: 500px) {
-    width: 75px;
-    height: 75px;
+    width: 160px;
+    height: 160px;
   }
 `;
