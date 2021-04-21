@@ -17,7 +17,7 @@ const SortComponent = ({ titles, setTitles, original }) => {
     return setTitles(arr);
   };
 
-  const lastToFirst = () => {
+  const firstToLast = () => {
     setActive("last");
     const arr = [...titles].reverse();
     return setTitles(arr);
@@ -43,15 +43,15 @@ const SortComponent = ({ titles, setTitles, original }) => {
       </button>
       <button
         style={{ color: active === "last" ? orange : blue }}
-        onClick={lastToFirst}
+        onClick={firstToLast}
       >
-        last to first
+        first to last
       </button>
       <button
         style={{ color: active === "revert" ? orange : blue }}
         onClick={revert}
       >
-        first to last
+        last to first
       </button>
     </Wrapper>
   );
