@@ -22,8 +22,7 @@ import Settings from "./components/Settings";
 import TitleFull from "./components/TitleFull";
 import Profile from "./components/Profile";
 import Following from "./components/Following";
-import Spinner from "./components/Spinner";
-import Title from "./components/Title";
+import Error from "./components/Error/index.js";
 function App() {
   const dispatch = useDispatch();
   const isStored = localStorage.getItem("streamshareUser");
@@ -91,6 +90,9 @@ function App() {
                 </Route>
                 <Route exact path="/sh/:username">
                   <Profile />
+                </Route>
+                <Route>
+                  <Error />
                 </Route>
               </Switch>
             </PageWrapper>

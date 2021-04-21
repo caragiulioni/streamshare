@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { useSelector } from "react-redux";
 import Grid from "./Grid";
 import Spinner from "../Spinner";
+import FollowingWelcome from "./FollowingWelcome";
+
 const Following = () => {
   const currentUser = useSelector((state) => state.user.currentUser.user);
   const [response, setResponse] = useState();
@@ -14,17 +16,18 @@ const Following = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.status === 200 && data.data.length) {
-          setResponse("loaded");
+          setResponse();
           setFollows(data.data);
+        }
+        if (data.status === 400) {
+          setResponse("loaded");
         }
       });
   }, [setFollows]);
 
   return (
     <FollowingWrapper>
-      {!follows && response === "loaded" && (
-        <div>start following friends now!</div>
-      )}
+      {!follows && response === "loaded" && <FollowingWelcome />}
       {follows && <Grid follows={follows} />}
       {response === "loading" && <Spinner />}
     </FollowingWrapper>

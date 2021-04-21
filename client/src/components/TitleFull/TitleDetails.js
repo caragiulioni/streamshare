@@ -78,6 +78,7 @@ const InnerWrapper = styled.div`
 const InnerDetailsWrapper = styled.div`
   @media (min-width: 700px) {
     width: 50%;
+    margin-top: 35px;
   }
 `;
 const Details = styled.div`

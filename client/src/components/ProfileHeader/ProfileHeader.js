@@ -69,9 +69,12 @@ const ProfileHeader = ({ memberData, currentUser }) => {
   return (
     <HeaderWrap>
       <Headings>
-        {" "}
-        <h1>Streamshare</h1>
-        <h2>What are you watching?</h2>
+        {!currentUser && (
+          <>
+            <h1>Streamshare</h1>
+            <h2>What are you watching?</h2>
+          </>
+        )}
       </Headings>
 
       <ContentWrapper>

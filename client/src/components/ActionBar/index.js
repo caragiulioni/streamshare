@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import LoginBtn from "../Buttons/LoginBtn";
+import styled from "styled-components";
 const ActionBar = ({ title, currentUser, found, setFound }) => {
   const [isFound, setIsFound] = useState();
   const { Title, Poster, Genre, Year, imdbID } = title;
@@ -67,11 +68,22 @@ const ActionBar = ({ title, currentUser, found, setFound }) => {
   };
 
   return (
-    <div>
+    <Wrapper>
       <LoginBtn action={handleAdd} text={"Add"} disabled={addButton} />
       <LoginBtn action={handleRemove} text={"Remove"} disabled={removeButton} />
-    </div>
+    </Wrapper>
   );
 };
 
 export default ActionBar;
+
+const Wrapper = styled.div`
+  button {
+    margin: 5px 10px;
+    background-color: var(--blue);
+  }
+
+  button:last-of-type {
+    margin-left: 0px;
+  }
+`;

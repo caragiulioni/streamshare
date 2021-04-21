@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import styled from "styled-components";
 const SortComponent = ({ titles, setTitles, original }) => {
   const [prev, setPrev] = useState();
-
+  const [active, setActive] = useState();
+  const orange = "#E9613F";
+  const blue = "#6697CB";
   //simulate navlink behavior on button click
   const remove = (prev) => {
     document.getElementById(prev).classList.remove("active");
@@ -11,49 +13,53 @@ const SortComponent = ({ titles, setTitles, original }) => {
     document.getElementById(id).classList.add("active");
   };
 
-  const descend = (prev, id) => {
-    prev && remove(prev);
-    addActive(id);
-    setPrev(id);
+  const descend = () => {
+    setActive("descend");
     const arr = [...titles].sort((a, b) => a.Title.localeCompare(b.Title));
     return setTitles(arr);
   };
 
-  const ascend = (prev, id) => {
-    prev && remove(prev);
-    addActive(id);
-    setPrev(id);
+  const ascend = () => {
+    setActive("ascend");
     const arr = [...titles].sort((a, b) => b.Title.localeCompare(a.Title));
     return setTitles(arr);
   };
 
-  const lastToFirst = (prev, id) => {
-    prev && remove(prev);
-    addActive(id);
-    setPrev(id);
+  const lastToFirst = () => {
+    setActive("last");
     const arr = [...titles].reverse();
     return setTitles(arr);
   };
 
   const revert = (prev, id) => {
-    prev && remove(prev);
-    addActive(id);
-    setPrev(id);
+    setActive("revert");
     setTitles(original);
   };
   return (
     <Wrapper>
-      <button id="ascend" onClick={() => descend(prev, "ascend")}>
+      <button
+        style={{ color: active === "descend" ? orange : blue }}
+        onClick={descend}
+      >
         Z-A
       </button>
-      <button id="descend" onClick={() => ascend(prev, "descend")}>
+      <button
+        style={{ color: active === "ascend" ? orange : blue }}
+        onClick={ascend}
+      >
         A-Z
       </button>
-      <button id="last-first" onClick={() => lastToFirst(prev, "last-first")}>
-        last to recent
+      <button
+        style={{ color: active === "last" ? orange : blue }}
+        onClick={lastToFirst}
+      >
+        last to first
       </button>
-      <button id="revert" onClick={() => revert(prev, "revert")}>
-        recent to last
+      <button
+        style={{ color: active === "revert" ? orange : blue }}
+        onClick={revert}
+      >
+        first to last
       </button>
     </Wrapper>
   );
@@ -69,15 +75,11 @@ const Wrapper = styled.div`
     cursor: pointer;
     background-color: transparent;
     border: none;
-    color: var(--blue);
+    /* color: var(--blue); */
     transition: 0.3s ease-in-out;
   }
 
   button:hover {
     color: var(--darkgrey);
-  }
-
-  .active {
-    color: var(--orange);
   }
 `;
