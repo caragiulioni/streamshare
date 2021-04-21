@@ -43,6 +43,7 @@ const Settings = () => {
     dispatch(removeCurrentUser(null));
     history.push("/");
   };
+
   return (
     <>
       {status !== "loading" && currentUser ? (
