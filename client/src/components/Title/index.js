@@ -12,7 +12,7 @@ const Title = ({ result }) => {
   const { Title, Poster, Year, Genre } = result;
   return (
     <TitleContainer>
-      <Link exact to={`/title/${titleId}`}>
+      <Link to={`/title/${titleId}`}>
         <h4>{Title}</h4>
         <Details>
           <p>{Genre}</p>
