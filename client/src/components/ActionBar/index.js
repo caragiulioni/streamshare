@@ -6,14 +6,14 @@ const ActionBar = ({ title, currentUser, found, setFound }) => {
   const [addButton, setAddButton] = useState();
   const [removeButton, setRemoveButton] = useState();
   useEffect(() => {
-    if (found) {
-      setAddButton(true);
-      setRemoveButton(false);
-    }
-    if (!found) {
-      setAddButton(false);
-      setRemoveButton(true);
-    }
+    // if (found) {
+    //   setAddButton(true);
+    //   setRemoveButton(false);
+    // }
+    // if (!found) {
+    //   setAddButton(false);
+    //   setRemoveButton(true);
+    // }
   }, [found]);
 
   const handleAdd = () => {
@@ -36,8 +36,7 @@ const ActionBar = ({ title, currentUser, found, setFound }) => {
       .then((res) => res.json())
       .then((data) => {
         if (data.status === 200) {
-          setAddButton(true);
-          setRemoveButton(false);
+          setFound(true);
         } else {
           return data.msg;
         }
@@ -59,15 +58,17 @@ const ActionBar = ({ title, currentUser, found, setFound }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        setAddButton(false);
-        setRemoveButton(true);
+        setFound(false);
       });
   };
 
   return (
     <Wrapper>
-      <LoginBtn action={handleAdd} text={"Add"} disabled={addButton} />
-      <LoginBtn action={handleRemove} text={"Remove"} disabled={removeButton} />
+      {found ? (
+        <LoginBtn action={handleRemove} text={"Remove"} />
+      ) : (
+        <LoginBtn action={handleAdd} text={"Add"} />
+      )}
     </Wrapper>
   );
 };
@@ -78,9 +79,7 @@ const Wrapper = styled.div`
   button {
     margin: 5px 10px;
     background-color: var(--blue);
-  }
-
-  button:last-of-type {
-    margin-left: 0px;
+    width: 100px;
+    font-weight: 400;
   }
 `;

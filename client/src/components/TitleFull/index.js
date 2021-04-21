@@ -22,15 +22,17 @@ const TitleFull = () => {
         setFound(false);
       }
     }
-    fetch(`/title/${titleId}`)
-      .then((res) => res.json())
-      .then((data) => {
-        data.data.Response === "False" && setResponse(false);
-        setResponse(data.data.Response);
-        setTitle(data.data);
-      });
+    currentUser &&
+      fetch(`/title/${titleId}`)
+        .then((res) => res.json())
+        .then((data) => {
+          data.data.Response === "False" && setResponse(false);
+          setResponse(data.data.Response);
+          setTitle(data.data);
+        });
   }, [currentUser, titleId, setResponse]);
 
+  console.log(found);
   return (
     <TitleSection>
       {response === "loading" ? (

@@ -68,14 +68,7 @@ const ProfileHeader = ({ memberData, currentUser }) => {
   };
   return (
     <HeaderWrap>
-      <Headings>
-        {!currentUser && (
-          <>
-            <h1>Streamshare</h1>
-            <h2>What are you watching?</h2>
-          </>
-        )}
-      </Headings>
+      {!currentUser && <h1>Streamshare</h1>}
 
       <ContentWrapper>
         <Left>
@@ -130,7 +123,8 @@ const HeaderWrap = styled.header`
     font-size: 1em;
   }
   h1 {
-    font-size: 1.5em;
+    font-size: 2em;
+    margin: 10px 0px;
     color: var(--blue);
     text-align: center;
   }

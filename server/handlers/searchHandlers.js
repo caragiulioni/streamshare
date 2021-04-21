@@ -21,9 +21,10 @@ const handleSearch = (req, res) => {
 
   request(options, function (error, response, body) {
     if (error) throw new Error(error);
-    return res
+    res
       .status(200)
       .json({ status: 200, data: JSON.parse(body), message: "success" });
+    client.close();
   });
 };
 
@@ -55,8 +56,6 @@ const handleProfile = async (req, res) => {
   } catch (err) {
     return res.status(400).json({ status: 400, message: err.message });
   }
-  // console.log(userObj);
-
-  // console.log(foundUser, userTitles);
+  client.close();
 };
 module.exports = { handleSearch, handleProfile };

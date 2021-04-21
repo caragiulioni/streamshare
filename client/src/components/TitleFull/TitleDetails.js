@@ -3,7 +3,7 @@ import styled from "styled-components";
 import ActionBar from "../ActionBar";
 import { useSelector } from "react-redux";
 import kitten from "../../assets/kitten.jpg";
-const TitleDetails = ({ title, found }) => {
+const TitleDetails = ({ title, found, setFound }) => {
   const { Title, Poster, imdbRating, Genre, Plot, Year, Rated } = title;
   const currentUser = useSelector((state) => state.user.currentUser);
   const addDefaultSrc = (ev) => {
@@ -34,7 +34,12 @@ const TitleDetails = ({ title, found }) => {
             <span>{Genre}</span>
           </p>
         </Details>
-        <ActionBar currentUser={currentUser} title={title} found={found} />
+        <ActionBar
+          currentUser={currentUser}
+          title={title}
+          setFound={setFound}
+          found={found}
+        />
       </InnerDetailsWrapper>
     </DetailsWrapper>
   );
