@@ -34,8 +34,8 @@ const LogInForm = () => {
         if (data.status === 200) {
           const id = data.data.user._id;
           localStorage.setItem("streamshareUser", id);
-          history.push("/mytitles");
           dispatch(receiveUserData(data.data));
+          history.push("/mytitles");
         } else {
           setMessage("please provide valid login data");
           dispatch(receiveUserDataErr());

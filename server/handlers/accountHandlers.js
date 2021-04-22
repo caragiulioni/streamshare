@@ -22,7 +22,7 @@ const createUser = async (req, res) => {
       const avatar = randomAv.avatar;
 
       //encrypt and salt password
-      const salt = await bcrypt.genSalt();
+      const salt = await bcrypt.genSalt(); //default rounds are 10
       const hashedPassword = await bcrypt.hash(password, salt);
 
       const newUser = {
@@ -79,18 +79,17 @@ const handleLogin = async (req, res) => {
     const isPassword = await bcrypt.compare(password, isUser.password);
     const userTitles = await db
       .collection("userTitles")
-      .findOne({ userId: isUser._id });
+      .findOne({ userId: ObjectID(isUser._id) });
 
     const follows = await db
       .collection("follows")
-      .findOne({ userId: isUser.follows });
-
+      .findOne({ userID: isUser._id });
     const user = {
       _id: isUser._id,
       username: isUser.username,
       avatar: isUser.avatar,
       userTitles: userTitles,
-      follows: follows,
+      follows: follows.follows,
     };
 
     if (isUser && isPassword) {
@@ -125,14 +124,13 @@ const reAuth = async (req, res) => {
 
   const follows = await db
     .collection("follows")
-    .findOne({ userId: verified.follows });
-
+    .findOne({ userID: ObjectID(id) });
   const user = {
     _id: verified._id,
     username: verified.username,
     avatar: verified.avatar,
     userTitles: userTitles,
-    follows: follows,
+    follows: follows.follows,
   };
   try {
     if (verified) {
@@ -149,7 +147,6 @@ const reAuth = async (req, res) => {
 
 const updateAvatar = async (req, res) => {
   const { userID, avatar } = req.body;
-  console.log(userID, avatar);
   const client = await MongoClient(MONGO_URI, options);
   await client.connect();
   const db = client.db("streamshare");

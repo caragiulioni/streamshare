@@ -4,6 +4,7 @@ import SignUp from "../SignUp";
 import LogIn from "../LogIn";
 import LoginBtn from "../Buttons/LoginBtn";
 const ProfileHeader = ({ memberData, currentUser }) => {
+  console.log("MEMBER", memberData, "CURRENT", currentUser);
   const { username, avatar } = memberData;
   const memberId = memberData._id;
   let userId;
@@ -13,7 +14,7 @@ const ProfileHeader = ({ memberData, currentUser }) => {
   const [following, setFollowing] = useState();
   useEffect(() => {
     if (currentUser && memberData) {
-      const find = currentUser.user.follows.follows.find((member) => {
+      const find = currentUser.user.follows.find((member) => {
         return memberId === member;
       });
       if (find) {
