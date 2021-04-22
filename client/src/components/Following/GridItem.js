@@ -38,8 +38,8 @@ const Item = styled.div`
 
 const Img = styled.div`
   border-radius: 3px;
-  width: 75px;
-  height: 75px;
+  width: 160px;
+  height: 160px;
   @media (min-width: 500px) {
     width: 160px;
     height: 160px;

@@ -27,7 +27,7 @@ const Wrapper = styled.div`
   }
 `;
 const GridWrapper = styled.div`
-  padding: 10px 0px;
+  padding: 5px 0px;
   background-color: var(--cleargrey);
   width: 100%;
   margin: 0 auto;
