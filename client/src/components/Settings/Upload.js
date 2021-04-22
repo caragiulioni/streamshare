@@ -22,7 +22,7 @@ const Upload = () => {
   const [fileObj, setFileObj] = useState();
   const [url, setUrl] = useState();
   const onClose = () => {
-    setPreview();
+    setPreview(preview);
   };
 
   const onCrop = (preview) => {

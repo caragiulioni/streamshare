@@ -98,14 +98,14 @@ function App() {
 export default App;
 
 const PageWrapper = styled.main`
-  height: calc(100vh - 25px); // vh - header index.js
+  height: calc(100vh - 25px); //account for mobile menu
   margin: 0px 10px 10px 10px;
 
   @media screen and (min-width: 700px) {
     margin: 0px 15px 15px 15px;
   }
   @media screen and (min-width: 1080px) {
-    height: calc(100vh - 35px); // vh - header index.js
+    height: calc(100vh - 35px);
     margin: 0px 25px 25px 25px;
   }
 `;
