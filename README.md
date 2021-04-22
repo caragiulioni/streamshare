@@ -32,5 +32,5 @@ yarn start
 Create your own account or take a look around on an existing profile:
 
 login: default
-password: 11111
+password: 11111111
 ```
