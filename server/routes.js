@@ -39,4 +39,5 @@ router.get("/profile/:username", handleProfile);
 router.get("/following/:userId", getFollowing);
 router.post("/follow", follow);
 router.delete("/unfollow", unfollow);
+
 module.exports = router;
