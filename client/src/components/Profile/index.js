@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { MemberContext } from "../../context/MemberContext";
 import ProfileHeader from "../ProfileHeader/ProfileHeader";
@@ -12,6 +12,7 @@ import {
 } from "../../actions/actions";
 
 const Profile = () => {
+  let history = useHistory();
   const dispatch = useDispatch();
   const isStored = localStorage.getItem("streamshareUser");
   const { username } = useParams();
@@ -35,22 +36,25 @@ const Profile = () => {
     fetch(`/profile/${username}`)
       .then((res) => res.json())
       .then((data) => {
-        setMemberData(data.data.userObj);
-        setResponse(true);
+        if (data.status === 200) {
+          setMemberData(data.data.userObj);
+          setResponse("loaded");
+        } else {
+          setResponse("loaded");
+        }
       });
   }, [isStored, dispatch]);
 
   const currentUser = useSelector((state) => state.user.currentUser);
   return (
     <div>
-      {memberData ? (
+      {memberData && (
         <>
           <ProfileHeader memberData={memberData} currentUser={currentUser} />
           <ProfileTitles memberData={memberData} />
         </>
-      ) : (
-        <Spinner />
       )}
+      {response === "loading" && <Spinner />}
     </div>
   );
 };

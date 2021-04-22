@@ -108,6 +108,7 @@ const handleLogin = async (req, res) => {
   } catch (err) {
     res.status(400).json({ status: 400, message: err.message });
   }
+  client.close();
 };
 
 //re-authorize on return
@@ -142,6 +143,8 @@ const reAuth = async (req, res) => {
   } catch (err) {
     return res.status(400).json({ status: 400, message: err.message });
   }
+
+  client.close();
 };
 
 const updateAvatar = async (req, res) => {
@@ -187,6 +190,7 @@ const updateAvatar = async (req, res) => {
       msg: "could not add avatar",
     });
   }
+  client.close();
 };
 
 module.exports = { createUser, handleLogin, reAuth, updateAvatar };

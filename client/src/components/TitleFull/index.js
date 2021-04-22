@@ -32,7 +32,6 @@ const TitleFull = () => {
         });
   }, [currentUser, titleId, setResponse]);
 
-  console.log(found);
   return (
     <TitleSection>
       {response === "loading" ? (

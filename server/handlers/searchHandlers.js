@@ -24,7 +24,6 @@ const handleSearch = (req, res) => {
     res
       .status(200)
       .json({ status: 200, data: JSON.parse(body), message: "success" });
-    client.close();
   });
 };
 

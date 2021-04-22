@@ -17,6 +17,8 @@ const getUserTitles = async (req, res) => {
       .status(200)
       .json({ status: 200, data: titles, message: "success" });
   }
+
+  client.close();
 };
 
 const getTitle = async (req, res) => {
@@ -75,6 +77,8 @@ const addTitle = async (req, res) => {
       msg: "could not add title.",
     });
   }
+
+  client.close();
 };
 
 const removeTitle = async (req, res) => {
@@ -106,6 +110,7 @@ const removeTitle = async (req, res) => {
       err: err,
     });
   }
+  client.close();
 };
 
 module.exports = { getUserTitles, getTitle, addTitle, removeTitle };
