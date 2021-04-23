@@ -6,6 +6,7 @@ const ActionBar = ({ title, currentUser, found, setFound }) => {
   const [addButton, setAddButton] = useState();
   const [removeButton, setRemoveButton] = useState();
   useEffect(() => {
+    // console.log(currentUser.user._id);
     // if (found) {
     //   setAddButton(true);
     //   setRemoveButton(false);

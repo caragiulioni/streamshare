@@ -12,16 +12,24 @@ const TitleFull = () => {
   const { response, setResponse, title, setTitle } = useContext(ResultsContext);
   useEffect(() => {
     setResponse("loading");
-    if (currentUser) {
-      const find = currentUser.user.userTitles.titles.find((title) => {
-        return title.imdbID === titleId;
+    console.log(currentUser.user._id);
+
+    fetch(`/titles/${currentUser.user._id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        const find = data.data.titles.find((title) => {
+          console.log(title.imdbID);
+          console.log("CURRENT", titleId);
+          return title.imdbID == titleId;
+        });
+        if (find) {
+          setFound(true);
+        } else {
+          setFound(false);
+        }
       });
-      if (find) {
-        setFound(true);
-      } else {
-        setFound(false);
-      }
-    }
+
     currentUser &&
       fetch(`/title/${titleId}`)
         .then((res) => res.json())
