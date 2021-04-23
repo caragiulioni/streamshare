@@ -36,6 +36,6 @@ const GridWrapper = styled.div`
   flex-wrap: wrap;
   @media (min-width: 500px) {
     padding: 20px;
-    width: 60%;
+    width: 75%;
   }
 `;
