@@ -60,14 +60,11 @@ const SortComponent = ({ titles, setTitles, original }) => {
 export default SortComponent;
 
 const Wrapper = styled.div`
-  margin: 15px 0px;
-  margin-left: 5px;
   button {
     font-size: 1em;
     cursor: pointer;
     background-color: transparent;
     border: none;
-    /* color: var(--blue); */
     transition: 0.3s ease-in-out;
   }
 

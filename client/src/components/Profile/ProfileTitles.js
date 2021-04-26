@@ -4,11 +4,13 @@ import Title from "../Title";
 import "../../Global/masonry.css";
 import SortComponent from "../Buttons/SortComponent";
 import styled from "styled-components";
+import FilterBar from "../FilterBar";
 const ProfileTitles = ({ memberData }) => {
   const memberTitles = memberData.userTitles.titles;
   const render = [...memberTitles].reverse();
   const [titles, setTitles] = useState(render);
   const [original, setOriginal] = useState(render);
+  const [value, setValue] = useState("");
   const breakpointColumnsObj = {
     default: 5,
     1280: 5,
@@ -23,19 +25,36 @@ const ProfileTitles = ({ memberData }) => {
         </Heading>
       ) : (
         <>
-          <SortComponent
+          {/* <SortComponent
             titles={titles}
             setTitles={setTitles}
             original={original}
-          />
+          /> */}
+
+          <Actions>
+            <FilterBar value={value} setValue={setValue} />
+            <SortComponent
+              titles={titles}
+              setTitles={setTitles}
+              original={original}
+            />
+          </Actions>
           <Masonry
             breakpointCols={breakpointColumnsObj}
             className="my-masonry-grid"
             columnClassName="my-masonry-grid_column"
           >
-            {titles.map((result) => (
-              <Title key={result.imdbID} result={result} />
-            ))}
+            {titles
+              .filter((result) => {
+                if (!value) return true;
+                if (result.Genre.toLowerCase().includes(value.toLowerCase())) {
+                  return true;
+                }
+                return false;
+              })
+              .map((result) => (
+                <Title key={result.imdbID} result={result} />
+              ))}
           </Masonry>
         </>
       )}
@@ -52,4 +71,9 @@ const Heading = styled.div`
     font-size: 1.3em;
     margin: 25px;
   }
+`;
+
+const Actions = styled.div`
+  display: flex;
+  align-items: center;
 `;
