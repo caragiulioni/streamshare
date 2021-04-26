@@ -73,10 +73,12 @@ export default LogInForm;
 const Form = styled.form`
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;
 
 const Message = styled.p`
+  text-align: center;
   margin: 10px 0px;
-  color: #e97124;
+  color: var(--orange);
   font-size: 0.8em;
 `;

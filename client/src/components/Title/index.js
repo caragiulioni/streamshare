@@ -15,7 +15,9 @@ const Title = ({ result }) => {
       <Link to={`/title/${titleId}`}>
         <h4>{Title}</h4>
         <Details>
-          <p>{Genre}</p>
+          <p>
+            <span>{Genre}</span>
+          </p>
         </Details>
         <img onError={addDefaultSrc} src={Poster} alt={Title} />
       </Link>
@@ -34,12 +36,17 @@ const TitleContainer = styled.div`
 
   h4 {
     font-size: 1.2em;
+    color: var(--darkgrey);
+  }
+
+  span {
+    color: var(--orange);
   }
 
   p {
-    color: var(--orange);
     font-size: 0.8em;
     margin: 5px 0px;
+    font-weight: 200;
   }
   img {
     width: 100%;

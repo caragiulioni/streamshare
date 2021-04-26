@@ -2,11 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import Logo from "./Logo";
 import HomeActions from "./HomeActions";
+import Details from "./Details";
 const Home = () => {
   return (
     <Wrapper>
       <Logo />
       <HomeActions />
+      <Details />
     </Wrapper>
   );
 };

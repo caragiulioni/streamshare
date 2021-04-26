@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import LoginBtn from "../Buttons/LoginBtn";
 const ThemeButton = () => {
   const [dark, setDark] = useState();
   const currentTheme = window.localStorage.getItem("streamshareTheme");
@@ -14,7 +15,7 @@ const ThemeButton = () => {
       setDark(true);
     }
   };
-  return <button onClick={setTheme}>Set Theme</button>;
+  return <LoginBtn action={setTheme} text={"Set Theme"} />;
 };
 
 export default ThemeButton;

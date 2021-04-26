@@ -11,6 +11,7 @@ import {
 } from "../../actions/actions";
 import Spinner from "../Spinner";
 import Upload from "./Upload";
+import LoginBtn from "../Buttons/LoginBtn";
 
 const Settings = () => {
   let history = useHistory();
@@ -51,7 +52,7 @@ const Settings = () => {
           <h3>SETTINGS</h3>
           <Upload currentUser={currentUser} />
           <ThemeButton />
-          <button onClick={handleLogout}>Log Out</button>
+          <LoginBtn action={handleLogout} text={"Log Out"} />
         </Wrapper>
       ) : (
         <Spinner />
@@ -77,11 +78,6 @@ const Wrapper = styled.div`
     font-weight: bold;
   }
   button {
-    background-color: transparent;
-    border: 2px solid var(--blue);
-    width: 100px;
-    color: var(--blue);
-    font-weight: bold;
-    margin: 5px 0px;
+    width: 85px;
   }
 `;

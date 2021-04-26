@@ -7,6 +7,7 @@ import {
   receiveUserData,
   receiveUserDataErr,
 } from "../../actions/actions";
+import LoginBtn from "../Buttons/LoginBtn";
 
 const Upload = () => {
   let currentUser = useSelector((state) => state.user.currentUser);
@@ -97,9 +98,11 @@ const Upload = () => {
         />
       </AvatarContainer>
       <Img>{preview && <img src={preview} alt="Preview" />}</Img>
-      <button onClick={handleUpload} disabled={!fileObj ? true : false}>
-        Upload
-      </button>
+      <LoginBtn
+        onClick={handleUpload}
+        disabled={!fileObj ? true : false}
+        text={"Upload"}
+      />
     </Wrapper>
   );
 };

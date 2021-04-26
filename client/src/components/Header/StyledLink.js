@@ -7,7 +7,7 @@ const StyledLink = ({ link, text }) => {
       to={`/${link}`}
       activeStyle={{
         fontWeight: "bold",
-        color: "#E9613F",
+        color: "#F7A800",
       }}
     >
       {text && text}

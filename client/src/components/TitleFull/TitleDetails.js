@@ -12,7 +12,7 @@ const TitleDetails = ({ title, found, setFound }) => {
   return (
     <DetailsWrapper>
       <InnerWrapper>
-        <h2>{Title}</h2>
+        <h3>{Title}</h3>
         <img onError={addDefaultSrc} src={Poster} alt={Title} />
       </InnerWrapper>
       <InnerDetailsWrapper>
@@ -55,6 +55,7 @@ const DetailsWrapper = styled.div`
 
   p {
     display: flex;
+    color: var(--darkgrey);
   }
   img {
     width: 100%;
@@ -64,10 +65,11 @@ const DetailsWrapper = styled.div`
     color: var(--orange);
   }
 
-  h2 {
+  h3 {
     font-size: 1.2em;
     font-weight: bold;
     margin: 15px 0px 10px 0px;
+    color: var(--darkgrey);
   }
 
   @media (min-width: 700px) {

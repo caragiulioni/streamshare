@@ -7,12 +7,12 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 
 
 :root{
-    --orange:  #E9613F;
-    --blue: #6697CB;
-    --offwhite: #F0F0FF;
+    --orange:  #F7A800;
+    --blue: #66D1AB;
+    --offwhite: #F9FBFF;
     --darkgrey: #67687B;
     --smoke: #34363E;
-    --cleargrey: rgb(52, 54, 74, 0.05);
+    --cleargrey: rgb(52, 54, 74, 0.08);
     margin: 0;
     padding: 0;
 }
@@ -79,11 +79,24 @@ h1{
 .dark{
     background-color: black;
     color: var(--offwhite);
- a{
-     color: var(---offwhite);
- }
+    a{
+        color: var(---offwhite);
+    }
+
+    h4{
+        color: var(----offwhite)
+    }
+    h3{
+        color: var(----offwhite)
+    }
+    p{
+        color: var(----offwhite)
+    }
 }
 
+.dark h4{
+        color: var(----offwhite)
+}
 
 
 label{

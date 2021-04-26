@@ -50,7 +50,7 @@ const InnerModal = styled.div`
 `;
 
 const Close = styled.button`
-  background-color: var(--blue);
+  background-color: var(--orange);
   opacity: 0.8;
   color: white;
   padding: 2px 0px;

@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 const SortComponent = ({ titles, setTitles, original }) => {
   const [active, setActive] = useState();
-  const orange = "#E9613F";
-  const blue = "#6697CB";
+  const orange = "#E69824";
+  const blue = "#66D1AB";
 
   const descend = () => {
     setActive("descend");
@@ -30,25 +30,25 @@ const SortComponent = ({ titles, setTitles, original }) => {
   return (
     <Wrapper>
       <button
-        style={{ color: active === "descend" ? orange : blue }}
+        style={{ color: active === "descend" ? blue : "lightgrey" }}
         onClick={descend}
       >
         Z-A
       </button>
       <button
-        style={{ color: active === "ascend" ? orange : blue }}
+        style={{ color: active === "ascend" ? blue : "lightgrey" }}
         onClick={ascend}
       >
         A-Z
       </button>
       <button
-        style={{ color: active === "last" ? orange : blue }}
+        style={{ color: active === "last" ? blue : "lightgrey" }}
         onClick={firstToLast}
       >
         first to last
       </button>
       <button
-        style={{ color: active === "revert" ? orange : blue }}
+        style={{ color: active === "revert" ? blue : "lightgrey" }}
         onClick={revert}
       >
         last to first
