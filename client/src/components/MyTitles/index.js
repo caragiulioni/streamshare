@@ -7,13 +7,15 @@ import Title from "../Title";
 import "../../Global/masonry.css";
 import Spinner from "../Spinner";
 import SortComponent from "../Buttons/SortComponent";
+import FilterBar from "../FilterBar";
+import styled from "styled-components";
 
 const MyTitles = () => {
   const currentUser = useSelector((state) => state.user.currentUser.user);
   const [titles, setTitles] = useState(null);
   const [original, setOriginal] = useState(null);
   const [response, setResponse] = useState(null);
-
+  const [value, setValue] = useState("");
   useEffect(() => {
     setResponse("loading");
     if (currentUser._id) {
@@ -38,24 +40,37 @@ const MyTitles = () => {
     1080: 3,
     700: 2,
   };
+
   return (
     <div>
       {response === "loading" && <Spinner />}
       {currentUser && response === true && (
         <div>
-          <SortComponent
-            titles={titles}
-            setTitles={setTitles}
-            original={original}
-          />
+          <Actions>
+            <FilterBar value={value} setValue={setValue} />
+            <SortComponent
+              titles={titles}
+              setTitles={setTitles}
+              original={original}
+            />
+          </Actions>
+
           <Masonry
             breakpointCols={breakpointColumnsObj}
             className="my-masonry-grid"
             columnClassName="my-masonry-grid_column"
           >
-            {titles.map((result) => (
-              <Title key={result.imdbID} result={result} />
-            ))}
+            {titles
+              .filter((result) => {
+                if (!value) return true;
+                if (result.Genre.toLowerCase().includes(value.toLowerCase())) {
+                  return true;
+                }
+                return false;
+              })
+              .map((result) => (
+                <Title key={result.imdbID} result={result} />
+              ))}
           </Masonry>
         </div>
       )}
@@ -70,3 +85,8 @@ const MyTitles = () => {
 };
 
 export default MyTitles;
+
+const Actions = styled.div`
+  display: flex;
+  align-items: center;
+`;

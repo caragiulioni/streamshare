@@ -137,14 +137,13 @@ const HeaderWrap = styled.header`
   }
   button {
     font-size: 0.8em;
-    width: 70px;
     margin-left: 5px;
     padding: 5px;
   }
   @media (min-width: 1080px) {
     padding: 20px 0px 15px 0px;
     button {
-      width: 85px;
+      width: 98px;
       font-size: 1em;
     }
   }

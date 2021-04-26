@@ -82,22 +82,11 @@ h1{
     a{
         color: var(---offwhite);
     }
-
-    h4{
-        color: var(----offwhite)
-    }
-    h3{
-        color: var(----offwhite)
-    }
-    p{
-        color: var(----offwhite)
-    }
 }
 
-.dark h4{
+.dark h4, .dark h3, .dark p{
         color: var(----offwhite)
 }
-
 
 label{
     font-weight: 200 !important; 
