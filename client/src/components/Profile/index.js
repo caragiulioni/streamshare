@@ -17,10 +17,19 @@ const Profile = () => {
   const isStored = localStorage.getItem("streamshareUser");
   const { username } = useParams();
   const [response, setResponse] = useState();
-  const { memberData, setMemberData } = useContext(MemberContext);
-
+  const [memberData, setMemberData] = useState();
   useEffect(() => {
     setResponse("loading");
+    fetch(`/profile/${username}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === 200) {
+          setMemberData(data.data.userObj);
+          setResponse("loaded");
+        } else {
+          setResponse("loaded");
+        }
+      });
     if (isStored) {
       dispatch(sendUserData());
       fetch(`/auth/${isStored}`)
@@ -33,17 +42,7 @@ const Profile = () => {
           }
         });
     }
-    fetch(`/profile/${username}`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.status === 200) {
-          setMemberData(data.data.userObj);
-          setResponse("loaded");
-        } else {
-          setResponse("loaded");
-        }
-      });
-  }, [isStored, dispatch]);
+  }, [setMemberData, setResponse, isStored]);
 
   const currentUser = useSelector((state) => state.user.currentUser);
   return (

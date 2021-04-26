@@ -73,19 +73,18 @@ input{
 h1{
     font-family: 'Play', sans-serif;
     font-weight: 700;
-    color: var(---orange);
 }
 
 .dark{
     background-color: black;
     color: var(--offwhite);
-    a{
-        color: var(---offwhite);
-    }
 }
 
-.dark h4, .dark h3, .dark p{
-        color: var(----offwhite)
+.dark a{
+    color:var(--offwhite);
+}
+.dark h4, .dark h3, .dark h2, .dark p .dark a{
+        color: var(--offwhite) !important;
 }
 
 label{

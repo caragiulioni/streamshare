@@ -12,6 +12,7 @@ import {
 import Spinner from "../Spinner";
 import Upload from "./Upload";
 import LoginBtn from "../Buttons/LoginBtn";
+import { SectionContainer } from "../../Global/sectionStyles";
 
 const Settings = () => {
   let history = useHistory();
@@ -48,12 +49,12 @@ const Settings = () => {
   return (
     <>
       {status !== "loading" && currentUser ? (
-        <Wrapper>
+        <SectionContainer>
           <h3>SETTINGS</h3>
           <Upload currentUser={currentUser} />
           <ThemeButton />
           <LoginBtn action={handleLogout} text={"Log Out"} />
-        </Wrapper>
+        </SectionContainer>
       ) : (
         <Spinner />
       )}
@@ -64,20 +65,7 @@ const Settings = () => {
 export default Settings;
 
 const Wrapper = styled.div`
-  margin: 25px 0px;
-  padding-bottom: 25px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  h3 {
-    text-align: center;
-    margin: 15px 0px;
-    font-size: 1.5em;
-    color: var(--blue);
-    font-weight: bold;
-  }
   button {
-    width: 85px;
+    width: 100px;
   }
 `;

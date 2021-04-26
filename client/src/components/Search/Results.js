@@ -40,7 +40,7 @@ const NoResult = styled.div`
   p:first-of-type {
     text-align: center;
     margin: 10px;
-    color: var(--blue);
+    color: var(--orange);
   }
   @media screen and (min-width: 700px) {
     width: 30%;

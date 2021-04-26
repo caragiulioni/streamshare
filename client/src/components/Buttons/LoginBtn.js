@@ -12,10 +12,9 @@ export default LoginBtn;
 
 const Wrapper = styled.button`
   margin: 5px auto;
-  width: 80px;
   background-color: transparent;
-  border: 2px solid var(--blue);
-  width: 100px;
+  border: 3px solid var(--blue);
+  width: 110px;
   color: var(--blue);
   font-weight: bold;
   margin: 5px 0px;
@@ -34,8 +33,6 @@ const Wrapper = styled.button`
     opacity: 0.4;
   }
   @media (min-width: 700px) {
-    padding: 4px;
-    width: 70px;
     font-size: 1em;
   }
 `;

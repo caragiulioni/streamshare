@@ -12,7 +12,7 @@ const Details = () => {
         </Icon>
       </Heading>
       <Heading>
-        <p>Add titles to your lists</p>
+        <p>Add titles to your list</p>
         <Icon>
           <RiPlayListAddLine />
         </Icon>
