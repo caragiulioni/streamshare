@@ -1,12 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { useHistory, Link } from "react-router-dom";
 const UserSearchBar = ({ options }) => {
-  let history = useHistory();
   const [userDisplay, setUserDisplay] = useState(false);
   const [userSearch, setUserSearch] = useState("");
   const [selectionIndex, setSelectionIndex] = useState(0);
   const [hover, setHover] = useState(undefined);
+  const wrapperRef = useRef(null);
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [wrapperRef]);
+  const handleClickOutside = (event) => {
+    const { current: wrap } = wrapperRef;
+    if (wrap && !wrap.contains(event.target)) {
+      setUserDisplay(false);
+      setUserSearch("");
+    }
+  };
+  let history = useHistory();
 
   const setItem = (item) => {
     setUserSearch(item);
@@ -24,7 +36,7 @@ const UserSearchBar = ({ options }) => {
     );
   });
   return (
-    <Wrapper>
+    <Wrapper ref={wrapperRef}>
       <h4>Member Search</h4>
       <input
         placeholder="ex. eleven or mugatu"

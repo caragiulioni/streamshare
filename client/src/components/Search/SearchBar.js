@@ -35,7 +35,6 @@ const SearchBar = ({ setUserDisplay }) => {
       <Form>
         <label htmlFor="search"></label>
         <input
-          onClick={() => setUserDisplay(false)}
           placeholder="ex. Queen's Gambit"
           name="search"
           type="text"

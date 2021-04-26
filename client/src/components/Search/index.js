@@ -28,7 +28,7 @@ const Search = () => {
     <SectionMain>
       <h3>Search</h3>
       <UserSearchBar options={options} />
-      <SearchBar setUserDisplay={setUserDisplay} />
+      <SearchBar />
       <Results />
     </SectionMain>
   );
