@@ -135,6 +135,7 @@ const HeaderWrap = styled.header`
     margin-top: 2px;
     margin-left: 5px;
   }
+
   button {
     font-size: 0.8em;
     margin-left: 5px;
@@ -144,7 +145,6 @@ const HeaderWrap = styled.header`
     padding: 20px 0px 15px 0px;
     button {
       width: 98px;
-      font-size: 1em;
     }
   }
 `;
@@ -170,6 +170,7 @@ const Inner = styled.div`
     margin-left: 10px;
     font-size: 1.5em;
     font-weight: bold;
+    color: var(--darkgrey);
   }
 
   span {
