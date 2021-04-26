@@ -83,7 +83,13 @@ h1{
         color: var(---offwhite);
     }
 
-    h3, h4, p{
+    h4{
+        color: var(----offwhite)
+    }
+    h3{
+        color: var(----offwhite)
+    }
+    p{
         color: var(----offwhite)
     }
 }

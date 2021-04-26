@@ -23,10 +23,10 @@ const Wrapper = styled.div`
   position: fixed;
   bottom: 0;
   z-index: 8;
-  background-color: rgb(102, 151, 203, 0.9);
+  background-color: var(--blue);
 `;
 const Button = styled.button`
-  background-color: rgb(52, 54, 74, 0.05);
+  background-color: var(--cleargrey);
   position: fixed;
   bottom: 0;
   left: 2rem; //remove?

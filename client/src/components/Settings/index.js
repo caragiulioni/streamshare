@@ -78,6 +78,6 @@ const Wrapper = styled.div`
     font-weight: bold;
   }
   button {
-    width: 80px;
+    width: 85px;
   }
 `;

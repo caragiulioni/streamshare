@@ -30,25 +30,25 @@ const SortComponent = ({ titles, setTitles, original }) => {
   return (
     <Wrapper>
       <button
-        style={{ color: active === "descend" ? blue : orange }}
+        style={{ color: active === "descend" ? blue : "lightgrey" }}
         onClick={descend}
       >
         Z-A
       </button>
       <button
-        style={{ color: active === "ascend" ? blue : orange }}
+        style={{ color: active === "ascend" ? blue : "lightgrey" }}
         onClick={ascend}
       >
         A-Z
       </button>
       <button
-        style={{ color: active === "last" ? blue : orange }}
+        style={{ color: active === "last" ? blue : "lightgrey" }}
         onClick={firstToLast}
       >
         first to last
       </button>
       <button
-        style={{ color: active === "revert" ? blue : orange }}
+        style={{ color: active === "revert" ? blue : "lightgrey" }}
         onClick={revert}
       >
         last to first

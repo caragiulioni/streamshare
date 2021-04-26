@@ -48,10 +48,6 @@ const MenuWrap = styled.nav`
     text-decoration: none;
     transition: color 0.3s linear;
   }
-
-  &:hover {
-    color: #343078;
-  }
 `;
 
 const LinkWrap = styled.div`
