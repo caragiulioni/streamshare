@@ -95,7 +95,7 @@ const ProfileHeader = ({ memberData, currentUser }) => {
             {currentUser && userId && userId !== memberId && (
               <LoginBtn
                 action={handleFollow}
-                text={following ? "Unfollow" : "Follow"}
+                text={following ? "Following" : "Follow"}
               />
             )}
           </Inner>

@@ -34,12 +34,14 @@ const TitleContainer = styled.div`
 
   h4 {
     font-size: 1.2em;
+    color: var(--darkgrey);
   }
 
   p {
     color: var(--orange);
     font-size: 0.8em;
     margin: 5px 0px;
+    font-weight: 200;
   }
   img {
     width: 100%;

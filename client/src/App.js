@@ -53,7 +53,7 @@ function App() {
       <MemberProvider>
         <ResultsProvider>
           <GlobalStyles />
-          <Variables />
+          {/* <Variables /> */}
           <BrowserRouter>
             {currentUser && <Header />}
             {currentUser && <MobileNav />}

@@ -79,8 +79,7 @@ export default ActionBar;
 const Wrapper = styled.div`
   button {
     margin: 5px 10px;
-    background-color: var(--blue);
     width: 100px;
-    font-weight: 400;
+    font-weight: bold;
   }
 `;

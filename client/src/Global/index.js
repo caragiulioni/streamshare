@@ -7,9 +7,9 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 
 
 :root{
-    --orange:  #E9613F;
-    --blue: #6697CB;
-    --offwhite: #F0F0FF;
+    --orange:  #F7A800;
+    --blue: #66D1AB;
+    --offwhite: #F9FBFF;
     --darkgrey: #67687B;
     --smoke: #34363E;
     --cleargrey: rgb(52, 54, 74, 0.05);
@@ -79,9 +79,13 @@ h1{
 .dark{
     background-color: black;
     color: var(--offwhite);
- a{
-     color: var(---offwhite);
- }
+    a{
+        color: var(---offwhite);
+    }
+
+    h3, h4, p{
+        color: var(----offwhite)
+    }
 }
 
 

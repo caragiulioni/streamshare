@@ -12,14 +12,14 @@ export default LoginBtn;
 
 const Wrapper = styled.button`
   margin: 5px auto;
-  padding: 10px;
   width: 80px;
-  background-color: var(--orange);
-  border-radius: 5px;
-  color: var(--offwhite);
+  background-color: transparent;
+  border: 2px solid var(--blue);
+  width: 100px;
+  color: var(--blue);
   font-weight: bold;
-  font-size: 1em;
-  border: 2px solid var(--grey);
+  margin: 5px 0px;
+  text-transform: uppercase;
   cursor: pointer;
 
   &:hover {
