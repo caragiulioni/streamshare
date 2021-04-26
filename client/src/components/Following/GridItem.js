@@ -30,6 +30,10 @@ const Item = styled.div`
   h4 {
     font-size: 0.9em;
     margin: 5px 0px;
+    background-color: var(--blue);
+    color: white;
+    padding: 5px;
+    border-radius: 2px;
   }
   @media (min-width: 500px) {
     font-size: 1.3em;

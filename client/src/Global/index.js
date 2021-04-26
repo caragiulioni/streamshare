@@ -12,7 +12,7 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
     --offwhite: #F9FBFF;
     --darkgrey: #67687B;
     --smoke: #34363E;
-    --cleargrey: rgb(52, 54, 74, 0.05);
+    --cleargrey: rgb(52, 54, 74, 0.08);
     margin: 0;
     padding: 0;
 }
@@ -94,6 +94,9 @@ h1{
     }
 }
 
+.dark h4{
+        color: var(----offwhite)
+}
 
 
 label{
