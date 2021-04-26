@@ -9,7 +9,7 @@ export const SectionContainer = styled.section`
   margin: 0 auto;
 
   h3 {
-    font-size: 2em;
+    font-size: 1.5em;
     color: var(--blue);
     font-weight: bold;
     text-align: center;
@@ -21,7 +21,7 @@ export const SectionContainer = styled.section`
   }
 
   h4 {
-    font-size: 1.3em;
+    font-size: 1em;
     text-align: center;
     color: var(--orange);
     margin: 10px 0px;
@@ -42,5 +42,12 @@ export const SectionWrapper = styled.div`
 `;
 
 export const SectionMain = styled.section`
-  padding: 20px 0px;
+  h3 {
+    text-align: center;
+    margin: 15px 0px;
+    font-size: 1.5em;
+    color: var(--blue);
+    font-weight: bold;
+    text-transform: uppercase;
+  }
 `;

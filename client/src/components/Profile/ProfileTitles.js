@@ -25,12 +25,6 @@ const ProfileTitles = ({ memberData }) => {
         </Heading>
       ) : (
         <>
-          {/* <SortComponent
-            titles={titles}
-            setTitles={setTitles}
-            original={original}
-          /> */}
-
           <Actions>
             <FilterBar value={value} setValue={setValue} />
             <SortComponent

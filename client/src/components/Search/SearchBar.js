@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import styled from "styled-components";
 import LoginBtn from "../Buttons/LoginBtn";
 import { ResultsContext } from "../../context/ResultsContext";
-const SearchBar = () => {
+const SearchBar = ({ setUserDisplay }) => {
   const [query, setQuery] = useState({ query: "" });
   const { setResults, setResponse } = useContext(ResultsContext);
 
@@ -10,8 +10,6 @@ const SearchBar = () => {
     setQuery({ ...query, [item]: val.toLowerCase() });
   };
 
-  const search = "Search";
-  const clear = "Clear";
   const handleSearch = (event) => {
     setResponse("loading");
     event.preventDefault();
@@ -37,6 +35,7 @@ const SearchBar = () => {
       <Form>
         <label htmlFor="search"></label>
         <input
+          onClick={() => setUserDisplay(false)}
           placeholder="ex. Queen's Gambit"
           name="search"
           type="text"
@@ -44,7 +43,7 @@ const SearchBar = () => {
           onChange={(ev) => handleChange(ev.target.value, "query")}
         />
         <Buttons>
-          <LoginBtn action={handleSearch} text={search} />
+          <LoginBtn action={handleSearch} text={"Search Titles"} />
         </Buttons>
       </Form>
     </Search>
@@ -69,6 +68,7 @@ const Form = styled.form`
   }
   button {
     margin: 5px 0px;
+    width: 130px;
   }
 `;
 

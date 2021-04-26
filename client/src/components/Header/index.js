@@ -70,6 +70,10 @@ const HeaderWrap = styled.header`
     font-weight: bold;
     padding: 0px 5px;
   }
+
+  .dark a {
+    color: var(--offwhite);
+  }
   @media (min-width: 1080px) {
     padding: 20px 0px 15px 0px;
   }

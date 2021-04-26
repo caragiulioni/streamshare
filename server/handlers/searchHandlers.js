@@ -29,7 +29,6 @@ const handleSearch = (req, res) => {
 
 const handleProfile = async (req, res) => {
   const username = req.params.username;
-  console.log(username);
   const client = await MongoClient(MONGO_URI, options);
   await client.connect();
   const db = client.db("streamshare");
@@ -57,4 +56,18 @@ const handleProfile = async (req, res) => {
   }
   client.close();
 };
-module.exports = { handleSearch, handleProfile };
+
+const getAllUsers = async (req, res) => {
+  const client = await MongoClient(MONGO_URI, options);
+  await client.connect();
+  const db = client.db("streamshare");
+  try {
+    const allUsers = await db.collection("users").find().toArray();
+    const members = allUsers.map((user) => {
+      return { username: user.username, avatar: user.avatar };
+    });
+    return res.status(200).json({ status: 200, members, message: "success" });
+  } catch (err) {}
+  client.close();
+};
+module.exports = { getAllUsers, handleSearch, handleProfile };
