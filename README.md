@@ -1,6 +1,6 @@
 # Streamshare
 
-![Streanshare](resources/landing.png)
+![Streanshare](resources/home.png)
 
 Search movies, TV and video games.
 
