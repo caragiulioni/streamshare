@@ -30,6 +30,9 @@ const SearchBar = ({ setUserDisplay }) => {
       });
   };
 
+  const clearResults = () => {
+    setResults();
+  };
   return (
     <Search>
       <Form>
@@ -39,6 +42,7 @@ const SearchBar = ({ setUserDisplay }) => {
           name="search"
           type="text"
           value={query.query}
+          onClick={clearResults}
           onChange={(ev) => handleChange(ev.target.value, "query")}
         />
         <Buttons>
