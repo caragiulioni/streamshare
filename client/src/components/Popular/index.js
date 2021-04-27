@@ -48,8 +48,9 @@ const Popular = () => {
 export default Popular;
 
 const Wrapper = styled.div`
-  h4 {
+  h4:nth-child(2) {
     text-align: center;
     margin: 10px 0px;
+    color: var(--orange);
   }
 `;
