@@ -21,6 +21,7 @@ const {
   getTitle,
   addTitle,
   removeTitle,
+  getPopular,
 } = require("./handlers/titleHandlers");
 
 //account handlers
@@ -30,6 +31,7 @@ router.get("/auth/:isCurrent", reAuth);
 router.put("/avatar", updateAvatar);
 
 //title handlers
+router.get("/popular", getPopular);
 router.get("/titles/:userId", getUserTitles);
 router.get("/title/:titleId", getTitle);
 router.post("/add-title", addTitle);

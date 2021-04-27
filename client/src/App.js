@@ -22,6 +22,7 @@ import Settings from "./components/Settings";
 import TitleFull from "./components/TitleFull";
 import Profile from "./components/Profile";
 import Following from "./components/Following";
+import Popular from "./components/Popular";
 import Error from "./components/Error/index.js";
 function App() {
   const dispatch = useDispatch();
@@ -73,6 +74,9 @@ function App() {
                 </Route>
                 <Route exact path="/following">
                   {currentUser ? <Following /> : <Redirect to="/" />}
+                </Route>
+                <Route exact path="/popular">
+                  {currentUser ? <Popular /> : <Redirect to="/" />}
                 </Route>
                 <Route exact path="/settings">
                   {currentUser ? <Settings /> : <Redirect to="/" />}

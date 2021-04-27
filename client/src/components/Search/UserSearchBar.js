@@ -31,7 +31,7 @@ const UserSearchBar = ({ options }) => {
 
   const matches = options.filter((option) => {
     return (
-      userSearch.length > 1 &&
+      userSearch.length > 0 &&
       option.username.toLowerCase().includes(userSearch.toLowerCase())
     );
   });
