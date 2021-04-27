@@ -37,7 +37,7 @@ const SearchBar = ({ setUserDisplay }) => {
   return (
     <Search>
       <Form>
-        <label htmlFor="search"></label>
+        <label htmlFor="search" aria-label="search"></label>
         <input
           placeholder="ex. Queen's Gambit"
           name="search"

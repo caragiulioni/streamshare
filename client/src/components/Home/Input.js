@@ -3,7 +3,7 @@ import styled from "styled-components";
 const Input = ({ name, type, placeholder, setValue, value, borderColor }) => {
   return (
     <Wrapper>
-      <label htmlFor={name}></label>
+      <label htmlFor={name} aria-label="name"></label>
       <StyledInput
         borderColor={borderColor}
         type={type}
