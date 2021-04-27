@@ -32,6 +32,7 @@ const SearchBar = ({ setUserDisplay }) => {
 
   const clearResults = () => {
     setResults();
+    setQuery({ query: "" });
   };
   return (
     <Search>
