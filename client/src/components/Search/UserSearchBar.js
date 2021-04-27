@@ -67,6 +67,16 @@ const UserSearchBar = ({ options }) => {
               }
               return;
             }
+            default: {
+              options.filter((option) => {
+                return (
+                  userSearch.length > 0 &&
+                  option.username
+                    .toLowerCase()
+                    .includes(userSearch.toLowerCase())
+                );
+              });
+            }
           }
         }}
       />
@@ -128,11 +138,11 @@ const Matches = styled.div``;
 
 const Match = styled.div`
   padding: 5px;
-  width: 150px;
+  width: 125px;
   margin: 3px auto;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   background: var(--blue);
   p {
     margin: 0px 4px;
