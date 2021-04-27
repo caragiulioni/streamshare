@@ -9,7 +9,7 @@ const Title = ({ result }) => {
     ev.target.src = kitten;
   };
 
-  const { Title, Poster, Year, Genre } = result;
+  const { Title, Poster, Genre } = result;
   return (
     <TitleContainer>
       <Link to={`/title/${titleId}`}>

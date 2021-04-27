@@ -17,7 +17,6 @@ const SignUpForm = () => {
 
   const [message, setMessage] = useState(isVerified);
   const [confirmed, setConfirmed] = useState("*all fields required");
-  const [borderColor, setBorderColor] = useState("darkgrey");
   const [inputErr, setInputErr] = useState(null);
 
   const handleSubmit = (event) => {

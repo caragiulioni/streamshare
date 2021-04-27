@@ -4,9 +4,11 @@ import Masonry from "react-masonry-css";
 import Title from "../Title";
 import styled from "styled-components";
 import Spinner from "../Spinner";
+import FilterBar from "../FilterBar";
 const Popular = () => {
   const [response, setResponse] = useState();
   const [titles, setTitles] = useState();
+  const [value, setValue] = useState("");
   useEffect(() => {
     fetch("/popular")
       .then((res) => res.json())
@@ -26,16 +28,25 @@ const Popular = () => {
     <Wrapper>
       <SectionMain>
         <h3>Popular</h3>
-        <h4>Stream share members recently added:</h4>
+        <h4>Streamshare members recently added:</h4>
+        <FilterBar value={value} setValue={setValue} />
         {response === true ? (
           <Masonry
             breakpointCols={breakpointColumnsObj}
             className="my-masonry-grid"
             columnClassName="my-masonry-grid_column"
           >
-            {titles.map((result) => (
-              <Title key={result.imdbID} result={result} />
-            ))}
+            {titles
+              .filter((result) => {
+                if (!value) return true;
+                if (result.Genre.toLowerCase().includes(value.toLowerCase())) {
+                  return true;
+                }
+                return false;
+              })
+              .map((result) => (
+                <Title key={result.imdbID} result={result} />
+              ))}
           </Masonry>
         ) : (
           <Spinner />
@@ -50,7 +61,6 @@ export default Popular;
 const Wrapper = styled.div`
   h4:nth-child(2) {
     text-align: center;
-    margin: 10px 0px;
-    color: var(--orange);
+    margin: 10px 0px 20px 0px;
   }
 `;

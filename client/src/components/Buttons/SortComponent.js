@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 const SortComponent = ({ titles, setTitles, original }) => {
   const [active, setActive] = useState();
-  const orange = "#E69824";
   const blue = "#66D1AB";
 
   const descend = () => {

@@ -1,22 +1,8 @@
-import React, { useEffect, useState } from "react";
-import LoginBtn from "../Buttons/LoginBtn";
+import React from "react";
 import styled from "styled-components";
+import TitleAction from "./TitleAction";
 const ActionBar = ({ title, currentUser, found, setFound }) => {
   const { Title, Poster, Genre, Year, imdbID } = title;
-  const [addButton, setAddButton] = useState();
-  const [removeButton, setRemoveButton] = useState();
-  useEffect(() => {
-    // console.log(currentUser.user._id);
-    // if (found) {
-    //   setAddButton(true);
-    //   setRemoveButton(false);
-    // }
-    // if (!found) {
-    //   setAddButton(false);
-    //   setRemoveButton(true);
-    // }
-  }, [found]);
-
   const handleAdd = () => {
     const title = {
       userId: currentUser.user._id,
@@ -66,9 +52,17 @@ const ActionBar = ({ title, currentUser, found, setFound }) => {
   return (
     <Wrapper>
       {found ? (
-        <LoginBtn action={handleRemove} text={"Remove"} />
+        <TitleAction
+          type={"remove"}
+          action={handleRemove}
+          text={"Remove from My Titles"}
+        />
       ) : (
-        <LoginBtn action={handleAdd} text={"Add"} />
+        <TitleAction
+          type={"add"}
+          action={handleAdd}
+          text={"Add to My Titles"}
+        />
       )}
     </Wrapper>
   );
@@ -76,10 +70,4 @@ const ActionBar = ({ title, currentUser, found, setFound }) => {
 
 export default ActionBar;
 
-const Wrapper = styled.div`
-  button {
-    margin: 5px 10px;
-    width: 100px;
-    font-weight: bold;
-  }
-`;
+const Wrapper = styled.div``;

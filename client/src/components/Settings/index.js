@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import styled from "styled-components";
 import ThemeButton from "./ThemeButton";
 import { useHistory } from "react-router-dom";
 import { removeCurrentUser } from "../../actions/actions";
@@ -20,8 +19,6 @@ const Settings = () => {
   const currentUser = useSelector((state) => state.user.currentUser);
   const isStored = localStorage.getItem("streamshareUser");
   const dispatch = useDispatch();
-  const [dark, setDark] = useState();
-  const currentTheme = localStorage.getItem("streamshareTheme");
 
   useEffect(() => {
     setStatus("loading");
@@ -38,7 +35,7 @@ const Settings = () => {
           }
         });
     }
-  }, []);
+  }, [isStored, dispatch]);
 
   const handleLogout = () => {
     localStorage.removeItem("streamshareUser");
@@ -63,9 +60,3 @@ const Settings = () => {
 };
 
 export default Settings;
-
-const Wrapper = styled.div`
-  button {
-    width: 100px;
-  }
-`;

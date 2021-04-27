@@ -50,6 +50,8 @@ const UserSearchBar = ({ options }) => {
               matches.filter((option, idx) => {
                 if (idx === selectionIndex) {
                   return handleRoute(option.username);
+                } else {
+                  return false;
                 }
               });
 
@@ -133,8 +135,6 @@ const Wrapper = styled.div`
     color: lightgray;
   }
 `;
-
-const Matches = styled.div``;
 
 const Match = styled.div`
   padding: 5px;

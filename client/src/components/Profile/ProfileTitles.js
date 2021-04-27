@@ -31,6 +31,7 @@ const ProfileTitles = ({ memberData }) => {
               titles={titles}
               setTitles={setTitles}
               original={original}
+              setOriginal={setOriginal}
             />
           </Actions>
           <Masonry

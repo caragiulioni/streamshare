@@ -14,14 +14,14 @@ const Upload = () => {
 
   useEffect(() => {
     setUserID(currentUser.user._id);
-  }, []);
+  }, [currentUser.user._id]);
 
   const dispatch = useDispatch();
   const [userID, setUserID] = useState();
   const [preview, setPreview] = useState();
   const [src, setSrc] = useState();
   const [fileObj, setFileObj] = useState();
-  const [url, setUrl] = useState();
+
   const onClose = () => {
     setPreview();
   };
@@ -38,8 +38,6 @@ const Upload = () => {
       setFileObj(elem.target.files[0]);
     }
   };
-
-  let sendURL;
 
   const labelStyle = {
     color: "blue",
@@ -61,6 +59,7 @@ const Upload = () => {
           avatar: data.url,
         };
         if (data) {
+          console.log(data);
           sendUserData();
           fetch("/avatar", {
             method: "PUT",
@@ -99,7 +98,7 @@ const Upload = () => {
       </AvatarContainer>
       <Img>{preview && <img src={preview} alt="Preview" />}</Img>
       <LoginBtn
-        onClick={handleUpload}
+        action={handleUpload}
         disabled={!fileObj ? true : false}
         text={"Upload"}
       />
@@ -125,8 +124,6 @@ const Wrapper = styled.div`
     color: var(--blue) !important;
   }
 `;
-
-const Uploader = styled.div``;
 
 const AvatarContainer = styled.div`
   margin: 15px 0px;

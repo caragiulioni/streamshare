@@ -5,7 +5,6 @@ import { ResultsProvider } from "./context/ResultsContext";
 import { MemberProvider } from "./context/MemberContext";
 import styled from "styled-components";
 import GlobalStyles from "./Global";
-import Variables from "./Global/Variables";
 import {
   sendUserData,
   receiveUserData,
@@ -54,7 +53,6 @@ function App() {
       <MemberProvider>
         <ResultsProvider>
           <GlobalStyles />
-          {/* <Variables /> */}
           <BrowserRouter>
             {currentUser && <Header />}
             {currentUser && <MobileNav />}
@@ -86,6 +84,9 @@ function App() {
                 </Route>
                 <Route exact path="/sh/:username">
                   <Profile />
+                </Route>
+                <Route exact path="/sh">
+                  <Redirect to="/" />
                 </Route>
                 <Route>
                   <Error />

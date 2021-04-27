@@ -22,7 +22,7 @@ const ProfileHeader = ({ memberData, currentUser }) => {
         setFollowing(false);
       }
     }
-  }, [currentUser, memberData, setFollowing]);
+  }, [currentUser, memberData, setFollowing, memberId]);
 
   const handleFollow = () => {
     const followData = {
@@ -196,11 +196,4 @@ const Img = styled.div`
   width: 45px;
   height: 45px;
   border-radius: 50%;
-`;
-
-const Headings = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: 5px;
-  padding-left: 10px;
 `;

@@ -35,22 +35,27 @@ const handleProfile = async (req, res) => {
   const foundUser = await db
     .collection("users")
     .findOne({ username: username });
-  const userTitles = await db
-    .collection("userTitles")
-    .findOne({ userId: foundUser._id });
-  const userObj = {
-    _id: foundUser._id,
-    username: foundUser.username,
-    avatar: foundUser.avatar,
-    userTitles,
-  };
+  if (!foundUser) {
+    return res
+      .status(400)
+      .json({ status: 400, message: "could not find user" });
+  }
 
   try {
-    if (userTitles && foundUser) {
-      return res
-        .status(200)
-        .json({ status: 200, data: { userObj }, message: "success" });
+    if (foundUser) {
     }
+    const userTitles = await db
+      .collection("userTitles")
+      .findOne({ userId: foundUser._id });
+    const userObj = {
+      _id: foundUser._id,
+      username: foundUser.username,
+      avatar: foundUser.avatar,
+      userTitles,
+    };
+    return res
+      .status(200)
+      .json({ status: 200, data: { userObj }, message: "success" });
   } catch (err) {
     return res.status(400).json({ status: 400, message: err.message });
   }

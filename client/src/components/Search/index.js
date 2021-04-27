@@ -1,10 +1,9 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { SectionMain } from "../../Global/sectionStyles";
 import SearchBar from "./SearchBar";
 import Results from "./Results";
 import UserSearchBar from "./UserSearchBar";
 const Search = () => {
-  const [userDisplay, setUserDisplay] = useState(false);
   const [options, setOptions] = useState([]);
 
   useEffect(() => {
