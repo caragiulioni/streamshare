@@ -68,8 +68,6 @@ const ProfileHeader = ({ memberData, currentUser }) => {
   };
   return (
     <HeaderWrap>
-      {!currentUser && <h1>Streamshare</h1>}
-
       <ContentWrapper>
         <Left>
           <Img
@@ -82,16 +80,9 @@ const ProfileHeader = ({ memberData, currentUser }) => {
             }}
           ></Img>
           <Inner>
-            {currentUser ? (
-              <h3>
-                <span>{username}'s</span> current titles
-              </h3>
-            ) : (
-              <h3>
-                <span>{username}</span>
-              </h3>
-            )}
-
+            <h3>
+              <span>{username}'s</span> current titles
+            </h3>
             {currentUser && userId && userId !== memberId && (
               <LoginBtn
                 action={handleFollow}
@@ -103,6 +94,7 @@ const ProfileHeader = ({ memberData, currentUser }) => {
         <Right>
           {!currentUser && (
             <>
+              <h1>Streamshare</h1>
               <SignUp />
               <LogIn />
             </>
@@ -189,6 +181,11 @@ const Left = styled.div`
 
 const Right = styled.div`
   display: flex;
+  align-items: center;
+  button {
+    color: var(--orange);
+    border-color: var(--orange);
+  }
 `;
 
 const Img = styled.div`
