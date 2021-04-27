@@ -11,7 +11,8 @@ import {
 import Spinner from "../Spinner";
 import Upload from "./Upload";
 import LoginBtn from "../Buttons/LoginBtn";
-import { SectionContainer } from "../../Global/sectionStyles";
+import { SectionMain } from "../../Global/sectionStyles";
+import styled from "styled-components";
 
 const Settings = () => {
   let history = useHistory();
@@ -46,12 +47,14 @@ const Settings = () => {
   return (
     <>
       {status !== "loading" && currentUser ? (
-        <SectionContainer>
+        <SectionMain>
           <h3>SETTINGS</h3>
-          <Upload currentUser={currentUser} />
-          <ThemeButton />
-          <LoginBtn action={handleLogout} text={"Log Out"} />
-        </SectionContainer>
+          <Wrapper>
+            <Upload currentUser={currentUser} />
+            <ThemeButton />
+            <LoginBtn action={handleLogout} text={"Log Out"} />
+          </Wrapper>
+        </SectionMain>
       ) : (
         <Spinner />
       )}
@@ -60,3 +63,9 @@ const Settings = () => {
 };
 
 export default Settings;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;

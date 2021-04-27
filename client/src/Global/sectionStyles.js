@@ -43,6 +43,7 @@ export const SectionWrapper = styled.div`
 `;
 
 export const SectionMain = styled.section`
+  padding-top: 25px;
   h3 {
     text-align: center;
     margin: 15px 0px;
