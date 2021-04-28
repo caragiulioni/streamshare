@@ -25,28 +25,22 @@ React, Javascript, Styled Components, CSS, Redux, Node.js, Express, MongoDB, Git
 
 [![](http://img.youtube.com/vi/9lajlW-6LXY/0.jpg)](http://www.youtube.com/watch?v=9lajlW-6LXY)
 
-<!-- ### Desktop View
-
-<img src="https://storage.googleapis.com/caraimgs/active-member.gif">
-
-### Mobile View
-
-<img src="https://storage.googleapis.com/caraimgs/mobile.gif"> -->
-
 ### Features
 
-```bash
-Fully-responsive (mobile first)
+<h4>Fully-responsive (mobile first)</h4>
+<img src="./resources/readme-mobile.png" alt="Streamshare responsive view demo">
 
-Keyboard accessible typeahead user search
+<h4>Light/Dark Mode</h4>
+<img src="./resources/readme-theme.png" alt="Streamshare light and dark mode">
 
-Light/Dark Mode
+<h4>Accessible typeahead user search & Scale and crop avatar uploader </h4>
+<img src="./resources/readme-crop-search.png" alt="Streamshare avatar crop and search example">
+
+### Additional
 
 Filter by Genre / Sort by various parameters
 
 Random avatar generation on account creation
-
-Scale and crop avatar uploader
 
 Active member vs new member state
 
@@ -54,5 +48,4 @@ Shareable public profile link
 
 Auto login and persistent theme setting on revisit/refresh
 
-Error handling (Field inputs, non-existing members,  non-existing urls, page re-direction etc)
-```
+Error handling (Field inputs, non-existing members, non-existing urls, page re-direction etc)
