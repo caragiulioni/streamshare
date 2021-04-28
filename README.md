@@ -25,13 +25,13 @@ React, Javascript, Styled Components, CSS, Redux, Node.js, Express, MongoDB, Git
 
 [![](http://img.youtube.com/vi/9lajlW-6LXY/0.jpg)](http://www.youtube.com/watch?v=9lajlW-6LXY)
 
-<!-- ### Desktop
+### Desktop View
 
-![me](https://storage.googleapis.com/caraimgs/active-member.gif)
+<img src="https://storage.googleapis.com/caraimgs/active-member.gif">
 
-### Mobile
+### Mobile View
 
-![me](https://storage.googleapis.com/caraimgs/mobile.gif) -->
+<img src="https://storage.googleapis.com/caraimgs/mobile.gif">
 
 ### Features
 
