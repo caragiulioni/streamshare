@@ -23,7 +23,7 @@ React, Javascript, Styled Components, CSS, Redux, Node.js, Express, MongoDB, Git
 
 ### Click below for full video demo
 
-[![](http://img.youtube.com/vi/9lajlW-6LXY/0.jpg)](http://www.youtube.com/watch?v=9lajlW-6LXY)
+[![](http://img.youtube.com/vi/Zua4m80LqOQ/0.jpg)](http://www.youtube.com/watch?v=Zua4m80LqOQ)
 
 ### Features
 
@@ -33,7 +33,7 @@ React, Javascript, Styled Components, CSS, Redux, Node.js, Express, MongoDB, Git
 <h4>Light/Dark Mode</h4>
 <img src="./resources/readme-theme.png" alt="Streamshare light and dark mode">
 
-<h4>Accessible typeahead user search & Scale and crop avatar uploader </h4>
+<h4>Scale and crop avatar uploader & Accessible typeahead user search </h4>
 <img src="./resources/readme-crop-search.png" alt="Streamshare avatar crop and search example">
 
 ### Additional

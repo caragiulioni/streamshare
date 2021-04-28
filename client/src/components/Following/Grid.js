@@ -22,7 +22,7 @@ const Wrapper = styled.div`
     text-align: center;
     margin: 30px 0px 20px 0px;
     font-size: 1.5em;
-    color: var(--blue);
+    color: var(--blue) !important;
     font-weight: bold;
   }
 `;
