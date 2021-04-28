@@ -23,7 +23,7 @@ React, Javascript, Styled Components, CSS, Redux, Node.js, Express, MongoDB, Git
 
 ### Click for Full Video Demo
 
-[![Everything Is AWESOME](resources/youtube.png)](https://www.youtube.com/watch?v=9lajlW-6LXY "Everything Is AWESOME")
+[![](http://img.youtube.com/vi/9lajlW-6LXY/0.jpg)](http://www.youtube.com/watch?v=9lajlW-6LXY)
 
 ### Desktop
 
