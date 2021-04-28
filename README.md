@@ -48,4 +48,6 @@ Shareable public profile link
 
 Auto login and persistent theme setting on revisit/refresh
 
+Back-end password encryption
+
 Error handling (Field inputs, non-existing members, non-existing urls, page re-direction etc)
