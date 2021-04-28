@@ -1,10 +1,10 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import LoginBtn from "../Buttons/LoginBtn";
-import { ResultsContext } from "../../context/ResultsContext";
-const SearchBar = ({ setUserDisplay }) => {
+
+const SearchBar = ({ setResults, setResponse }) => {
   const [query, setQuery] = useState({ query: "" });
-  const { setResults, setResponse } = useContext(ResultsContext);
+  // const { setResults, setResponse } = useContext(ResultsContext);
 
   const handleChange = (val, item) => {
     setQuery({ ...query, [item]: val.toLowerCase() });

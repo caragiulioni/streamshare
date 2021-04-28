@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { useHistory, Link } from "react-router-dom";
-const UserSearchBar = ({ options }) => {
+
+const UserSearchBar = ({ options, setResults }) => {
   const [userDisplay, setUserDisplay] = useState(false);
   const [userSearch, setUserSearch] = useState("");
   const [selectionIndex, setSelectionIndex] = useState(0);
@@ -35,6 +36,12 @@ const UserSearchBar = ({ options }) => {
       option.username.toLowerCase().includes(userSearch.toLowerCase())
     );
   });
+
+  const handleInputs = () => {
+    setUserDisplay(!userDisplay);
+    setResults();
+  };
+
   return (
     <Wrapper ref={wrapperRef}>
       <h4>Member Search</h4>
@@ -42,7 +49,7 @@ const UserSearchBar = ({ options }) => {
         placeholder="ex. eleven or mugatu"
         value={userSearch}
         type="text"
-        onClick={() => setUserDisplay(!userDisplay)}
+        onClick={handleInputs}
         onChange={(event) => setUserSearch(event.target.value)}
         onKeyDown={(event) => {
           switch (event.key) {

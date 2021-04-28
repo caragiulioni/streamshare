@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { SectionMain } from "../../Global/sectionStyles";
 import SearchBar from "./SearchBar";
 import Results from "./Results";
 import UserSearchBar from "./UserSearchBar";
+import { ResultsContext } from "../../context/ResultsContext";
 const Search = () => {
   const [options, setOptions] = useState([]);
-
+  const { setResults, setResponse } = useContext(ResultsContext);
   useEffect(() => {
     fetch("/api/users")
       .then((res) => res.json())
@@ -26,8 +27,12 @@ const Search = () => {
   return (
     <SectionMain>
       <h3>Search</h3>
-      <UserSearchBar options={options} />
-      <SearchBar />
+      <UserSearchBar
+        setResults={setResults}
+        setResponse={setResponse}
+        options={options}
+      />
+      <SearchBar setResults={setResults} setResponse={setResponse} />
       <Results />
     </SectionMain>
   );
