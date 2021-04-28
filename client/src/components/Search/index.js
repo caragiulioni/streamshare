@@ -7,6 +7,8 @@ import { ResultsContext } from "../../context/ResultsContext";
 const Search = () => {
   const [options, setOptions] = useState([]);
   const { setResults, setResponse } = useContext(ResultsContext);
+  const [query, setQuery] = useState({ query: "" });
+
   useEffect(() => {
     fetch("/api/users")
       .then((res) => res.json())
@@ -31,8 +33,15 @@ const Search = () => {
         setResults={setResults}
         setResponse={setResponse}
         options={options}
+        setQuery={setQuery}
+        query={query}
       />
-      <SearchBar setResults={setResults} setResponse={setResponse} />
+      <SearchBar
+        query={query}
+        setQuery={setQuery}
+        setResults={setResults}
+        setResponse={setResponse}
+      />
       <Results />
     </SectionMain>
   );

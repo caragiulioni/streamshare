@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { useHistory, Link } from "react-router-dom";
 
-const UserSearchBar = ({ options, setResults }) => {
+const UserSearchBar = ({ options, setResults, setQuery }) => {
   const [userDisplay, setUserDisplay] = useState(false);
   const [userSearch, setUserSearch] = useState("");
   const [selectionIndex, setSelectionIndex] = useState(0);
@@ -36,10 +36,10 @@ const UserSearchBar = ({ options, setResults }) => {
       option.username.toLowerCase().includes(userSearch.toLowerCase())
     );
   });
-
-  const handleInputs = () => {
+  const handleInputs = (event) => {
     setUserDisplay(!userDisplay);
     setResults();
+    setQuery({ query: "" });
   };
 
   return (
