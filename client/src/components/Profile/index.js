@@ -20,7 +20,7 @@ const Profile = () => {
   const [memberData, setMemberData] = useState();
   useEffect(() => {
     setResponse("loading");
-    fetch(`/profile/${username}`)
+    fetch(`/api/profile/${username}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.status === 200) {
@@ -33,7 +33,7 @@ const Profile = () => {
       });
     if (isStored) {
       dispatch(sendUserData());
-      fetch(`/auth/${isStored}`)
+      fetch(`/api/auth/${isStored}`)
         .then((res) => res.json())
         .then((data) => {
           try {

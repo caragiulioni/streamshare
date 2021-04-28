@@ -12,7 +12,7 @@ const TitleFull = () => {
   const { response, setResponse, title, setTitle } = useContext(ResultsContext);
   useEffect(() => {
     setResponse("loading");
-    fetch(`/titles/${currentUser.user._id}`)
+    fetch(`/api/titles/${currentUser.user._id}`)
       .then((res) => res.json())
       .then((data) => {
         const find = data.data.titles.find((title) => {
@@ -26,7 +26,7 @@ const TitleFull = () => {
       });
 
     currentUser &&
-      fetch(`/title/${titleId}`)
+      fetch(`/api/title/${titleId}`)
         .then((res) => res.json())
         .then((data) => {
           data.data.Response === "False" && setResponse(false);

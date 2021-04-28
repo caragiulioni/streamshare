@@ -19,7 +19,7 @@ const MyTitles = () => {
   useEffect(() => {
     setResponse("loading");
     if (currentUser._id) {
-      fetch(`/titles/${currentUser._id}`)
+      fetch(`/api/titles/${currentUser._id}`)
         .then((res) => res.json())
         .then((data) => {
           if (!data.data.titles.length) {

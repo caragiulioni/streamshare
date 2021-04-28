@@ -61,7 +61,7 @@ const Upload = () => {
         if (data) {
           console.log(data);
           sendUserData();
-          fetch("/avatar", {
+          fetch("/api/avatar", {
             method: "PUT",
             body: JSON.stringify(Obj),
             headers: {

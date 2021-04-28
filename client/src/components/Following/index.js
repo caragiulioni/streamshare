@@ -12,7 +12,7 @@ const Following = () => {
   useEffect(() => {
     setResponse("loading");
     if (currentUser) {
-      fetch(`following/${currentUser._id}`)
+      fetch(`/api/following/${currentUser._id}`)
         .then((res) => res.json())
         .then((data) => {
           if (data.status === 200 && data.data.length) {

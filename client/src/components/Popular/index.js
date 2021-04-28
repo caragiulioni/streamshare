@@ -10,7 +10,7 @@ const Popular = () => {
   const [titles, setTitles] = useState();
   const [value, setValue] = useState("");
   useEffect(() => {
-    fetch("/popular")
+    fetch("/api/popular")
       .then((res) => res.json())
       .then((data) => {
         setTitles(data.popularTitles);

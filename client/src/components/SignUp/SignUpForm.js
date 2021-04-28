@@ -46,7 +46,7 @@ const SignUpForm = () => {
         setConfirmed("email must contain valid characters");
       }
       if (passIsValid && verifyEmail) {
-        fetch("/signup", {
+        fetch("/api/signup", {
           method: "POST",
           body: JSON.stringify(value),
           headers: {

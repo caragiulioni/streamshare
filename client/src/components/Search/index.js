@@ -7,7 +7,7 @@ const Search = () => {
   const [options, setOptions] = useState([]);
 
   useEffect(() => {
-    fetch("/users")
+    fetch("/api/users")
       .then((res) => res.json())
       .then((data) => {
         const sort = data.members.sort((a, b) => {
