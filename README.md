@@ -21,17 +21,17 @@ React, Javascript, Styled Components, CSS, Redux, Node.js, Express, MongoDB, Git
 
 ```
 
-### Click for Full Video Demo
+### Click below for full video demo
 
 [![](http://img.youtube.com/vi/9lajlW-6LXY/0.jpg)](http://www.youtube.com/watch?v=9lajlW-6LXY)
 
 ### Desktop
 
-![](https://storage.googleapis.com/caraimgs/active-member.gif)
+![me](https://storage.googleapis.com/caraimgs/active-member.gif)
 
 ### Mobile
 
-![](https://storage.googleapis.com/caraimgs/mobile.gif)
+![me](https://storage.googleapis.com/caraimgs/mobile.gif)
 
 ### Features
 
