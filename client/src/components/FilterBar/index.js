@@ -17,8 +17,7 @@ const FilterBar = ({ value, setValue }) => {
 export default FilterBar;
 
 const Wrapper = styled.div`
-  margin: 10px 0px;
-  padding: 0px 10px;
+  padding: 0px 5px;
   display: flex;
   align-items: baseline;
   h5 {
@@ -28,5 +27,9 @@ const Wrapper = styled.div`
     width: 150px;
     margin: 0px 5px;
     height: 18px;
+  }
+
+  @media (min-width: 1024px) {
+    margin: 10px 0px;
   }
 `;

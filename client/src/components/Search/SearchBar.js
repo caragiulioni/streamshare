@@ -1,10 +1,10 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import LoginBtn from "../Buttons/LoginBtn";
-import { ResultsContext } from "../../context/ResultsContext";
-const SearchBar = ({ setUserDisplay }) => {
+
+const SearchBar = ({ setResults, setResponse }) => {
   const [query, setQuery] = useState({ query: "" });
-  const { setResults, setResponse } = useContext(ResultsContext);
+  // const { setResults, setResponse } = useContext(ResultsContext);
 
   const handleChange = (val, item) => {
     setQuery({ ...query, [item]: val.toLowerCase() });
@@ -13,7 +13,7 @@ const SearchBar = ({ setUserDisplay }) => {
   const handleSearch = (event) => {
     setResponse("loading");
     event.preventDefault();
-    fetch("/search", {
+    fetch("/api/search", {
       method: "POST",
       body: JSON.stringify(query),
       headers: {
@@ -30,15 +30,20 @@ const SearchBar = ({ setUserDisplay }) => {
       });
   };
 
+  const clearResults = () => {
+    setResults();
+    setQuery({ query: "" });
+  };
   return (
     <Search>
       <Form>
-        <label htmlFor="search"></label>
+        <label htmlFor="search" aria-label="search"></label>
         <input
           placeholder="ex. Queen's Gambit"
           name="search"
           type="text"
           value={query.query}
+          onClick={clearResults}
           onChange={(ev) => handleChange(ev.target.value, "query")}
         />
         <Buttons>

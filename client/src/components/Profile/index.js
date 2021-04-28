@@ -1,10 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { MemberContext } from "../../context/MemberContext";
 import ProfileHeader from "../ProfileHeader/ProfileHeader";
 import ProfileTitles from "./ProfileTitles";
+import styled from "styled-components";
 import Spinner from "../Spinner";
+import Error from "./Error";
 import {
   sendUserData,
   receiveUserData,
@@ -12,7 +13,6 @@ import {
 } from "../../actions/actions";
 
 const Profile = () => {
-  let history = useHistory();
   const dispatch = useDispatch();
   const isStored = localStorage.getItem("streamshareUser");
   const { username } = useParams();
@@ -20,19 +20,20 @@ const Profile = () => {
   const [memberData, setMemberData] = useState();
   useEffect(() => {
     setResponse("loading");
-    fetch(`/profile/${username}`)
+    fetch(`/api/profile/${username}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.status === 200) {
           setMemberData(data.data.userObj);
           setResponse("loaded");
         } else {
-          setResponse("loaded");
+          console.log(data);
+          setResponse(false);
         }
       });
     if (isStored) {
       dispatch(sendUserData());
-      fetch(`/auth/${isStored}`)
+      fetch(`/api/auth/${isStored}`)
         .then((res) => res.json())
         .then((data) => {
           try {
@@ -42,7 +43,7 @@ const Profile = () => {
           }
         });
     }
-  }, [setMemberData, setResponse, isStored]);
+  }, [dispatch, username, setMemberData, setResponse, isStored]);
 
   const currentUser = useSelector((state) => state.user.currentUser);
   return (
@@ -54,6 +55,7 @@ const Profile = () => {
         </>
       )}
       {response === "loading" && <Spinner />}
+      {response === false && <Error />}
     </div>
   );
 };

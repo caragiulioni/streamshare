@@ -5,7 +5,6 @@ import { ResultsProvider } from "./context/ResultsContext";
 import { MemberProvider } from "./context/MemberContext";
 import styled from "styled-components";
 import GlobalStyles from "./Global";
-import Variables from "./Global/Variables";
 import {
   sendUserData,
   receiveUserData,
@@ -22,6 +21,7 @@ import Settings from "./components/Settings";
 import TitleFull from "./components/TitleFull";
 import Profile from "./components/Profile";
 import Following from "./components/Following";
+import Popular from "./components/Popular";
 import Error from "./components/Error/index.js";
 function App() {
   const dispatch = useDispatch();
@@ -36,7 +36,7 @@ function App() {
 
     if (isStored) {
       dispatch(sendUserData());
-      fetch(`/auth/${isStored}`)
+      fetch(`/api/auth/${isStored}`)
         .then((res) => res.json())
         .then((data) => {
           try {
@@ -53,7 +53,6 @@ function App() {
       <MemberProvider>
         <ResultsProvider>
           <GlobalStyles />
-          {/* <Variables /> */}
           <BrowserRouter>
             {currentUser && <Header />}
             {currentUser && <MobileNav />}
@@ -74,6 +73,9 @@ function App() {
                 <Route exact path="/following">
                   {currentUser ? <Following /> : <Redirect to="/" />}
                 </Route>
+                <Route exact path="/popular">
+                  {currentUser ? <Popular /> : <Redirect to="/" />}
+                </Route>
                 <Route exact path="/settings">
                   {currentUser ? <Settings /> : <Redirect to="/" />}
                 </Route>
@@ -82,6 +84,9 @@ function App() {
                 </Route>
                 <Route exact path="/sh/:username">
                   <Profile />
+                </Route>
+                <Route exact path="/sh">
+                  <Redirect to="/" />
                 </Route>
                 <Route>
                   <Error />

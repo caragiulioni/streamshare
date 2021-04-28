@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { useHistory, Link } from "react-router-dom";
-const UserSearchBar = ({ options }) => {
+
+const UserSearchBar = ({ options, setResults, setQuery }) => {
   const [userDisplay, setUserDisplay] = useState(false);
   const [userSearch, setUserSearch] = useState("");
   const [selectionIndex, setSelectionIndex] = useState(0);
@@ -31,10 +32,16 @@ const UserSearchBar = ({ options }) => {
 
   const matches = options.filter((option) => {
     return (
-      userSearch.length > 1 &&
+      userSearch.length > 0 &&
       option.username.toLowerCase().includes(userSearch.toLowerCase())
     );
   });
+  const handleInputs = (event) => {
+    setUserDisplay(!userDisplay);
+    setResults();
+    setQuery({ query: "" });
+  };
+
   return (
     <Wrapper ref={wrapperRef}>
       <h4>Member Search</h4>
@@ -42,7 +49,7 @@ const UserSearchBar = ({ options }) => {
         placeholder="ex. eleven or mugatu"
         value={userSearch}
         type="text"
-        onClick={() => setUserDisplay(!userDisplay)}
+        onClick={handleInputs}
         onChange={(event) => setUserSearch(event.target.value)}
         onKeyDown={(event) => {
           switch (event.key) {
@@ -50,6 +57,8 @@ const UserSearchBar = ({ options }) => {
               matches.filter((option, idx) => {
                 if (idx === selectionIndex) {
                   return handleRoute(option.username);
+                } else {
+                  return false;
                 }
               });
 
@@ -66,6 +75,16 @@ const UserSearchBar = ({ options }) => {
                 setSelectionIndex(selectionIndex + 1);
               }
               return;
+            }
+            default: {
+              options.filter((option) => {
+                return (
+                  userSearch.length > 0 &&
+                  option.username
+                    .toLowerCase()
+                    .includes(userSearch.toLowerCase())
+                );
+              });
             }
           }
         }}
@@ -124,15 +143,13 @@ const Wrapper = styled.div`
   }
 `;
 
-const Matches = styled.div``;
-
 const Match = styled.div`
   padding: 5px;
-  width: 150px;
+  width: 125px;
   margin: 3px auto;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   background: var(--blue);
   p {
     margin: 0px 4px;

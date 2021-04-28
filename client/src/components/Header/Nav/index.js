@@ -8,6 +8,7 @@ const Nav = () => {
       <StyledLink link={"mytitles"} text={"MY TITLES"} />
       <StyledLink link={"search"} text={"SEARCH"} />
       <StyledLink link={"following"} text={"FOLLOWING"} />
+      <StyledLink link={"popular"} text={"POPULAR"} />
     </NavContainer>
   );
 };

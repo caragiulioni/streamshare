@@ -21,7 +21,7 @@ const LogInForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(sendUserData());
-    fetch("/login", {
+    fetch("/api/login", {
       method: "POST",
       body: JSON.stringify(value),
       headers: {

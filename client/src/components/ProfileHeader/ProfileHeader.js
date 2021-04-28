@@ -22,7 +22,7 @@ const ProfileHeader = ({ memberData, currentUser }) => {
         setFollowing(false);
       }
     }
-  }, [currentUser, memberData, setFollowing]);
+  }, [currentUser, memberData, setFollowing, memberId]);
 
   const handleFollow = () => {
     const followData = {
@@ -31,7 +31,7 @@ const ProfileHeader = ({ memberData, currentUser }) => {
     };
 
     if (!following) {
-      fetch("/follow", {
+      fetch("/api/follow", {
         method: "POST",
         body: JSON.stringify(followData),
         headers: {
@@ -48,7 +48,7 @@ const ProfileHeader = ({ memberData, currentUser }) => {
           }
         });
     } else {
-      fetch("/unfollow", {
+      fetch("/api/unfollow", {
         method: "DELETE",
         body: JSON.stringify(followData),
         headers: {
@@ -68,8 +68,6 @@ const ProfileHeader = ({ memberData, currentUser }) => {
   };
   return (
     <HeaderWrap>
-      {!currentUser && <h1>Streamshare</h1>}
-
       <ContentWrapper>
         <Left>
           <Img
@@ -82,16 +80,9 @@ const ProfileHeader = ({ memberData, currentUser }) => {
             }}
           ></Img>
           <Inner>
-            {currentUser ? (
-              <h3>
-                <span>{username}'s</span> current titles
-              </h3>
-            ) : (
-              <h3>
-                <span>{username}</span>
-              </h3>
-            )}
-
+            <h3>
+              <span>{username}'s</span> current titles
+            </h3>
             {currentUser && userId && userId !== memberId && (
               <LoginBtn
                 action={handleFollow}
@@ -103,6 +94,7 @@ const ProfileHeader = ({ memberData, currentUser }) => {
         <Right>
           {!currentUser && (
             <>
+              <h1>Streamshare</h1>
               <SignUp />
               <LogIn />
             </>
@@ -135,6 +127,7 @@ const HeaderWrap = styled.header`
     margin-top: 2px;
     margin-left: 5px;
   }
+
   button {
     font-size: 0.8em;
     margin-left: 5px;
@@ -144,7 +137,6 @@ const HeaderWrap = styled.header`
     padding: 20px 0px 15px 0px;
     button {
       width: 98px;
-      font-size: 1em;
     }
   }
 `;
@@ -170,6 +162,7 @@ const Inner = styled.div`
     margin-left: 10px;
     font-size: 1.5em;
     font-weight: bold;
+    color: var(--darkgrey);
   }
 
   span {
@@ -188,6 +181,11 @@ const Left = styled.div`
 
 const Right = styled.div`
   display: flex;
+  align-items: center;
+  button {
+    color: var(--orange);
+    border-color: var(--orange);
+  }
 `;
 
 const Img = styled.div`
@@ -195,11 +193,4 @@ const Img = styled.div`
   width: 45px;
   height: 45px;
   border-radius: 50%;
-`;
-
-const Headings = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: 5px;
-  padding-left: 10px;
 `;

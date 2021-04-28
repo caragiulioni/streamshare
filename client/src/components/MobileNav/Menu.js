@@ -14,6 +14,9 @@ const Menu = ({ open, setOpen }) => {
         <Link onClick={() => setOpen(!open)} to="/following">
           Following
         </Link>
+        <Link onClick={() => setOpen(!open)} to="/popular">
+          Popular
+        </Link>
         <Link onClick={() => setOpen(!open)} to="/settings">
           Settings
         </Link>

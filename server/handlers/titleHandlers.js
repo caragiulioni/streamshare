@@ -64,6 +64,7 @@ const addTitle = async (req, res) => {
         { userId: ObjectID(title.userId) },
         { $push: { titles: newTitle } }
       );
+    await db.collection("popular").insertOne(newTitle);
     return res.status(200).json({
       status: 200,
       success: true,
@@ -83,7 +84,6 @@ const addTitle = async (req, res) => {
 
 const removeTitle = async (req, res) => {
   const { userId, imdbID } = req.body;
-  console.log(userId, imdbID);
   const client = await MongoClient(MONGO_URI, options);
   await client.connect();
   const db = client.db("streamshare");
@@ -102,7 +102,6 @@ const removeTitle = async (req, res) => {
       msg: "title removed!",
     });
   } catch (err) {
-    console.log(err);
     res.status(400).json({
       status: 400,
       data: req.body,
@@ -113,4 +112,34 @@ const removeTitle = async (req, res) => {
   client.close();
 };
 
-module.exports = { getUserTitles, getTitle, addTitle, removeTitle };
+const getPopular = async (req, res) => {
+  const client = await MongoClient(MONGO_URI, options);
+  await client.connect();
+  const db = client.db("streamshare");
+  try {
+    const popular = await db.collection("popular").find().toArray();
+    function getUniqueList(arr, key) {
+      return [...new Map(arr.map((item) => [item[key], item])).values()];
+    }
+    const returnUnique = getUniqueList(popular, "imdbID").reverse();
+    let popularTitles;
+    if (returnUnique.length > 24) {
+      popularTitles = returnUnique.slice(0, 25).map((item) => item);
+    } else {
+      popularTitles = returnUnique;
+    }
+    res.status(200).json({
+      status: 200,
+      popularTitles,
+      msg: "success",
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: 400,
+      msg: "could not get popular",
+      err: err,
+    });
+  }
+  client.close();
+};
+module.exports = { getPopular, getUserTitles, getTitle, addTitle, removeTitle };

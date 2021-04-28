@@ -31,6 +31,7 @@ const ProfileTitles = ({ memberData }) => {
               titles={titles}
               setTitles={setTitles}
               original={original}
+              setOriginal={setOriginal}
             />
           </Actions>
           <Masonry
@@ -68,6 +69,11 @@ const Heading = styled.div`
 `;
 
 const Actions = styled.div`
-  display: flex;
+  padding: 5px 0px;
+  display: block;
   align-items: center;
+
+  @media (min-width: 1024px) {
+    display: flex;
+  }
 `;

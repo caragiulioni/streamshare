@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import styled from "styled-components";
 import ThemeButton from "./ThemeButton";
 import { useHistory } from "react-router-dom";
 import { removeCurrentUser } from "../../actions/actions";
@@ -12,7 +11,8 @@ import {
 import Spinner from "../Spinner";
 import Upload from "./Upload";
 import LoginBtn from "../Buttons/LoginBtn";
-import { SectionContainer } from "../../Global/sectionStyles";
+import { SectionMain } from "../../Global/sectionStyles";
+import styled from "styled-components";
 
 const Settings = () => {
   let history = useHistory();
@@ -20,14 +20,12 @@ const Settings = () => {
   const currentUser = useSelector((state) => state.user.currentUser);
   const isStored = localStorage.getItem("streamshareUser");
   const dispatch = useDispatch();
-  const [dark, setDark] = useState();
-  const currentTheme = localStorage.getItem("streamshareTheme");
 
   useEffect(() => {
     setStatus("loading");
     if (isStored) {
       dispatch(sendUserData());
-      fetch(`auth/${isStored}`)
+      fetch(`/api/auth/${isStored}`)
         .then((res) => res.json())
         .then((data) => {
           try {
@@ -38,7 +36,7 @@ const Settings = () => {
           }
         });
     }
-  }, []);
+  }, [isStored, dispatch]);
 
   const handleLogout = () => {
     localStorage.removeItem("streamshareUser");
@@ -49,12 +47,14 @@ const Settings = () => {
   return (
     <>
       {status !== "loading" && currentUser ? (
-        <SectionContainer>
+        <SectionMain>
           <h3>SETTINGS</h3>
-          <Upload currentUser={currentUser} />
-          <ThemeButton />
-          <LoginBtn action={handleLogout} text={"Log Out"} />
-        </SectionContainer>
+          <Wrapper>
+            <Upload currentUser={currentUser} />
+            <ThemeButton />
+            <LoginBtn action={handleLogout} text={"Log Out"} />
+          </Wrapper>
+        </SectionMain>
       ) : (
         <Spinner />
       )}
@@ -65,7 +65,7 @@ const Settings = () => {
 export default Settings;
 
 const Wrapper = styled.div`
-  button {
-    width: 100px;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;

@@ -7,10 +7,11 @@ export const SectionContainer = styled.section`
   justify-content: center;
   align-items: center;
   margin: 0 auto;
+  width: 80%;
 
   h3 {
     font-size: 1.5em;
-    color: var(--blue);
+    color: var(--blue) !important;
     font-weight: bold;
     text-align: center;
   }
@@ -23,12 +24,12 @@ export const SectionContainer = styled.section`
   h4 {
     font-size: 1em;
     text-align: center;
-    color: var(--orange);
+    color: var(--orange) !important;
     margin: 10px 0px;
   }
 
   @media (min-width: 700px) {
-    width: 50%;
+    width: 30%;
   }
 `;
 
@@ -42,11 +43,12 @@ export const SectionWrapper = styled.div`
 `;
 
 export const SectionMain = styled.section`
+  padding-top: 25px;
   h3 {
     text-align: center;
     margin: 15px 0px;
     font-size: 1.5em;
-    color: var(--blue);
+    color: var(--blue) !important;
     font-weight: bold;
     text-transform: uppercase;
   }

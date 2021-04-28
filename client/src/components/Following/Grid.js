@@ -20,7 +20,7 @@ export default Grid;
 const Wrapper = styled.div`
   h3 {
     text-align: center;
-    margin: 15px 0px;
+    margin: 30px 0px 20px 0px;
     font-size: 1.5em;
     color: var(--blue);
     font-weight: bold;

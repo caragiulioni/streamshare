@@ -19,7 +19,7 @@ const MyTitles = () => {
   useEffect(() => {
     setResponse("loading");
     if (currentUser._id) {
-      fetch(`/titles/${currentUser._id}`)
+      fetch(`/api/titles/${currentUser._id}`)
         .then((res) => res.json())
         .then((data) => {
           if (!data.data.titles.length) {
@@ -87,6 +87,10 @@ const MyTitles = () => {
 export default MyTitles;
 
 const Actions = styled.div`
-  display: flex;
+  margin: 10px 0px;
+  display: block;
   align-items: center;
+  @media (min-width: 1024px) {
+    display: flex;
+  }
 `;
