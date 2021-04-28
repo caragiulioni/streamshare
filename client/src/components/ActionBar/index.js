@@ -70,4 +70,6 @@ const ActionBar = ({ title, currentUser, found, setFound }) => {
 
 export default ActionBar;
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  margin-left: 10px;
+`;

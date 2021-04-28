@@ -94,6 +94,7 @@ const InnerDetailsWrapper = styled.div`
 `;
 const Details = styled.div`
   padding: 0px 5px;
+  margin-bottom: 10px;
   display: flex;
   justify-content: space-between;
 

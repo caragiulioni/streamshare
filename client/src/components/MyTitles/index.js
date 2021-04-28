@@ -87,6 +87,10 @@ const MyTitles = () => {
 export default MyTitles;
 
 const Actions = styled.div`
-  display: flex;
+  margin: 10px 0px;
+  display: block;
   align-items: center;
+  @media (min-width: 1024px) {
+    display: flex;
+  }
 `;

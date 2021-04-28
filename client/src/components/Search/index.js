@@ -10,6 +10,7 @@ const Search = () => {
   const [query, setQuery] = useState({ query: "" });
 
   useEffect(() => {
+    setResults();
     fetch("/api/users")
       .then((res) => res.json())
       .then((data) => {
@@ -24,7 +25,7 @@ const Search = () => {
         });
         setOptions(sort);
       });
-  }, []);
+  }, [setResults]);
 
   return (
     <SectionMain>

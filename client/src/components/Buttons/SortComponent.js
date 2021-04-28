@@ -28,6 +28,7 @@ const SortComponent = ({ titles, setTitles, original }) => {
   };
   return (
     <Wrapper>
+      <h5>Sort: </h5>
       <button
         style={{ color: active === "descend" ? blue : "lightgrey" }}
         onClick={descend}
@@ -59,6 +60,12 @@ const SortComponent = ({ titles, setTitles, original }) => {
 export default SortComponent;
 
 const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 5px 0px 5px 5px;
+  h5 {
+    color: orange;
+  }
   button {
     font-size: 1em;
     cursor: pointer;

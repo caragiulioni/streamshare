@@ -29,7 +29,9 @@ const Popular = () => {
       <SectionMain>
         <h3>Popular</h3>
         <h4>Streamshare members recently added:</h4>
-        <FilterBar value={value} setValue={setValue} />
+        <Action>
+          <FilterBar value={value} setValue={setValue} />
+        </Action>
         {response === true ? (
           <Masonry
             breakpointCols={breakpointColumnsObj}
@@ -63,4 +65,8 @@ const Wrapper = styled.div`
     text-align: center;
     margin: 10px 0px 20px 0px;
   }
+`;
+
+const Action = styled.div`
+  margin: 5px 0px 10px;
 `;
