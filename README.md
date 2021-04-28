@@ -27,11 +27,11 @@ React, Javascript, Styled Components, CSS, Redux, Node.js, Express, MongoDB, Git
 
 ### Desktop
 
-![Streamshare](https://storage.googleapis.com/caraimgs/active-member.gif)
+![](https://storage.googleapis.com/caraimgs/active-member.gif)
 
 ### Mobile
 
-![Streamshare](https://storage.googleapis.com/caraimgs/mobile.gif)
+![](https://storage.googleapis.com/caraimgs/mobile.gif)
 
 ### Features
 
